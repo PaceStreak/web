@@ -56,7 +56,7 @@ Build settings, if they ever need re-entering:
 `build.py` stamps the asset URLs and then assembles `dist/` from an
 **allowlist**. That matters: deploying the repo root published the repo —
 `stamp.py`, `README.md` and `CHANGELOG.md` were all being served from
-www.pacestreak.com. A new file is now only published if someone deliberately
+<https://www.pacestreak.com>. A new file is now only published if someone deliberately
 adds it to the list in `build.py`.
 
 To deploy by hand (you should not need to):
