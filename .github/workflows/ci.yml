@@ -1,0 +1,64 @@
+# Checks the site builds and the output is sound. Deployment is Cloudflare's
+# job — it builds from this repository directly — so this workflow does not
+# deploy. Its purpose is to fail a pull request before it reaches main.
+
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build and check output
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      # Pinned to a commit SHA, not a tag: tags are mutable.
+      - name: Checkout
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+
+      - name: Set up Node
+        uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      # `npm ci` installs exactly the lockfile and fails if it has drifted from
+      # package.json, rather than quietly resolving something else. Cloudflare
+      # runs the same command, so a failure here is a failure there.
+      - name: Install
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      # Collapsed whitespace around inline links, inline scripts and data:
+      # URIs — all of which ship silently. Tested against known-bad fixtures,
+      # not just asserted to pass.
+      - name: Check the built HTML
+        run: python3 check-html.py dist
+
+      # Guards against the soft-404 and missing-robots problems the blog hit:
+      # without these files Pages answers unknown paths with index.html and 200.
+      - name: Assert required files were emitted
+        run: |
+          for f in dist/index.html dist/404.html dist/robots.txt \
+                   dist/sitemap-index.xml dist/_headers dist/_redirects; do
+            if [ ! -f "$f" ]; then
+              echo "::error::$f missing from build output"
+              exit 1
+            fi
+            echo "ok $f"
+          done

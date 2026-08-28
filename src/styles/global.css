@@ -531,22 +531,54 @@ a {
 
 /* ----------------------------------------------------------------- FAQ */
 
-/* The rest of the page speaks in bordered cards — steps, features. The FAQ was
-   bare rules in a narrow column, which left a large empty space to its right and
-   a long gap between each question and its marker. Cards, two-up on wide
-   screens, put it in the same visual language and fill the container. */
-.faqs {
+/* Heading on the left, questions in a single column on the right.
+
+   A two-up grid of questions was worse than it looked: ragged card bottoms
+   because each sizes to its own content, no obvious reading order (across or
+   down?), and the whole row jumping when one answer opened. A single column
+   keeps the reading order obvious and makes opening an answer push only what
+   is below it. The heading takes the width the questions gave up, and sticks
+   while you read. */
+.faq-layout {
   display: grid;
-  gap: 12px;
+  gap: 36px;
 }
 
 @media (min-width: 900px) {
-  .faqs {
-    grid-template-columns: 1fr 1fr;
-    /* start, not stretch: an opened answer grows its own card rather than
-       inflating the one beside it. */
+  .faq-layout {
+    grid-template-columns: minmax(240px, 0.8fr) 1.5fr;
+    gap: 64px;
     align-items: start;
   }
+  .faq-intro {
+    position: sticky;
+    /* clears the 68px sticky navigation */
+    top: 100px;
+  }
+  .faq-layout .h2 {
+    margin-bottom: 18px;
+  }
+}
+
+.faq-intro__note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  max-width: 32ch;
+}
+
+.faq-intro__note a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.faq-intro__note a:hover {
+  text-decoration: underline;
+}
+
+.faqs {
+  display: grid;
+  gap: 10px;
 }
 
 .faq {

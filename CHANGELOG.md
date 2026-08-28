@@ -21,7 +21,13 @@ This site is continuously deployed rather than versioned, so entries are dated.
   followed the reader down the page, washing lime over the features, the call
   to action and the FAQ rather than sitting behind the fold. It also forced a
   repaint on every scroll frame. Anchored to the hero instead.
-- **FAQ redesigned.** It was bare horizontal rules in a 760px column inside a
+- **FAQ relaid out again.** The two-up grid was worse than it looked: each
+  card sized to its own content so the bottoms were ragged, the reading order
+  was ambiguous (across or down?), and opening one answer jumped the whole row.
+  Now the heading sits in a sticky left column and the questions run down a
+  single column on the right — obvious reading order, and opening an answer
+  pushes only what is below it.
+- **FAQ first redesign (superseded above).** It was bare horizontal rules in a 760px column inside a
   much wider container, which stranded it beside a large empty space and left a
   long gap between each question and its marker. Now bordered cards matching
   the steps and features sections, two-up above 900px and single column below.
@@ -39,6 +45,11 @@ This site is continuously deployed rather than versioned, so entries are dated.
 
 ### Added
 
+- `check-html.py` and a CI workflow. Astro collapses whitespace between text
+  and an inline element, which shipped "Write tohello@pacestreak.com" three
+  separate times; and the CSP has no `unsafe-inline`, so an inlined script or
+  `data:` URI is blocked by the browser silently. Both are now build failures.
+  The checker is tested against known-bad fixtures, not merely asserted to pass.
 - The build log at blog.pacestreak.com, linked from the nav, the closing call
   to action and the footer, plus a `/blog` short link and RSS auto-discovery.
 - `Organization` structured data. It is an `application/ld+json` data block,
