@@ -20,6 +20,7 @@
   --radius: 14px;
   --radius-lg: 20px;
   --wrap: 1120px;
+  --gutter: 24px;
 
   --font: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -76,7 +77,7 @@ a {
   width: 100%;
   max-width: var(--wrap);
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 var(--gutter);
   position: relative;
   z-index: 1;
 }
@@ -523,7 +524,10 @@ a {
 
 /* ----------------------------------------------------------------- FAQ */
 
+/* Constrain the measure, but stay left-aligned with every other section
+   rather than centring a narrower column inside a wider page. */
 .faq {
+  max-width: 760px;
   border-bottom: 1px solid var(--border);
   padding: 4px 0;
 }
@@ -724,5 +728,53 @@ a {
   }
   .footer__right {
     justify-content: flex-start;
+  }
+}
+
+/* ------------------------------------------------------------ Large screens */
+/* The container and the type were both hard-capped, so above about 1440px the
+   page turned into a small island of small text marooned in empty space. Both
+   step up with the viewport instead. */
+@media (min-width: 1440px) {
+  :root {
+    --wrap: 1240px;
+    --gutter: 32px;
+  }
+  body {
+    font-size: 18px;
+  }
+  .hero__title {
+    font-size: 4.9rem;
+  }
+  .h2 {
+    font-size: 2.9rem;
+  }
+}
+
+@media (min-width: 1800px) {
+  :root {
+    --wrap: 1320px;
+  }
+  .hero__title {
+    font-size: 5.4rem;
+  }
+}
+
+/* ------------------------------------------------------------ Small screens */
+/* Below ~360px the brand lockup and the nav's call-to-action button collided.
+   The button is the more important of the two, so the brand word gives way. */
+@media (max-width: 380px) {
+  .nav__inner {
+    gap: 10px;
+  }
+  .btn--sm {
+    padding: 8px 12px;
+    font-size: 0.82rem;
+  }
+  .brand {
+    font-size: 0.98rem;
+  }
+  .hero__title {
+    font-size: 2.35rem;
   }
 }
