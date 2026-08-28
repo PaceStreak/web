@@ -15,13 +15,6 @@ This site is continuously deployed rather than versioned, so entries are dated.
   could not honour. Replaced the cost question with one that can actually be
   answered — whether a wearable is required.
 
-### Added
-
-- The build log at blog.pacestreak.com, linked from the nav, the closing call
-  to action and the footer, plus a `/blog` short link and RSS auto-discovery.
-- `Organization` structured data. It is an `application/ld+json` data block,
-  not an executable script, so `script-src 'self'` does not apply to it.
-
 ### Changed
 
 - Rebuilt on Astro. `stamp.py` and `build.py` are gone — Astro content-hashes
@@ -34,6 +27,10 @@ This site is continuously deployed rather than versioned, so entries are dated.
 
 ### Added
 
+- The build log at blog.pacestreak.com, linked from the nav, the closing call
+  to action and the footer, plus a `/blog` short link and RSS auto-discovery.
+- `Organization` structured data. It is an `application/ld+json` data block,
+  not an executable script, so `script-src 'self'` does not apply to it.
 - A real 404 page. Pages was answering every unknown path with index.html and
   a 200 — a soft 404, which lets search engines index the homepage under any
   number of wrong URLs.
