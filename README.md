@@ -5,6 +5,10 @@ tracker. Log the session, keep the streak, watch the grid fill.
 
 Static site, no build step, no dependencies. Deployed on Cloudflare Pages.
 
+Copyright (c) 2026 PaceStreak. Licensed under
+[AGPL-3.0](./LICENSE) — if you run a modified version of this over a network,
+you must offer its source to your users.
+
 > **Temporary.** This is a placeholder until the real frontend ships in
 > [`PaceStreak/web`](https://github.com/PaceStreak/web). Build the application
 > there, not here.
