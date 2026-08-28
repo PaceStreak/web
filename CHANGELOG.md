@@ -15,13 +15,13 @@ This site is continuously deployed rather than versioned, so entries are dated.
 - `assetsInlineLimit: 0`, because Astro inlines small scripts and Vite inlines
   sub-4KB assets as `data:` URIs. The CSP is `script-src 'self'`, so either
   would have been blocked by the browser, silently.
+- Licensed under AGPL-3.0.
 
 ### Added
 
 - A real 404 page. Pages was answering every unknown path with index.html and
   a 200 — a soft 404, which lets search engines index the homepage under any
   number of wrong URLs.
-
 - X/Twitter link in the footer and `/twitter` and `/x` vanity redirects.
   Handle verified as `@PaceStreak` before linking — `x.com` returns HTTP 200
   for nonexistent accounts, so the page title is the only reliable signal.
@@ -29,9 +29,6 @@ This site is continuously deployed rather than versioned, so entries are dated.
 - Social images for every platform under `brand/social/`, and the `og:image`
   the site had been missing despite declaring `summary_large_image`.
 
-### Changed
-
-- Licensed under AGPL-3.0.
 
 ## 2026-08-28
 
