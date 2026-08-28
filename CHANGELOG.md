@@ -29,7 +29,6 @@ This site is continuously deployed rather than versioned, so entries are dated.
 - Social images for every platform under `brand/social/`, and the `og:image`
   the site had been missing despite declaring `summary_large_image`.
 
-
 ## 2026-08-28
 
 ### Added
