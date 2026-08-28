@@ -7,7 +7,20 @@ This site is continuously deployed rather than versioned, so entries are dated.
 
 ## [Unreleased]
 
+### Changed
+
+- Rebuilt on Astro. `stamp.py` and `build.py` are gone — Astro content-hashes
+  asset filenames and publishes only `dist/`, which is what those 148 lines
+  were substituting for.
+- `assetsInlineLimit: 0`, because Astro inlines small scripts and Vite inlines
+  sub-4KB assets as `data:` URIs. The CSP is `script-src 'self'`, so either
+  would have been blocked by the browser, silently.
+
 ### Added
+
+- A real 404 page. Pages was answering every unknown path with index.html and
+  a 200 — a soft 404, which lets search engines index the homepage under any
+  number of wrong URLs.
 
 - X/Twitter link in the footer and `/twitter` and `/x` vanity redirects.
   Handle verified as `@PaceStreak` before linking — `x.com` returns HTTP 200
