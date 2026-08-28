@@ -23,7 +23,7 @@ This site is continuously deployed rather than versioned, so entries are dated.
   the steps and features sections, two-up above 900px and single column below.
 - Footer separators are drawn in CSS rather than typed between the links. In
   the markup they depended on newline whitespace, which Astro collapses — the
-  footer rendered "hello@pacestreak.com ·Build log ·Status", with a space
+  footer rendered `hello@pacestreak.com ·Build log ·Status`, with a space
   before each dot and none after.
 - Rebuilt on Astro. `stamp.py` and `build.py` are gone — Astro content-hashes
   asset filenames and publishes only `dist/`, which is what those 148 lines
