@@ -7,6 +7,22 @@ const description =
   "PaceStreak is a workout streak tracker. Log the session, keep the streak, watch the grid fill. Consistency is the metric that matters.";
 const canonical = "https://www.pacestreak.com/";
 const ogImage = "https://www.pacestreak.com/brand/social/og.png";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "PaceStreak",
+  url: "https://www.pacestreak.com",
+  logo: "https://www.pacestreak.com/brand/logo.svg",
+  email: "hello@pacestreak.com",
+  description:
+    "A workout streak tracker. Log the session, keep the streak, watch the grid fill.",
+  sameAs: [
+    "https://github.com/PaceStreak",
+    "https://x.com/PaceStreak",
+    "https://www.instagram.com/pacestreak/",
+  ],
+};
 ---
 
 <!doctype html>
@@ -37,6 +53,18 @@ const ogImage = "https://www.pacestreak.com/brand/social/og.png";
     <meta name="twitter:image:alt" content="PaceStreak — don't break the chain." />
 
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="PaceStreak build log"
+      href="https://blog.pacestreak.com/rss.xml"
+    />
+
+    <!-- Structured data. `application/ld+json` is a data block, not an
+         executable script, so the `script-src 'self'` policy does not apply to
+         it. Gives search engines the brand name, logo and social profiles
+         rather than making them guess from the markup. -->
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
     <link rel="sitemap" href="/sitemap-index.xml" />
   </head>
   <body>
@@ -58,6 +86,7 @@ const ogImage = "https://www.pacestreak.com/brand/social/og.png";
               <a href="#how">How it works</a>
               <a href="#features">Features</a>
               <a href="#faq">FAQ</a>
+          <a href="https://blog.pacestreak.com">Build log</a>
             </nav>
 
             <a class="btn btn--sm" href="#waitlist">Get early access</a>
@@ -85,8 +114,7 @@ const ogImage = "https://www.pacestreak.com/brand/social/og.png";
                 </div>
 
                 <p class="hero__note">
-                  Free while in beta · Lifting, running, cycling, climbing — anything
-                  you can repeat.
+                  Lifting, running, cycling, climbing — anything you can repeat.
                 </p>
               </div>
 
@@ -236,8 +264,8 @@ const ogImage = "https://www.pacestreak.com/brand/social/og.png";
                 >
                   Email for early access
                 </a>
-                <a class="btn btn--ghost" href="https://github.com/PaceStreak" rel="noopener">
-                  Follow on GitHub
+                <a class="btn btn--ghost" href="https://blog.pacestreak.com" rel="noopener">
+              Read the build log
                 </a>
               </div>
 
@@ -275,11 +303,12 @@ const ogImage = "https://www.pacestreak.com/brand/social/og.png";
                 </p>
               </details>
               <details class="faq">
-                <summary>What does it cost?</summary>
+                <summary>Do I need a watch or a wearable?</summary>
                 <p>
-                  Free during the beta. The plan afterwards is a free tier that
-                  keeps working and a paid tier for deeper history and analysis.
-                  Your data stays exportable either way.
+                  No. PaceStreak is manual by design — you tell it you trained,
+                  which takes a tap. Anything that depends on a device you might
+                  forget, or a battery that might be flat, is one more reason to
+                  break the chain, and the point is not to hand you one.
                 </p>
               </details>
               <details class="faq">
@@ -347,7 +376,8 @@ const ogImage = "https://www.pacestreak.com/brand/social/og.png";
 
               <p class="footer__meta">
                 <a href="mailto:hello@pacestreak.com">hello@pacestreak.com</a> ·
-                <a href="https://status.pacestreak.com" rel="noopener">Status</a>
+                <a href="https://blog.pacestreak.com" rel="noopener">Build log</a> ·
+            <a href="https://status.pacestreak.com" rel="noopener">Status</a>
               </p>
             </div>
           </div>

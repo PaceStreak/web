@@ -7,6 +7,21 @@ This site is continuously deployed rather than versioned, so entries are dated.
 
 ## [Unreleased]
 
+### Removed
+
+- **All pricing claims.** The FAQ promised "a free tier that keeps working and
+  a paid tier for deeper history and analysis", and the hero said "free while
+  in beta". There is no pricing plan yet, so both were commitments the product
+  could not honour. Replaced the cost question with one that can actually be
+  answered — whether a wearable is required.
+
+### Added
+
+- The build log at blog.pacestreak.com, linked from the nav, the closing call
+  to action and the footer, plus a `/blog` short link and RSS auto-discovery.
+- `Organization` structured data. It is an `application/ld+json` data block,
+  not an executable script, so `script-src 'self'` does not apply to it.
+
 ### Changed
 
 - Rebuilt on Astro. `stamp.py` and `build.py` are gone — Astro content-hashes
