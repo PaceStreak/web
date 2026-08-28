@@ -524,17 +524,40 @@ a {
 
 /* ----------------------------------------------------------------- FAQ */
 
-/* Constrain the measure, but stay left-aligned with every other section
-   rather than centring a narrower column inside a wider page. */
+/* The rest of the page speaks in bordered cards — steps, features. The FAQ was
+   bare rules in a narrow column, which left a large empty space to its right and
+   a long gap between each question and its marker. Cards, two-up on wide
+   screens, put it in the same visual language and fill the container. */
+.faqs {
+  display: grid;
+  gap: 12px;
+}
+
+@media (min-width: 900px) {
+  .faqs {
+    grid-template-columns: 1fr 1fr;
+    /* start, not stretch: an opened answer grows its own card rather than
+       inflating the one beside it. */
+    align-items: start;
+  }
+}
+
 .faq {
-  max-width: 760px;
-  border-bottom: 1px solid var(--border);
-  padding: 4px 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2px 22px;
+  transition: border-color 0.18s ease;
+}
+
+.faq:hover,
+.faq[open] {
+  border-color: var(--border-lit);
 }
 
 .faq summary {
   cursor: pointer;
-  padding: 17px 0;
+  padding: 18px 0;
   font-weight: 650;
   font-size: 1.03rem;
   list-style: none;
@@ -777,4 +800,20 @@ a {
   .hero__title {
     font-size: 2.35rem;
   }
+}
+
+/* Separators drawn by CSS rather than typed between the links. Written into the
+   markup they depend on newline whitespace, which Astro collapses — the footer
+   rendered "hello@pacestreak.com ·Build log ·Status", space before the dot and
+   none after. */
+.footer__meta {
+  display: inline-flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.footer__meta a + a::before {
+  content: "·";
+  color: var(--dim);
+  margin-right: 8px;
 }

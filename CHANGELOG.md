@@ -17,6 +17,14 @@ This site is continuously deployed rather than versioned, so entries are dated.
 
 ### Changed
 
+- **FAQ redesigned.** It was bare horizontal rules in a 760px column inside a
+  much wider container, which stranded it beside a large empty space and left a
+  long gap between each question and its marker. Now bordered cards matching
+  the steps and features sections, two-up above 900px and single column below.
+- Footer separators are drawn in CSS rather than typed between the links. In
+  the markup they depended on newline whitespace, which Astro collapses — the
+  footer rendered "hello@pacestreak.com ·Build log ·Status", with a space
+  before each dot and none after.
 - Rebuilt on Astro. `stamp.py` and `build.py` are gone — Astro content-hashes
   asset filenames and publishes only `dist/`, which is what those 148 lines
   were substituting for.
