@@ -17,6 +17,10 @@ This site is continuously deployed rather than versioned, so entries are dated.
 
 ### Changed
 
+- **The hero glow was `position: fixed`**, so it was welded to the viewport and
+  followed the reader down the page, washing lime over the features, the call
+  to action and the FAQ rather than sitting behind the fold. It also forced a
+  repaint on every scroll frame. Anchored to the hero instead.
 - **FAQ redesigned.** It was bare horizontal rules in a 760px column inside a
   much wider container, which stranded it beside a large empty space and left a
   long gap between each question and its marker. Now bordered cards matching

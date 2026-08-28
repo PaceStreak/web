@@ -49,19 +49,26 @@ body {
   overflow-x: hidden;
 }
 
-/* A soft glow behind the fold, so the page doesn't read as a flat black box. */
-body::before {
+/* A soft glow behind the hero.
+
+   This used to be `position: fixed` on the body, which welded it to the
+   viewport: it followed the reader down the page, washing lime over the
+   features, the call to action and the FAQ instead of sitting behind the fold
+   as intended. It also forced a repaint on every scroll frame, and made
+   full-page screenshots look broken. Anchored to the hero instead. */
+.hero {
+  position: relative;
+  isolation: isolate;
+}
+
+.hero::before {
   content: "";
-  position: fixed;
-  inset: -30vh 0 auto 0;
-  height: 90vh;
-  background: radial-gradient(
-    60% 55% at 50% 0%,
-    rgba(211, 255, 62, 0.09),
-    transparent 70%
-  );
+  position: absolute;
+  inset: -30% 0 auto 0;
+  height: 150%;
+  background: radial-gradient(60% 55% at 50% 0%, rgba(211, 255, 62, 0.09), transparent 70%);
   pointer-events: none;
-  z-index: 0;
+  z-index: -1;
 }
 
 img,
