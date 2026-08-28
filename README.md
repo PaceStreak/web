@@ -3,7 +3,7 @@
 Landing page for **[pacestreak.com](https://pacestreak.com)** — a workout streak
 tracker. Log the session, keep the streak, watch the grid fill.
 
-Static site, no build step, no dependencies. Deployed on Cloudflare Pages.
+Astro. Static output, no client framework, deployed on Cloudflare Pages.
 
 Copyright (c) 2026 PaceStreak. Licensed under
 [AGPL-3.0](./LICENSE) — if you run a modified version of this over a network,
@@ -49,39 +49,31 @@ Build settings, if they ever need re-entering:
 
 | Setting | Value |
 | --- | --- |
-| Framework preset | None |
-| Build command | `python3 build.py` |
+| Framework preset | Astro |
+| Build command | `npm run build` |
 | Build output directory | `dist` |
 
-`build.py` stamps the asset URLs and then assembles `dist/` from an
-**allowlist**. That matters: deploying the repo root published the repo —
-`stamp.py`, `README.md` and `CHANGELOG.md` were all being served from
-<https://www.pacestreak.com>. A new file is now only published if someone deliberately
-adds it to the list in `build.py`.
+Astro publishes only `dist/`, which contains what you put in `src/pages` and
+`public/` — so repository source can no longer leak onto the origin the way it
+did when the repo root was deployed directly.
 
 To deploy by hand (you should not need to):
 
 ```bash
-python3 build.py
+npm run build
 npx wrangler pages deploy dist --project-name=pacestreak
 ```
 
-**`stamp.py` is not optional** — CI runs it for you, which is the point. The asset filenames carry no content hash, and
-Cloudflare serves them with a multi-hour `Cache-Control` that `_headers` cannot
-override for static assets. Deploy without stamping and the new `index.html`
-points at a URL the CDN already has cached — the new markup renders against the
-old stylesheet, silently, for hours. That is exactly how the footer icons once
-shipped at 170px instead of 20px.
+**Asset URLs are content-hashed by the build.** This used to be a hand-rolled
+script that had to be remembered, and forgetting it once shipped new markup
+against a four-hour-old cached stylesheet. Astro does it natively; that whole
+failure mode is gone.
 
-`stamp.py` rewrites the asset URLs with a hash of their contents, so a changed
-file gets a new URL and a changed URL can never hit a stale cache entry. It is
-idempotent; running it with nothing changed does nothing.
-
-### Vanity links
-
-`_redirects` holds the short links (`/github`, `/instagram`). They live in the
-repo rather than as Cloudflare Redirect Rules so they are version controlled and
-ship with the site — a dashboard rule is invisible from here and easy to lose.
+**`assetsInlineLimit: 0` in `astro.config.mjs` is load-bearing.** Vite inlines
+assets under 4KB as `data:` URIs and Astro inlines small `<script>` blocks into
+the HTML. The CSP in `public/_headers` is `script-src 'self'` with no
+'unsafe-inline', so either would be blocked by the browser — silently. Setting
+the limit to 0 forces real, hashed files.
 
 ## Notes for anyone editing this
 
