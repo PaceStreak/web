@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PaceStreak — Don't break the chain</title>
+    <meta
+      name="description"
+      content="PaceStreak is a workout streak tracker. Log the session, keep the streak, watch the grid fill. Consistency is the metric that matters."
+    />
+    <link rel="canonical" href="https://pacestreak.com/" />
+    <meta name="theme-color" content="#0a0a0b" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://pacestreak.com/" />
+    <meta property="og:title" content="PaceStreak — Don't break the chain" />
+    <meta
+      property="og:description"
+      content="A workout streak tracker. Log the session, keep the streak, watch the grid fill."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/assets/styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav">
+      <div class="wrap nav__inner">
+        <a class="brand" href="/" aria-label="PaceStreak home">
+          <svg class="brand__mark" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M13.5 2 4 13.2h5.6L8.9 22 20 10.4h-6.2L13.5 2Z"
+              fill="currentColor"
+            />
+          </svg>
+          <span class="brand__word">Pace<span>Streak</span></span>
+        </a>
+
+        <nav class="nav__links" aria-label="Primary">
+          <a href="#how">How it works</a>
+          <a href="#features">Features</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+
+        <a class="btn btn--sm" href="#waitlist">Get early access</a>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- Hero -->
+      <section class="hero">
+        <div class="wrap hero__inner">
+          <div class="hero__copy">
+            <p class="eyebrow"><span class="dot"></span> Workout streak tracker</p>
+            <h1 class="hero__title">
+              Don't break<br />the <span class="grad">chain.</span>
+            </h1>
+            <p class="hero__lead">
+              Motivation is unreliable. Streaks aren't. PaceStreak makes
+              consistency the number you actually chase — log the session, keep
+              the run alive, watch a year of work fill in one square at a time.
+            </p>
+
+            <div class="hero__cta">
+              <a class="btn" href="#waitlist">Get early access</a>
+              <a class="btn btn--ghost" href="#how">See how it works</a>
+            </div>
+
+            <p class="hero__note">
+              Free while in beta · Lifting, running, cycling, climbing — anything
+              you can repeat.
+            </p>
+          </div>
+
+          <!-- Streak grid -->
+          <figure class="grid-card" aria-labelledby="gridcap">
+            <div class="grid-card__top">
+              <div>
+                <p class="grid-card__label">Current streak</p>
+                <p class="grid-card__streak">
+                  <span class="flame" aria-hidden="true">🔥</span>
+                  <span data-count="47">47</span>
+                  <span class="unit">days</span>
+                </p>
+              </div>
+              <dl class="grid-card__stats">
+                <div><dt>Longest</dt><dd data-count="86">86</dd></div>
+                <div><dt>Sessions</dt><dd data-count="312">312</dd></div>
+              </dl>
+            </div>
+
+            <div
+              class="heat"
+              id="heat"
+              role="img"
+              aria-label="Activity grid showing a 47 day training streak across the last six months"
+            ></div>
+
+            <div class="heat__legend">
+              <span>Less</span>
+              <i class="lvl lvl--0"></i><i class="lvl lvl--1"></i>
+              <i class="lvl lvl--2"></i><i class="lvl lvl--3"></i>
+              <i class="lvl lvl--4"></i>
+              <span>More</span>
+            </div>
+            <figcaption id="gridcap" class="sr-only">
+              An example activity grid: each square is a day, brighter squares
+              are harder sessions.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- How -->
+      <section id="how" class="section">
+        <div class="wrap">
+          <p class="eyebrow">How it works</p>
+          <h2 class="h2">Three taps. That's the whole ritual.</h2>
+
+          <ol class="steps">
+            <li class="step">
+              <span class="step__n">01</span>
+              <h3>Log the session</h3>
+              <p>
+                Lift, run, ride, climb. Pick the type, tap done. Detail is
+                optional — the point is that it took ten seconds, so you'll
+                actually do it on the bad days.
+              </p>
+            </li>
+            <li class="step">
+              <span class="step__n">02</span>
+              <h3>Keep the streak alive</h3>
+              <p>
+                Set your own week — three days, five, six. PaceStreak counts
+                against <em>your</em> target, so a planned rest day never costs
+                you the run you've built.
+              </p>
+            </li>
+            <li class="step">
+              <span class="step__n">03</span>
+              <h3>Watch the grid fill</h3>
+              <p>
+                Six months of squares is a harder thing to abandon than a
+                to-do list. The grid is the receipt, and it's the reason you go
+                on a Tuesday in February.
+              </p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- Features -->
+      <section id="features" class="section section--alt">
+        <div class="wrap">
+          <p class="eyebrow">Features</p>
+          <h2 class="h2">Built for people who show up.</h2>
+
+          <div class="cards">
+            <article class="card">
+              <h3><span aria-hidden="true">🎯</span> Streaks that respect rest</h3>
+              <p>
+                Rest is training. Define your weekly target and recovery days
+                count as kept, not broken. No guilt-tripping over a deload week.
+              </p>
+            </article>
+            <article class="card">
+              <h3><span aria-hidden="true">📈</span> Progress that compounds</h3>
+              <p>
+                Volume, frequency and PRs over months — not a single session's
+                numbers. See the trend line that actually predicts results.
+              </p>
+            </article>
+            <article class="card">
+              <h3><span aria-hidden="true">⚡</span> Ten-second logging</h3>
+              <p>
+                The fastest log wins. Anything that takes longer gets skipped
+                when you're tired, and skipped logs kill streaks.
+              </p>
+            </article>
+            <article class="card">
+              <h3><span aria-hidden="true">🏋️</span> Any discipline</h3>
+              <p>
+                Barbell, trail, tarmac or wall. One streak across everything, or
+                separate chains per discipline — your call.
+              </p>
+            </article>
+            <article class="card">
+              <h3><span aria-hidden="true">🔒</span> Your data, exportable</h3>
+              <p>
+                Full JSON and CSV export from day one. It's your training
+                history; you should be able to walk out with it.
+              </p>
+            </article>
+            <article class="card">
+              <h3><span aria-hidden="true">📱</span> Works offline</h3>
+              <p>
+                Gym basements have terrible signal. Log offline, it syncs when
+                you're back above ground.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Waitlist -->
+      <section id="waitlist" class="section cta">
+        <div class="wrap cta__inner">
+          <h2 class="h2">Start your first streak.</h2>
+          <p class="cta__lead">
+            PaceStreak is in early development. Follow the build, or put your
+            name down and we'll email you once when it opens — nothing else.
+          </p>
+
+          <div class="cta__actions">
+            <a class="btn" href="https://github.com/pacestreak" rel="noopener">
+              Follow on GitHub
+            </a>
+            <a class="btn btn--ghost" href="mailto:hello@pacestreak.com?subject=PaceStreak%20early%20access">
+              Email for early access
+            </a>
+          </div>
+
+          <p class="cta__note">
+            No account, no tracking, no newsletter you didn't ask for.
+          </p>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq" class="section section--alt">
+        <div class="wrap wrap--narrow">
+          <p class="eyebrow">FAQ</p>
+          <h2 class="h2">Reasonable questions.</h2>
+
+          <details class="faq">
+            <summary>Is a streak just a guilt machine?</summary>
+            <p>
+              It is, if it's built badly. That's why the streak counts against a
+              target you set, rest days count as kept, and you can repair a
+              missed day once a month. The goal is showing up over a year, not a
+              perfect record you abandon in week three.
+            </p>
+          </details>
+          <details class="faq">
+            <summary>Do I have to log sets, reps and weight?</summary>
+            <p>
+              No. A session counts with one tap. Detail is there when you want
+              it — for PRs and volume trends — but it is never required to keep
+              the chain.
+            </p>
+          </details>
+          <details class="faq">
+            <summary>What does it cost?</summary>
+            <p>
+              Free during the beta. The plan afterwards is a free tier that
+              keeps working and a paid tier for deeper history and analysis.
+              Your data stays exportable either way.
+            </p>
+          </details>
+          <details class="faq">
+            <summary>When can I use it?</summary>
+            <p>
+              It's early. This page is the honest state of things: the product
+              is being built in the open, and early access goes out in batches
+              rather than all at once.
+            </p>
+          </details>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap footer__inner">
+        <a class="brand brand--sm" href="/">
+          <svg class="brand__mark" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M13.5 2 4 13.2h5.6L8.9 22 20 10.4h-6.2L13.5 2Z" fill="currentColor" />
+          </svg>
+          <span class="brand__word">Pace<span>Streak</span></span>
+        </a>
+        <p class="footer__meta">
+          Built in the open ·
+          <a href="https://github.com/pacestreak" rel="noopener">GitHub</a> ·
+          <a href="https://status.rajpoot.dev" rel="noopener">Status</a>
+        </p>
+      </div>
+    </footer>
+
+    <script src="/assets/app.js" defer></script>
+  </body>
+</html>

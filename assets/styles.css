@@ -1,0 +1,659 @@
+/* PaceStreak — landing page
+   Single stylesheet, no build step, no external requests. */
+
+:root {
+  --bg: #0a0a0b;
+  --bg-alt: #0e0e10;
+  --surface: #141417;
+  --surface-2: #1a1a1e;
+  --border: #26262c;
+  --border-lit: #34343d;
+
+  --text: #f4f4f5;
+  --muted: #a1a1aa;
+  --dim: #71717a;
+
+  --accent: #d3ff3e; /* electric lime */
+  --accent-ink: #14170a; /* text on accent */
+  --flame: #ff6b35;
+
+  --radius: 14px;
+  --radius-lg: 20px;
+  --wrap: 1120px;
+
+  --font: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* A soft glow behind the fold, so the page doesn't read as a flat black box. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: -30vh 0 auto 0;
+  height: 90vh;
+  background: radial-gradient(
+    60% 55% at 50% 0%,
+    rgba(211, 255, 62, 0.09),
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+img,
+svg {
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+.wrap {
+  width: 100%;
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.wrap--narrow {
+  max-width: 760px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--accent);
+  color: var(--accent-ink);
+  padding: 10px 16px;
+  border-radius: 0 0 10px 0;
+  font-weight: 700;
+  z-index: 100;
+}
+.skip:focus {
+  left: 0;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ---------------------------------------------------------------- Nav */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(10, 10, 11, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  height: 68px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  text-decoration: none;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-size: 1.06rem;
+  white-space: nowrap;
+}
+
+.brand__mark {
+  width: 22px;
+  height: 22px;
+  color: var(--accent);
+  flex: none;
+}
+
+.brand__word span {
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.nav__links {
+  display: flex;
+  gap: 28px;
+  margin-left: auto;
+  font-size: 0.95rem;
+}
+
+.nav__links a {
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+.nav__links a:hover {
+  color: var(--text);
+}
+
+/* ------------------------------------------------------------- Buttons */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 22px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 700;
+  font-size: 0.97rem;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  white-space: nowrap;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 26px rgba(211, 255, 62, 0.22);
+}
+
+.btn--sm {
+  padding: 9px 16px;
+  font-size: 0.9rem;
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border-lit);
+}
+.btn--ghost:hover {
+  background: var(--surface-2);
+  box-shadow: none;
+  border-color: var(--muted);
+}
+
+/* ---------------------------------------------------------------- Hero */
+
+.hero {
+  padding: clamp(56px, 9vw, 104px) 0 clamp(40px, 6vw, 72px);
+}
+
+.hero__inner {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: clamp(32px, 5vw, 64px);
+  align-items: center;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0 0 18px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px rgba(211, 255, 62, 0.14);
+}
+
+.hero__title {
+  margin: 0 0 20px;
+  font-size: clamp(2.6rem, 6.4vw, 4.4rem);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+  font-weight: 800;
+}
+
+.grad {
+  background: linear-gradient(96deg, var(--accent), var(--flame));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero__lead {
+  margin: 0 0 30px;
+  font-size: clamp(1.02rem, 1.5vw, 1.14rem);
+  color: var(--muted);
+  max-width: 54ch;
+}
+
+.hero__cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.hero__note {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--dim);
+}
+
+/* ----------------------------------------------------------- Streak card */
+
+.grid-card {
+  margin: 0;
+  padding: 22px;
+  background: linear-gradient(180deg, var(--surface), var(--bg-alt));
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+}
+
+.grid-card__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.grid-card__label {
+  margin: 0 0 4px;
+  font-size: 0.76rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--dim);
+  font-weight: 700;
+}
+
+.grid-card__streak {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 2.1rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+
+.flame {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.grid-card__streak .unit {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0;
+}
+
+.grid-card__stats {
+  display: flex;
+  gap: 22px;
+  margin: 0;
+  text-align: right;
+}
+
+.grid-card__stats dt {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--dim);
+  font-weight: 700;
+}
+
+.grid-card__stats dd {
+  margin: 2px 0 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* The activity grid: columns are weeks, rows are weekdays. */
+.heat {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(7, 1fr);
+  gap: 4px;
+  margin-bottom: 14px;
+}
+
+/* No background here on purpose: `.heat i` would be specificity 0-1-1 and
+   would beat the single-class .lvl--N rules below, flattening every cell to
+   one colour. The level class is the only thing that paints a cell. */
+.heat i {
+  aspect-ratio: 1;
+  border-radius: 3px;
+  display: block;
+}
+
+.lvl--0 { background: #1c1c21; }
+.lvl--1 { background: rgba(211, 255, 62, 0.26); }
+.lvl--2 { background: rgba(211, 255, 62, 0.48); }
+.lvl--3 { background: rgba(211, 255, 62, 0.72); }
+.lvl--4 { background: var(--accent); }
+
+.heat__legend {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 5px;
+  font-size: 0.74rem;
+  color: var(--dim);
+}
+
+.heat__legend i {
+  width: 11px;
+  height: 11px;
+  border-radius: 3px;
+  display: block;
+}
+
+/* ------------------------------------------------------------ Sections */
+
+.section {
+  padding: clamp(64px, 8vw, 104px) 0;
+}
+
+.section--alt {
+  background: var(--bg-alt);
+  border-block: 1px solid var(--border);
+}
+
+.h2 {
+  margin: 0 0 44px;
+  font-size: clamp(1.85rem, 3.6vw, 2.6rem);
+  line-height: 1.12;
+  letter-spacing: -0.032em;
+  font-weight: 800;
+  max-width: 20ch;
+}
+
+/* --------------------------------------------------------------- Steps */
+
+.steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  counter-reset: step;
+}
+
+.step {
+  padding: 26px 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.step__n {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 12px;
+  letter-spacing: 0.04em;
+}
+
+.step h3,
+.card h3 {
+  margin: 0 0 9px;
+  font-size: 1.12rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+.step p,
+.card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.96rem;
+}
+
+/* --------------------------------------------------------------- Cards */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.card {
+  padding: 26px 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: border-color 0.18s ease, transform 0.18s ease;
+}
+
+.card:hover {
+  border-color: var(--border-lit);
+  transform: translateY(-2px);
+}
+
+.card h3 span {
+  margin-right: 7px;
+}
+
+/* ----------------------------------------------------------------- CTA */
+
+.cta__inner {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cta .h2 {
+  max-width: none;
+  margin-bottom: 16px;
+}
+
+.cta__lead {
+  margin: 0 0 28px;
+  color: var(--muted);
+  max-width: 56ch;
+}
+
+.cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.cta__note {
+  margin: 0;
+  font-size: 0.86rem;
+  color: var(--dim);
+}
+
+/* ----------------------------------------------------------------- FAQ */
+
+.faq {
+  border-bottom: 1px solid var(--border);
+  padding: 4px 0;
+}
+
+.faq summary {
+  cursor: pointer;
+  padding: 17px 0;
+  font-weight: 650;
+  font-size: 1.03rem;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq summary::after {
+  content: "+";
+  color: var(--accent);
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1;
+  flex: none;
+}
+
+.faq[open] summary::after {
+  content: "–";
+}
+
+.faq p {
+  margin: 0 0 18px;
+  color: var(--muted);
+  max-width: 65ch;
+  font-size: 0.97rem;
+}
+
+/* -------------------------------------------------------------- Footer */
+
+.footer {
+  padding: 34px 0;
+  border-top: 1px solid var(--border);
+}
+
+.footer__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.brand--sm {
+  font-size: 0.97rem;
+}
+
+.footer__meta {
+  margin: 0;
+  color: var(--dim);
+  font-size: 0.87rem;
+}
+
+.footer__meta a {
+  color: var(--muted);
+  text-decoration: none;
+}
+.footer__meta a:hover {
+  color: var(--text);
+  text-decoration: underline;
+}
+
+/* --------------------------------------------------------- Responsive */
+
+@media (max-width: 900px) {
+  .hero__inner {
+    grid-template-columns: 1fr;
+  }
+  .steps,
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .nav__links {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    font-size: 16px;
+  }
+  .steps,
+  .cards {
+    grid-template-columns: 1fr;
+  }
+  .grid-card__top {
+    flex-direction: column;
+  }
+  .grid-card__stats {
+    text-align: left;
+  }
+  .heat {
+    gap: 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Grid cells fade in as the page settles. app.js sets the per-cell delay;
+   without JS the cells are simply visible, which is the correct fallback. */
+@keyframes cellIn {
+  from {
+    opacity: 0;
+    transform: scale(0.72);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
