@@ -42,12 +42,19 @@ disappears.
 
 ## Deploying
 
+**Push to `main`. That is the whole process.**
+[`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) stamps the assets
+and deploys to Cloudflare Pages, then checks the live site actually serves
+before going green. Markdown-only commits skip the deploy.
+
+To deploy by hand (you should not need to):
+
 ```bash
 python3 stamp.py                                    # ALWAYS run this first
 npx wrangler pages deploy . --project-name=pacestreak
 ```
 
-**`stamp.py` is not optional.** The asset filenames carry no content hash, and
+**`stamp.py` is not optional** — CI runs it for you, which is the point. The asset filenames carry no content hash, and
 Cloudflare serves them with a multi-hour `Cache-Control` that `_headers` cannot
 override for static assets. Deploy without stamping and the new `index.html`
 points at a URL the CDN already has cached — the new markup renders against the
