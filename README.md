@@ -43,7 +43,9 @@ disappears.
 ## Deploying
 
 **Push to `main`. That is the whole process.** The Cloudflare Pages project is
-connected to this repository and builds on every push.
+connected to this repository via Cloudflare's GitHub integration and builds on
+every push — there is no deploy workflow in this repo, and no API token to
+manage.
 
 Build settings, if they ever need re-entering:
 
