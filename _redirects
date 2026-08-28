@@ -1,0 +1,9 @@
+# Vanity short links, handled by Cloudflare Pages.
+# Format: <from>  <to>  <status>
+#
+# These live here rather than as Cloudflare Redirect Rules so they are version
+# controlled and deploy with the site — a dashboard rule is invisible from the
+# repo and easy to lose track of.
+
+/github     https://github.com/PaceStreak            301
+/instagram  https://www.instagram.com/pacestreak/    301

@@ -34,11 +34,27 @@ disappears.
 
 ## Deploying
 
-`main` deploys to Cloudflare Pages. To push a build by hand:
-
 ```bash
+python3 stamp.py                                    # ALWAYS run this first
 npx wrangler pages deploy . --project-name=pacestreak
 ```
+
+**`stamp.py` is not optional.** The asset filenames carry no content hash, and
+Cloudflare serves them with a multi-hour `Cache-Control` that `_headers` cannot
+override for static assets. Deploy without stamping and the new `index.html`
+points at a URL the CDN already has cached — the new markup renders against the
+old stylesheet, silently, for hours. That is exactly how the footer icons once
+shipped at 170px instead of 20px.
+
+`stamp.py` rewrites the asset URLs with a hash of their contents, so a changed
+file gets a new URL and a changed URL can never hit a stale cache entry. It is
+idempotent; running it with nothing changed does nothing.
+
+### Vanity links
+
+`_redirects` holds the short links (`/github`, `/instagram`). They live in the
+repo rather than as Cloudflare Redirect Rules so they are version controlled and
+ship with the site — a dashboard rule is invisible from here and easy to lose.
 
 ## Notes for anyone editing this
 

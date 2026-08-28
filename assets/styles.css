@@ -682,3 +682,47 @@ a {
 .faq p a:hover {
   text-decoration: underline;
 }
+
+/* Social links. Icons rather than words: they are recognised faster and keep
+   the footer from becoming a list of link text. Each carries an aria-label,
+   since an icon with no text is invisible to a screen reader. */
+.footer__right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.social {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.social a {
+  display: inline-flex;
+  color: var(--dim);
+  transition: color 0.15s ease;
+}
+
+.social a:hover {
+  color: var(--accent);
+}
+
+.social svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .footer__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+  .footer__right {
+    justify-content: flex-start;
+  }
+}
