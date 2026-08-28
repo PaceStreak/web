@@ -7,6 +7,15 @@ This site is continuously deployed rather than versioned, so entries are dated.
 
 ## [Unreleased]
 
+### Added
+
+- X/Twitter link in the footer and `/twitter` and `/x` vanity redirects.
+  Handle verified as `@PaceStreak` before linking — `x.com` returns HTTP 200
+  for nonexistent accounts, so the page title is the only reliable signal.
+- `twitter:site` so shared links attribute the card to the account.
+- Social images for every platform under `brand/social/`, and the `og:image`
+  the site had been missing despite declaring `summary_large_image`.
+
 ### Changed
 
 - Licensed under AGPL-3.0.
