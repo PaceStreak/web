@@ -42,16 +42,28 @@ disappears.
 
 ## Deploying
 
-**Push to `main`. That is the whole process.**
-[`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) stamps the assets
-and deploys to Cloudflare Pages, then checks the live site actually serves
-before going green. Markdown-only commits skip the deploy.
+**Push to `main`. That is the whole process.** The Cloudflare Pages project is
+connected to this repository and builds on every push.
+
+Build settings, if they ever need re-entering:
+
+| Setting | Value |
+| --- | --- |
+| Framework preset | None |
+| Build command | `python3 build.py` |
+| Build output directory | `dist` |
+
+`build.py` stamps the asset URLs and then assembles `dist/` from an
+**allowlist**. That matters: deploying the repo root published the repo —
+`stamp.py`, `README.md` and `CHANGELOG.md` were all being served from
+www.pacestreak.com. A new file is now only published if someone deliberately
+adds it to the list in `build.py`.
 
 To deploy by hand (you should not need to):
 
 ```bash
-python3 stamp.py                                    # ALWAYS run this first
-npx wrangler pages deploy . --project-name=pacestreak
+python3 build.py
+npx wrangler pages deploy dist --project-name=pacestreak
 ```
 
 **`stamp.py` is not optional** — CI runs it for you, which is the point. The asset filenames carry no content hash, and
