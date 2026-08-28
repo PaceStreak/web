@@ -657,3 +657,28 @@ a {
     transform: scale(1);
   }
 }
+
+/* The public address, shown as text rather than hidden behind a button label —
+   people copy it, and a bare mailto tells them nothing about where it goes. */
+.cta__mail {
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.cta__mail a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+.cta__mail a:hover {
+  text-decoration: underline;
+}
+
+.faq p a {
+  color: var(--accent);
+  text-decoration: none;
+}
+.faq p a:hover {
+  text-decoration: underline;
+}
