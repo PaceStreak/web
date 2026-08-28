@@ -5,6 +5,10 @@ tracker. Log the session, keep the streak, watch the grid fill.
 
 Static site, no build step, no dependencies. Deployed on Cloudflare Pages.
 
+> **Temporary.** This is a placeholder until the real frontend ships in
+> [`PaceStreak/web`](https://github.com/PaceStreak/web). Build the application
+> there, not here.
+
 ## Layout
 
 ```text
@@ -83,7 +87,7 @@ also the easiest way to screenshot the page.
 it. Both are custom domains on the Pages project, and Cloudflare issues a
 **separate certificate per hostname** — they are not one cert with two SANs, so
 both expiries are monitored independently at
-[status.rajpoot.dev](https://status.rajpoot.dev).
+[status.pacestreak.com](https://status.pacestreak.com).
 
 Keep the apex attached to the Pages project even though it redirects: the
 redirect rule runs first, but if it is ever deleted the apex falls back to
