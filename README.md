@@ -63,10 +63,18 @@ also the easiest way to screenshot the page.
 
 ## Domain
 
-`pacestreak.com` (apex) is canonical; `www` redirects to it. Uptime and
-certificate expiry are monitored at
+`www.pacestreak.com` is canonical; the apex `pacestreak.com` 301-redirects to
+it. Both are custom domains on the Pages project, and Cloudflare issues a
+**separate certificate per hostname** — they are not one cert with two SANs, so
+both expiries are monitored independently at
 [status.rajpoot.dev](https://status.rajpoot.dev).
 
-Keep cookies off the apex. When the app itself ships it should live on
-`app.pacestreak.com` with its own cookie scope — a cookie set on the apex is
-sent to every subdomain.
+Keep the apex attached to the Pages project even though it redirects: the
+redirect rule runs first, but if it is ever deleted the apex falls back to
+serving the site rather than returning a 522.
+
+The backend lives on `api.pacestreak.com`. It is same-site with the frontend
+(same registrable domain), so `SameSite=Lax` cookies reach it — you do not need
+`SameSite=None`. The auth cookie must be scoped `Domain=pacestreak.com` to span
+both hosts, which means it is sent to *every* subdomain: do not host
+user-generated content or third-party tooling anywhere under `pacestreak.com`.
