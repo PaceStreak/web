@@ -46,7 +46,7 @@ This site is continuously deployed rather than versioned, so entries are dated.
 ### Added
 
 - `check-html.py` and a CI workflow. Astro collapses whitespace between text
-  and an inline element, which shipped "Write tohello@pacestreak.com" three
+  and an inline element, which shipped `Write tohello@pacestreak.com` three
   separate times; and the CSP has no `unsafe-inline`, so an inlined script or
   `data:` URI is blocked by the browser silently. Both are now build failures.
   The checker is tested against known-bad fixtures, not merely asserted to pass.
