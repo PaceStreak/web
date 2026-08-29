@@ -49,7 +49,7 @@ export const faqs: FaqItem[] = [
   },
   {
     q: "Is any of this open source?",
-    a: "The infrastructure and this site are being built in the open, and the whole organisation is AGPL-3.0. The build log at blog.pacestreak.com covers what is being built and what broke while building it.",
+    a: "The infrastructure and this site are being built in the open, and the whole organisation is AGPL-3.0. The blog at blog.pacestreak.com covers what is being built and what broke while building it.",
   },
 ];
 

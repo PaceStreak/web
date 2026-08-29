@@ -18,7 +18,7 @@ you must offer its source to your users.
 | `www.pacestreak.com` | **this repository** | Marketing site. Public, no login, indexed. |
 | `app.pacestreak.com` | [`app`](https://github.com/PaceStreak/app) | The product. Requires an account. Not indexed. |
 | `api.pacestreak.com` | [`api`](https://github.com/PaceStreak/api) | Backend. |
-| `blog.pacestreak.com` | [`blog`](https://github.com/PaceStreak/blog) | Build log. |
+| `blog.pacestreak.com` | [`blog`](https://github.com/PaceStreak/blog) | Blog. |
 | `status.pacestreak.com` | [`status`](https://github.com/PaceStreak/status) | Uptime, public. |
 
 **This repository is the marketing site and stays that way.** The product is
