@@ -26,8 +26,21 @@ import sys
 # colours. Anything else abutting an inline tag is a missing space.
 ALLOWED = {"e<span>"}
 
-INLINE_BEFORE = re.compile(r"[A-Za-z,;:)]<(?:a|em|strong|span|code)\b[^>]*>")
-INLINE_AFTER = re.compile(r"</(?:a|em|strong|span|code)>[A-Za-z(]")
+# Any glyph, not just a letter. The first version of this check only matched
+# [A-Za-z], so it gave a clean bill of health to `</a> ·<a …>` on the 404 pages
+# — a typed separator butting straight into the next link.
+INLINE_BEFORE = re.compile(r"[A-Za-z0-9,;:)·—–&]<(?:a|em|strong|span|code)\b[^>]*>")
+INLINE_AFTER = re.compile(r"</(?:a|em|strong|span|code)>[A-Za-z0-9(·—–]")
+
+# CSS draws separators inside the footer link lists only
+# (.footer__meta / .footer__links, via `a + a::before`). A typed separator
+# THERE renders doubled. Elsewhere on the page a typed separator is correct, so
+# the check is scoped to those containers rather than flagging every one.
+SEPARATOR_SCOPE = re.compile(
+    r"<(?:p|span)[^>]*class=\"[^\"]*footer__(?:meta|links)[^\"]*\"[^>]*>.*?</(?:p|span)>",
+    re.S,
+)
+TYPED_SEPARATOR = re.compile(r"</a>\s*(?:·|&middot;)\s*<a")
 
 # `application/ld+json` is a data block, not executable, so the CSP does not
 # apply to it. Everything else inside <script> would be blocked outright by
@@ -49,6 +62,13 @@ def check(path: pathlib.Path) -> list[str]:
         problems.append(f"{path.name}: text runs into an inline tag: …{frag}")
     for m in INLINE_AFTER.finditer(html):
         problems.append(f"{path.name}: inline tag runs into text: {m.group(0)}…")
+
+    for scope in SEPARATOR_SCOPE.finditer(html):
+        if TYPED_SEPARATOR.search(scope.group(0)):
+            problems.append(
+                f"{path.name}: typed separator in a footer link list — "
+                f"CSS already draws one there, so it renders doubled"
+            )
 
     stripped = LD_JSON.sub("", html)
     if INLINE_SCRIPT.search(stripped):
