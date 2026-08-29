@@ -86,6 +86,11 @@ Build settings, if they ever need re-entering:
 | Build command | `npm run build` |
 | Build output directory | `dist` |
 
+The Cloudflare Pages project is **`pacestreak-web`** (renamed from `pacestreak`;
+its `pages.dev` hostname stayed `pacestreak.pages.dev`, so the two do not
+match). Passing the wrong `--project-name` does not error — it creates a new
+project.
+
 Astro publishes only `dist/`, which contains what you put in `src/pages` and
 `public/` — so repository source can no longer leak onto the origin the way it
 did when the repo root was deployed directly.
@@ -94,7 +99,7 @@ To deploy by hand (you should not need to):
 
 ```bash
 npm run build
-npx wrangler pages deploy dist --project-name=pacestreak
+npx wrangler pages deploy dist --project-name=pacestreak-web
 ```
 
 **Asset URLs are content-hashed by the build.** This used to be a hand-rolled
