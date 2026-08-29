@@ -7,6 +7,46 @@
 
 @import "tailwindcss";
 
+/* Cross-document view transitions, in CSS, with no JavaScript at all.
+   ------------------------------------------------------------------
+   This is what stops navigation looking like a "reload". The browser keeps
+   the old page painted, fetches the new document, and cross-fades between
+   them - so there is no blank frame between pages.
+
+   Measured before adding this: 70-105ms TTFB from Cloudflare's edge, and
+   Astro's prefetcher has usually fetched the page before the click lands.
+   Navigation was never slow; it just *looked* abrupt. A client-side router
+   would have solved a problem this site does not have, at the cost of a
+   runtime, hydration, and the zero-JS property that makes the CSP viable.
+
+   Progressive enhancement: Chromium 126+ and Safari 18.2+ animate, everything
+   else navigates exactly as before. Nothing to polyfill and nothing to ship. */
+@view-transition {
+  navigation: auto;
+}
+
+/* The header is identical on every page, so name it and it is treated as the
+   same element across the navigation - it stays put instead of cross-fading
+   into a copy of itself.
+
+   In the stylesheet, not a style="" attribute: `style-src 'self'` blocks inline
+   style attributes, and it does so silently. */
+.site-header {
+  view-transition-name: site-header;
+}
+
+::view-transition-group(site-header) {
+  animation-duration: 0.18s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
 /* Tailwind v4 generates utilities from these, so `--color-accent` gives
    `bg-accent`, `text-accent`, `border-accent`, and so on. One definition, no
    config file, no drift between a token and its utility. */

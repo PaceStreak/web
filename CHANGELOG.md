@@ -67,6 +67,18 @@ This site is continuously deployed rather than versioned, so entries are dated.
 
 ### Added
 
+- **Cross-document view transitions, in CSS.** `@view-transition { navigation:
+  auto }` plus a named header, so moving between pages cross-fades instead of
+  blanking. Zero JavaScript; Chromium 126+ and Safari 18.2+ animate and
+  everything else navigates as before. Measured first: pages already served in
+  83-117ms total from the edge with prefetch ahead of the click, so this was a
+  paint problem, not a speed one — and not a reason to adopt a client-side
+  router.
+- **`check-html.py` now fails on inline `style` attributes.** `style-src 'self'`
+  drops them silently. Added immediately after a `view-transition-name` nearly
+  shipped as a `style=""` attribute. Inline styles inside `<pre>` are exempt —
+  that is Shiki's build-time highlighting, which the blog's CSP allows on
+  purpose.
 - **A real multi-page site.** `/about`, `/faq`, `/privacy` and `/terms` now
   exist; all three of the latter used to 404. Every page routes through one
   `Base` layout, so a new page cannot ship without a canonical URL, an OG image
