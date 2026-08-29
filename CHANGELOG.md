@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to the landing page are recorded here.
+All notable changes to the public site are recorded here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 This site is continuously deployed rather than versioned, so entries are dated.
@@ -16,6 +16,14 @@ This site is continuously deployed rather than versioned, so entries are dated.
   answered — whether a wearable is required.
 
 ### Changed
+
+- **This repository is now `PaceStreak/web`** (renamed from `landing`). It is
+  no longer a placeholder awaiting a real frontend: it is the public site, and
+  it stays that way. The product moved to
+  [`PaceStreak/app`](https://github.com/PaceStreak/app) on
+  `app.pacestreak.com`, which keeps this deployment static and free of any auth
+  dependency — a product outage cannot take down the page that explains the
+  product. `package.json` renamed to match.
 
 - **The hero glow was `position: fixed`**, so it was welded to the viewport and
   followed the reader down the page, washing lime over the features, the call
@@ -45,6 +53,12 @@ This site is continuously deployed rather than versioned, so entries are dated.
 
 ### Added
 
+- `ARCHITECTURE.md`, `CONTRIBUTING.md`, `SECURITY.md`, `CODE_OF_CONDUCT.md` and
+  `.editorconfig`. The security policy is per-repository because community
+  health files in a public `.github` repository do not apply to private ones.
+- The README now records the two bugs that keep recurring — the `.heat i`
+  specificity trap and `padding` shorthands collapsing `.wrap`'s gutter —
+  rather than leaving them to be rediscovered.
 - `check-html.py` and a CI workflow. Astro collapses whitespace between text
   and an inline element, which shipped `Write tohello@pacestreak.com` three
   separate times; and the CSP has no `unsafe-inline`, so an inlined script or
