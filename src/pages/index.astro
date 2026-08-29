@@ -1,14 +1,11 @@
 ---
-import "../styles/global.css";
+import Base from "../layouts/Base.astro";
+import ActivityGrid from "../components/ActivityGrid.astro";
+import Faq from "../components/Faq.astro";
+import { featuredFaqs } from "../data/faq";
 import appUrl from "../scripts/app.js?url";
 
-const title = "PaceStreak — Don't break the chain";
-const description =
-  "PaceStreak is a workout streak tracker. Log the session, keep the streak, watch the grid fill. Consistency is the metric that matters.";
-const canonical = "https://www.pacestreak.com/";
-const ogImage = "https://www.pacestreak.com/brand/social/og.png";
-
-const schema = {
+const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "PaceStreak",
@@ -23,373 +20,234 @@ const schema = {
     "https://www.instagram.com/pacestreak/",
   ],
 };
+
+const steps = [
+  {
+    n: "01",
+    title: "Log the session",
+    body: "Lift, run, ride, climb. Pick the type, tap done. Detail is optional — the point is that it took ten seconds, so you'll actually do it on the bad days.",
+  },
+  {
+    n: "02",
+    title: "Keep the streak alive",
+    body: "Set your own week — three days, five, six. PaceStreak counts against your target, so a planned rest day never costs you the run you've built.",
+  },
+  {
+    n: "03",
+    title: "Watch the grid fill",
+    body: "Six months of squares is a harder thing to abandon than a to-do list. The grid is the receipt, and it's the reason you go on a Tuesday in February.",
+  },
+];
+
+const features = [
+  {
+    icon: "🎯",
+    title: "Streaks that respect rest",
+    body: "Rest is training. Define your weekly target and recovery days count as kept, not broken. No guilt-tripping over a deload week.",
+  },
+  {
+    icon: "📈",
+    title: "Progress that compounds",
+    body: "Volume, frequency and PRs over months — not a single session's numbers. See the trend line that actually predicts results.",
+  },
+  {
+    icon: "⚡",
+    title: "Ten-second logging",
+    body: "The fastest log wins. Anything that takes longer gets skipped when you're tired, and skipped logs kill streaks.",
+  },
+  {
+    icon: "🏋️",
+    title: "Any discipline",
+    body: "Barbell, trail, tarmac or wall. One streak across everything, or separate chains per discipline — your call.",
+  },
+  {
+    icon: "🔒",
+    title: "Your data, exportable",
+    body: "Full JSON and CSV export from day one. It's your training history; you should be able to walk out with it.",
+  },
+  {
+    icon: "📱",
+    title: "Works offline",
+    body: "Gym basements have terrible signal. Log offline, it syncs when you're back above ground.",
+  },
+];
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title}</title>
-    <meta name="description" content={description} />
-    <link rel="canonical" href={canonical} />
-    <meta name="theme-color" content="#0a0a0b" />
+<Base
+  title="PaceStreak — Don't break the chain"
+  description="PaceStreak is a workout streak tracker. Log the session, keep the streak, watch the grid fill. Consistency is the metric that matters."
+  path="/"
+  jsonLd={jsonLd}
+>
+  <!-- Hero -->
+  <section class="hero relative isolate">
+    {
+      /* The glow is anchored to the hero. It used to be `position: fixed` on
+         the body, which welded it to the viewport: it followed the reader down
+         the page, washing lime over every section below, and forced a repaint
+         on every scroll frame. */
+    }
+    <div
+      class="pointer-events-none absolute inset-x-0 -top-[30%] -z-10 h-[150%] bg-[radial-gradient(60%_55%_at_50%_0%,rgba(211,255,62,0.09),transparent_70%)]"
+    >
+    </div>
 
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={canonical} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:site_name" content="PaceStreak" />
-    <!-- Absolute URL required: crawlers do not resolve relative paths. 1200x630
-         is what Facebook, LinkedIn, Slack, Discord, WhatsApp and iMessage all
-         crop from, so one image covers every link preview. -->
-    <meta property="og:image" content={ogImage} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="PaceStreak — don't break the chain." />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@PaceStreak" />
-    <meta name="twitter:image" content={ogImage} />
-    <meta name="twitter:image:alt" content="PaceStreak — don't break the chain." />
+    <div
+      class="wrap grid items-center gap-14 py-14 sm:py-18 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:gap-16 lg:py-24"
+    >
+      <div>
+        <p class="eyebrow">
+          <span class="inline-block h-1.5 w-1.5 rounded-full bg-accent"></span>{" "}
+          Workout streak tracker
+        </p>
 
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link
-      rel="alternate"
-      type="application/rss+xml"
-      title="PaceStreak build log"
-      href="https://blog.pacestreak.com/rss.xml"
-    />
+        <h1
+          class="mt-5 text-[clamp(2.6rem,7vw,4.4rem)] leading-[1.05] font-semibold tracking-[-0.03em] text-balance"
+        >
+          Don't break<br />the <span
+            class="bg-gradient-to-br from-accent to-flame bg-clip-text text-transparent"
+            >chain.</span
+          >
+        </h1>
 
-    <!-- Structured data. `application/ld+json` is a data block, not an
-         executable script, so the `script-src 'self'` policy does not apply to
-         it. Gives search engines the brand name, logo and social profiles
-         rather than making them guess from the markup. -->
-    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
-    <link rel="sitemap" href="/sitemap-index.xml" />
-  </head>
-  <body>
-    <a class="skip" href="#main">Skip to content</a>
+        <p class="mt-6 max-w-xl text-lg leading-relaxed text-muted text-pretty">
+          Motivation is unreliable. Streaks aren't. PaceStreak makes consistency
+          the number you actually chase — log the session, keep the run alive,
+          watch a year of work fill in one square at a time.
+        </p>
 
-        <header class="nav">
-          <div class="wrap nav__inner">
-            <a class="brand" href="/" aria-label="PaceStreak home">
-              <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
-                <path
-                  d="M39 5 8 39h19L25 59 56 25H37L39 5Z"
-                  fill="currentColor"
-                />
-              </svg>
-              <span class="brand__word">Pace<span>Streak</span></span>
-            </a>
+        <div class="mt-9 flex flex-wrap gap-3">
+          <a class="btn" href="#waitlist">Get early access</a>
+          <a class="btn btn--ghost" href="#how">See how it works</a>
+        </div>
 
-            <nav class="nav__links" aria-label="Primary">
-              <a href="#how">How it works</a>
-              <a href="#features">Features</a>
-              <a href="#faq">FAQ</a>
-          <a href="https://blog.pacestreak.com">Build log</a>
-            </nav>
+        <p class="mt-6 text-[0.92rem] text-dim">
+          Lifting, running, cycling, climbing — anything you can repeat.
+        </p>
+      </div>
 
-            <a class="btn btn--sm" href="#waitlist">Get early access</a>
-          </div>
-        </header>
+      <ActivityGrid />
+    </div>
+  </section>
 
-        <main id="main">
-          <!-- Hero -->
-          <section class="hero">
-            <div class="wrap hero__inner">
-              <div class="hero__copy">
-                <p class="eyebrow"><span class="dot"></span> Workout streak tracker</p>
-                <h1 class="hero__title">
-                  Don't break<br />the <span class="grad">chain.</span>
-                </h1>
-                <p class="hero__lead">
-                  Motivation is unreliable. Streaks aren't. PaceStreak makes
-                  consistency the number you actually chase — log the session, keep
-                  the run alive, watch a year of work fill in one square at a time.
-                </p>
+  <!-- How it works -->
+  <section id="how" class="scroll-mt-24 py-20 sm:py-24">
+    <div class="wrap">
+      <p class="eyebrow">How it works</p>
+      <h2 class="mt-3 max-w-2xl text-3xl font-semibold tracking-tight sm:text-4xl">
+        Three taps. That's the whole ritual.
+      </h2>
 
-                <div class="hero__cta">
-                  <a class="btn" href="#waitlist">Get early access</a>
-                  <a class="btn btn--ghost" href="#how">See how it works</a>
-                </div>
+      <ol class="mt-12 grid gap-6 md:grid-cols-3">
+        {
+          steps.map((step) => (
+            <li class="card">
+              <span class="font-mono text-sm font-semibold text-accent">{step.n}</span>
+              <h3 class="mt-3 text-lg font-semibold">{step.title}</h3>
+              <p class="mt-2 text-[0.96rem] leading-relaxed text-muted">{step.body}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
 
-                <p class="hero__note">
-                  Lifting, running, cycling, climbing — anything you can repeat.
-                </p>
-              </div>
+  <!-- Features -->
+  <section
+    id="features"
+    class="scroll-mt-24 border-y border-line bg-bg-alt py-20 sm:py-24"
+  >
+    <div class="wrap">
+      <p class="eyebrow">Features</p>
+      <h2 class="mt-3 max-w-2xl text-3xl font-semibold tracking-tight sm:text-4xl">
+        Built for people who show up.
+      </h2>
 
-              <!-- Streak grid -->
-              <figure class="grid-card" aria-labelledby="gridcap">
-                <div class="grid-card__top">
-                  <div>
-                    <p class="grid-card__label">Current streak</p>
-                    <p class="grid-card__streak">
-                      <span class="flame" aria-hidden="true">🔥</span>
-                      <span data-count="47">47</span>
-                      <span class="unit">days</span>
-                    </p>
-                  </div>
-                  <dl class="grid-card__stats">
-                    <div><dt>Longest</dt><dd data-count="86">86</dd></div>
-                    <div><dt>Sessions</dt><dd data-count="312">312</dd></div>
-                  </dl>
-                </div>
+      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          features.map((feature) => (
+            <article class="card transition-colors hover:border-line-lit">
+              <h3 class="flex items-center gap-2.5 text-lg font-semibold">
+                <span aria-hidden="true">{feature.icon}</span>{" "}
+                {feature.title}
+              </h3>
+              <p class="mt-2 text-[0.96rem] leading-relaxed text-muted">{feature.body}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
 
-                <div
-                  class="heat"
-                  id="heat"
-                  role="img"
-                  aria-label="Activity grid showing a 47 day training streak across the last six months"
-                ></div>
+  <!-- Build log -->
+  <section class="py-20 sm:py-24">
+    <div class="wrap">
+      <div
+        class="card flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between"
+      >
+        <div>
+          <p class="eyebrow">Build log</p>
+          <h2 class="mt-3 text-2xl font-semibold tracking-tight">
+            Watch it get built, mistakes included.
+          </h2>
+          <p class="mt-2 max-w-xl text-[0.96rem] text-muted">
+            Notes on what is being built and what broke while building it —
+            domains, monitoring, deploys and the failures that only show up in
+            production.
+          </p>
+        </div>
+        <a class="btn btn--ghost shrink-0" href="https://blog.pacestreak.com" rel="noopener">
+          Read the build log
+        </a>
+      </div>
+    </div>
+  </section>
 
-                <div class="heat__legend">
-                  <span>Less</span>
-                  <i class="lvl lvl--0"></i><i class="lvl lvl--1"></i>
-                  <i class="lvl lvl--2"></i><i class="lvl lvl--3"></i>
-                  <i class="lvl lvl--4"></i>
-                  <span>More</span>
-                </div>
-                <figcaption id="gridcap" class="sr-only">
-                  An example activity grid: each square is a day, brighter squares
-                  are harder sessions.
-                </figcaption>
-              </figure>
-            </div>
-          </section>
+  <!-- Waitlist -->
+  <section id="waitlist" class="scroll-mt-24 border-y border-line bg-bg-alt py-20 sm:py-24">
+    <div class="wrap max-w-2xl text-center">
+      <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">
+        Start your first streak.
+      </h2>
+      <p class="mt-4 text-lg text-muted text-pretty">
+        PaceStreak is in early development. Follow the build, or put your name
+        down and we'll email you once when it opens — nothing else.
+      </p>
 
-          <!-- How -->
-          <section id="how" class="section">
-            <div class="wrap">
-              <p class="eyebrow">How it works</p>
-              <h2 class="h2">Three taps. That's the whole ritual.</h2>
+      <div class="mt-8 flex flex-wrap justify-center gap-3">
+        <a
+          class="btn"
+          href="mailto:hello@pacestreak.com?subject=PaceStreak%20early%20access"
+        >
+          Email for early access
+        </a>
+        <a class="btn btn--ghost" href="/faq">Read the FAQ</a>
+      </div>
 
-              <ol class="steps">
-                <li class="step">
-                  <span class="step__n">01</span>
-                  <h3>Log the session</h3>
-                  <p>
-                    Lift, run, ride, climb. Pick the type, tap done. Detail is
-                    optional — the point is that it took ten seconds, so you'll
-                    actually do it on the bad days.
-                  </p>
-                </li>
-                <li class="step">
-                  <span class="step__n">02</span>
-                  <h3>Keep the streak alive</h3>
-                  <p>
-                    Set your own week — three days, five, six. PaceStreak counts
-                    against <em>your</em> target, so a planned rest day never costs
-                    you the run you've built.
-                  </p>
-                </li>
-                <li class="step">
-                  <span class="step__n">03</span>
-                  <h3>Watch the grid fill</h3>
-                  <p>
-                    Six months of squares is a harder thing to abandon than a
-                    to-do list. The grid is the receipt, and it's the reason you go
-                    on a Tuesday in February.
-                  </p>
-                </li>
-              </ol>
-            </div>
-          </section>
+      <p class="mt-6 text-[0.94rem] text-muted">
+        or write to <a
+          class="text-accent underline-offset-4 hover:underline"
+          href="mailto:hello@pacestreak.com">hello@pacestreak.com</a
+        >
+      </p>
 
-          <!-- Features -->
-          <section id="features" class="section section--alt">
-            <div class="wrap">
-              <p class="eyebrow">Features</p>
-              <h2 class="h2">Built for people who show up.</h2>
+      <p class="mt-3 text-[0.88rem] text-dim">
+        No account, no tracking, no newsletter you didn't ask for.
+      </p>
+    </div>
+  </section>
 
-              <div class="cards">
-                <article class="card">
-                  <h3><span aria-hidden="true">🎯</span> Streaks that respect rest</h3>
-                  <p>
-                    Rest is training. Define your weekly target and recovery days
-                    count as kept, not broken. No guilt-tripping over a deload week.
-                  </p>
-                </article>
-                <article class="card">
-                  <h3><span aria-hidden="true">📈</span> Progress that compounds</h3>
-                  <p>
-                    Volume, frequency and PRs over months — not a single session's
-                    numbers. See the trend line that actually predicts results.
-                  </p>
-                </article>
-                <article class="card">
-                  <h3><span aria-hidden="true">⚡</span> Ten-second logging</h3>
-                  <p>
-                    The fastest log wins. Anything that takes longer gets skipped
-                    when you're tired, and skipped logs kill streaks.
-                  </p>
-                </article>
-                <article class="card">
-                  <h3><span aria-hidden="true">🏋️</span> Any discipline</h3>
-                  <p>
-                    Barbell, trail, tarmac or wall. One streak across everything, or
-                    separate chains per discipline — your call.
-                  </p>
-                </article>
-                <article class="card">
-                  <h3><span aria-hidden="true">🔒</span> Your data, exportable</h3>
-                  <p>
-                    Full JSON and CSV export from day one. It's your training
-                    history; you should be able to walk out with it.
-                  </p>
-                </article>
-                <article class="card">
-                  <h3><span aria-hidden="true">📱</span> Works offline</h3>
-                  <p>
-                    Gym basements have terrible signal. Log offline, it syncs when
-                    you're back above ground.
-                  </p>
-                </article>
-              </div>
-            </div>
-          </section>
+  <!-- FAQ -->
+  <section class="py-20 sm:py-24">
+    <div class="wrap">
+      <Faq items={featuredFaqs} />
+      <p class="mt-8 text-center text-[0.94rem] text-muted lg:text-left">
+        <a class="text-accent underline-offset-4 hover:underline" href="/faq">
+          All questions →
+        </a>
+      </p>
+    </div>
+  </section>
 
-          <!-- Waitlist -->
-          <section id="waitlist" class="section cta">
-            <div class="wrap cta__inner">
-              <h2 class="h2">Start your first streak.</h2>
-              <p class="cta__lead">
-                PaceStreak is in early development. Follow the build, or put your
-                name down and we'll email you once when it opens — nothing else.
-              </p>
-
-              <div class="cta__actions">
-                <a
-                  class="btn"
-                  href="mailto:hello@pacestreak.com?subject=PaceStreak%20early%20access"
-                >
-                  Email for early access
-                </a>
-                <a class="btn btn--ghost" href="https://blog.pacestreak.com" rel="noopener">
-              Read the build log
-                </a>
-              </div>
-
-              <p class="cta__mail">
-                or write to <a href="mailto:hello@pacestreak.com">hello@pacestreak.com</a>
-              </p>
-
-              <p class="cta__note">
-                No account, no tracking, no newsletter you didn't ask for.
-              </p>
-            </div>
-          </section>
-
-          <!-- FAQ -->
-          <section id="faq" class="section section--alt">
-            <div class="wrap faq-layout">
-              <div class="faq-intro">
-                <p class="eyebrow">FAQ</p>
-                <h2 class="h2">Reasonable questions.</h2>
-                <p class="faq-intro__note">
-                  Not covered here? Write to <a href="mailto:hello@pacestreak.com">hello@pacestreak.com</a> and it will get answered.
-                </p>
-              </div>
-
-              <div class="faqs">
-                <details class="faq">
-                  <summary>Is a streak just a guilt machine?</summary>
-                  <p>
-                  It is, if it's built badly. That's why the streak counts against a
-                  target you set, rest days count as kept, and you can repair a
-                  missed day once a month. The goal is showing up over a year, not a
-                  perfect record you abandon in week three.
-                  </p>
-                  </details>
-                <details class="faq">
-                  <summary>Do I have to log sets, reps and weight?</summary>
-                  <p>
-                  No. A session counts with one tap. Detail is there when you want
-                  it — for PRs and volume trends — but it is never required to keep
-                  the chain.
-                  </p>
-                  </details>
-                <details class="faq">
-                  <summary>Do I need a watch or a wearable?</summary>
-                  <p>
-                  No. PaceStreak is manual by design — you tell it you trained,
-                  which takes a tap. Anything that depends on a device you might
-                  forget, or a battery that might be flat, is one more reason to
-                  break the chain, and the point is not to hand you one.
-                  </p>
-                  </details>
-                <details class="faq">
-                  <summary>When can I use it?</summary>
-                  <p>
-                  It's early. This page is the honest state of things: the product
-                  is being built in the open, and early access goes out in batches
-                  rather than all at once. Mail <a href="mailto:hello@pacestreak.com">hello@pacestreak.com</a> and
-                  you'll be in the next one.
-                  </p>
-                  </details>
-              </div>
-            </div>
-          </section>
-        </main>
-
-        <footer class="footer">
-          <div class="wrap footer__inner">
-            <a class="brand brand--sm" href="/">
-              <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
-                <path d="M39 5 8 39h19L25 59 56 25H37L39 5Z" fill="currentColor" />
-              </svg>
-              <span class="brand__word">Pace<span>Streak</span></span>
-            </a>
-            <div class="footer__right">
-              <nav class="social" aria-label="PaceStreak elsewhere">
-                <a
-                  href="https://github.com/PaceStreak"
-                  rel="me noopener"
-                  aria-label="PaceStreak on GitHub"
-                >
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path
-                      fill="currentColor"
-                      d="M12 .5C5.37.5 0 5.78 0 12.29c0 5.2 3.44 9.61 8.2 11.17.6.1.82-.25.82-.56v-2.17c-3.34.7-4.04-1.42-4.04-1.42-.55-1.34-1.34-1.7-1.34-1.7-1.1-.72.08-.71.08-.71 1.2.08 1.84 1.21 1.84 1.21 1.07 1.8 2.81 1.28 3.5.98.11-.76.42-1.28.76-1.58-2.67-.29-5.47-1.3-5.47-5.81 0-1.28.47-2.33 1.24-3.15-.13-.29-.54-1.5.11-3.12 0 0 1.01-.31 3.3 1.2a11.6 11.6 0 0 1 6.01 0c2.29-1.51 3.3-1.2 3.3-1.2.65 1.62.24 2.83.12 3.12.77.82 1.23 1.87 1.23 3.15 0 4.52-2.8 5.51-5.48 5.8.43.36.81 1.07.81 2.16v3.2c0 .31.22.67.83.56A12.02 12.02 0 0 0 24 12.29C24 5.78 18.63.5 12 .5Z"
-                    />
-                  </svg>
-                </a>
-                <a
-                  href="https://x.com/PaceStreak"
-                  rel="me noopener"
-                  aria-label="PaceStreak on X"
-                >
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path
-                      fill="currentColor"
-                      d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
-                    />
-                  </svg>
-                </a>
-                <a
-                  href="https://www.instagram.com/pacestreak/"
-                  rel="me noopener"
-                  aria-label="PaceStreak on Instagram"
-                >
-                  <svg viewBox="0 0 24 24" aria-hidden="true" fill="none">
-                    <rect
-                      x="2.75" y="2.75" width="18.5" height="18.5" rx="5.25"
-                      stroke="currentColor" stroke-width="1.9"
-                    />
-                    <circle cx="12" cy="12" r="4.4" stroke="currentColor" stroke-width="1.9" />
-                    <circle cx="17.6" cy="6.4" r="1.3" fill="currentColor" />
-                  </svg>
-                </a>
-              </nav>
-
-              <p class="footer__meta">
-                <a href="mailto:hello@pacestreak.com">hello@pacestreak.com</a>
-                <a href="https://blog.pacestreak.com" rel="noopener">Build log</a>
-                <a href="https://status.pacestreak.com" rel="noopener">Status</a>
-              </p>
-            </div>
-          </div>
-        </footer>
-
-    <script is:inline type="module" src={appUrl}></script>
-  </body>
-</html>
+  <script is:inline type="module" src={appUrl}></script>
+</Base>

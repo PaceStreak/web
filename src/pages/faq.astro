@@ -1,0 +1,30 @@
+---
+import Base from "../layouts/Base.astro";
+import Faq from "../components/Faq.astro";
+import { faqs } from "../data/faq";
+
+// Generated from the same array the page renders, so an answer cannot say one
+// thing to a reader and another to a search engine.
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: { "@type": "Answer", text: item.a },
+  })),
+};
+---
+
+<Base
+  title="FAQ — PaceStreak"
+  description="Answers about how PaceStreak's streaks work, what counts as breaking one, data export, offline logging and early access."
+  path="/faq"
+  jsonLd={jsonLd}
+>
+  <section class="py-16 sm:py-20">
+    <div class="wrap">
+      <Faq items={faqs} />
+    </div>
+  </section>
+</Base>

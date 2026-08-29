@@ -1,62 +1,42 @@
 ---
-import "../styles/global.css";
+import Base from "../layouts/Base.astro";
 
 // Without this page, Cloudflare Pages answers every unknown path with
 // index.html and a 200. That is a soft 404: search engines index the homepage
 // under dozens of wrong URLs, and a mistyped link looks like it worked.
 // Astro emits this as dist/404.html, which Pages serves with a real 404 status.
-const title = "Page not found — PaceStreak";
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title}</title>
-    <meta name="description" content="That page does not exist." />
-    <meta name="robots" content="noindex" />
-    <meta name="theme-color" content="#0a0a0b" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  </head>
-  <body>
-    <a class="skip" href="#main">Skip to content</a>
+<Base
+  title="Page not found — PaceStreak"
+  description="That page does not exist."
+  path="/404"
+  noindex
+>
+  <section class="py-24 sm:py-32">
+    <div class="wrap max-w-xl text-center">
+      <p class="eyebrow justify-center">404</p>
+      <h1 class="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">
+        That page doesn't exist.
+      </h1>
+      <p class="mt-4 text-muted">
+        The link may be out of date, or the page may never have existed.
+      </p>
 
-    <header class="nav">
-      <div class="wrap nav__inner">
-        <a class="brand" href="/" aria-label="PaceStreak home">
-          <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
-            <path d="M39 5 8 39h19L25 59 56 25H37L39 5Z" fill="currentColor"></path>
-          </svg>
-          <span class="brand__word">Pace<span>Streak</span></span>
-        </a>
+      <div class="mt-9 flex flex-wrap justify-center gap-3">
+        <a class="btn" href="/">Back to the site</a>
+        <a class="btn btn--ghost" href="https://blog.pacestreak.com">Build log</a>
       </div>
-    </header>
 
-    <main id="main">
-      <section class="section">
-        <div class="wrap wrap--narrow" style="text-align:center">
-          <p class="eyebrow" style="justify-content:center">404</p>
-          <h1 class="h2" style="max-width:none">That page doesn't exist.</h1>
-          <p style="color:var(--muted);margin:0 0 28px">
-            The link may be out of date, or the page may never have existed.
-          </p>
-          <div class="cta__actions">
-            <a class="btn" href="/">Back to the site</a>
-            <a class="btn btn--ghost" href="https://blog.pacestreak.com">Build log</a>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <div class="wrap footer__inner">
-        <span style="color:var(--dim);font-size:0.87rem">&copy; 2026 PaceStreak</span>
-        <p class="footer__meta">
-          <a href="mailto:hello@pacestreak.com">hello@pacestreak.com</a>
-          <a href="https://status.pacestreak.com" rel="noopener">Status</a>
-        </p>
-      </div>
-    </footer>
-  </body>
-</html>
+      <nav class="mt-12" aria-label="Popular pages">
+        <p class="text-[0.88rem] text-dim">Or try one of these</p>
+        <ul class="mt-3 flex flex-wrap justify-center gap-x-5 gap-y-2 text-[0.94rem]">
+          <li><a class="text-accent hover:underline" href="/about">About</a></li>
+          <li><a class="text-accent hover:underline" href="/faq">FAQ</a></li>
+          <li><a class="text-accent hover:underline" href="/privacy">Privacy</a></li>
+          <li><a class="text-accent hover:underline" href="/terms">Terms</a></li>
+        </ul>
+      </nav>
+    </div>
+  </section>
+</Base>

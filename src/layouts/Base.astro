@@ -1,0 +1,45 @@
+---
+import "../styles/global.css";
+import Seo from "../components/Seo.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  noindex?: boolean;
+  jsonLd?: unknown;
+}
+
+const { title, description, path, noindex = false, jsonLd } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scheme-dark">
+  <head>
+    <Seo title={title} description={description} path={path} noindex={noindex} />
+    {
+      /* JSON-LD is an `application/ld+json` DATA block, not executable script.
+         `script-src 'self'` does not apply to it, so this is safe under our
+         CSP — unlike an inline behavioural script, which would be blocked
+         silently. check-html.py knows the difference and excludes it. */
+    }
+    {
+      jsonLd && (
+        <script
+          type="application/ld+json"
+          set:html={JSON.stringify(jsonLd)}
+        />
+      )
+    }
+  </head>
+  <body class="min-h-screen">
+    <a class="skip" href="#main">Skip to content</a>
+    <Nav path={path} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

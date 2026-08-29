@@ -47,9 +47,17 @@
       var cell = document.createElement("i");
       cell.className = "lvl lvl--" + level;
       if (!reduceMotion) {
-        cell.style.opacity = "0";
+        // `backwards`, and no inline opacity.
+        //
+        // This used to set `opacity: 0` inline and fill `forwards`, which made
+        // the visible state depend entirely on the animation actually running.
+        // When the @keyframes went missing during a restyle, every square
+        // stayed at opacity 0 and the hero rendered an empty card - with no
+        // error anywhere. With `backwards` the delay borrows the `from` state
+        // and the cell settles at its natural opacity, so a missing keyframe
+        // costs the fade-in and nothing else.
         cell.style.animation =
-          "cellIn .32s ease forwards " + (i * 1.6).toFixed(0) + "ms";
+          "cellIn .32s ease backwards " + (i * 1.6).toFixed(0) + "ms";
       }
       frag.appendChild(cell);
     }
@@ -88,7 +96,10 @@
     buildGrid();
 
     // Only animate the numbers once the card is actually on screen.
-    var card = document.querySelector(".grid-card");
+    // A data attribute, not a class: a class is a styling concern and the
+    // Tailwind rewrite deleted the one this used to query, which silently
+    // disabled the on-screen trigger below.
+    var card = document.querySelector("[data-grid-card]");
     if (!card || !("IntersectionObserver" in window)) {
       countUp();
       return;

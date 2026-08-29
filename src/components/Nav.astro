@@ -1,0 +1,47 @@
+---
+const { path } = Astro.props as { path: string };
+
+const links = [
+  { href: "/about", label: "About" },
+  { href: "/faq", label: "FAQ" },
+  { href: "https://blog.pacestreak.com", label: "Build log", external: true },
+];
+---
+
+<header
+  class="sticky top-0 z-50 border-b border-line/80 bg-bg/85 backdrop-blur-md"
+>
+  <nav class="wrap flex h-16 items-center justify-between gap-4" aria-label="Main">
+    <a
+      href="/"
+      class="flex items-center gap-2.5 font-semibold tracking-tight"
+      aria-label="PaceStreak home"
+    >
+      <svg class="h-7 w-7 text-accent" viewBox="0 0 64 64" aria-hidden="true">
+        <path d="M39 5 8 39h19L25 59 56 25H37L39 5Z" fill="currentColor"></path>
+      </svg>
+      <span class="text-[1.05rem]">Pace<span class="text-accent">Streak</span></span>
+    </a>
+
+    <div class="flex items-center gap-1 sm:gap-2">
+      {
+        links.map((link) => (
+          <a
+            href={link.href}
+            rel={link.external ? "noopener" : undefined}
+            aria-current={path === link.href ? "page" : undefined}
+            class:list={[
+              "hidden rounded-full px-3 py-2 text-[0.92rem] transition-colors sm:inline-block",
+              path === link.href
+                ? "text-ink"
+                : "text-muted hover:bg-surface-2 hover:text-ink",
+            ]}
+          >
+            {link.label}
+          </a>
+        ))
+      }
+      <a class="btn btn--sm" href="/#waitlist">Get early access</a>
+    </div>
+  </nav>
+</header>

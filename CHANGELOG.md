@@ -7,6 +7,20 @@ This site is continuously deployed rather than versioned, so entries are dated.
 
 ## [Unreleased]
 
+### Fixed
+
+- **The activity grid rendered as an empty card during the Tailwind rewrite,
+  twice, for two different reasons.** First, `grid-template-rows: repeat(7,
+  1fr)` sized the rows from the container height while `aspect-ratio: 1` cells
+  sized the container height from the rows — circular, resolving to zero.
+  Second, the fade-in set `opacity: 0` inline and filled `forwards`, so when the
+  `@keyframes` block went missing every square stayed invisible. Columns are now
+  the definite axis, and the animation fills `backwards` so the settled state is
+  correct without it.
+- `app.js` looked up the streak card by a styling class the rewrite deleted, which
+  silently disabled the on-screen trigger for the counters. It uses a data
+  attribute now — a restyle cannot rename it.
+
 ### Removed
 
 - **All pricing claims.** The FAQ promised "a free tier that keeps working and
@@ -53,6 +67,20 @@ This site is continuously deployed rather than versioned, so entries are dated.
 
 ### Added
 
+- **A real multi-page site.** `/about`, `/faq`, `/privacy` and `/terms` now
+  exist; all three of the latter used to 404. Every page routes through one
+  `Base` layout, so a new page cannot ship without a canonical URL, an OG image
+  or a skip link.
+- **Tailwind CSS v4**, compiled through `@tailwindcss/vite`. The play CDN was
+  never an option: it is a third-party script and the CSP is
+  `default-src 'self'`, so it would be blocked in production while working in
+  local preview.
+- `FAQPage` structured data on `/faq`, generated from the same array the page
+  renders, so an answer cannot say one thing to a reader and another to a
+  search engine.
+- Link prefetching on hover and in viewport, via `<link rel="prefetch">` — a
+  browser hint rather than a script, so it costs nothing under the CSP.
+- A footer with real navigation columns, and popular-page links on the 404.
 - `ARCHITECTURE.md`, `CONTRIBUTING.md`, `SECURITY.md`, `CODE_OF_CONDUCT.md` and
   `.editorconfig`. The security policy is per-repository because community
   health files in a public `.github` repository do not apply to private ones.
