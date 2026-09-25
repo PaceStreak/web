@@ -18,6 +18,22 @@ export const released = false;
 export const releases: Release[] = [
   {
     date: "2026-09-25",
+    title: "Recovery, smarter reminders, supersets and plans together",
+    items: [
+      { area: "Security", text: "Lost your password and your email? A two-factor recovery code sets a new password. Change your email address from Settings." },
+      { area: "Getting started", text: "A short checklist on Today for your first days: training days, a first session, reminders, a passkey." },
+      { area: "Streaks", text: "Reminders can learn when you usually train and arrive an hour before." },
+      { area: "Streaks", text: "Suggestions for a lighter week after a hard block, and for starting again gently after a streak ends." },
+      { area: "Progress", text: "Monthly goals, and rest days you log on purpose, marked on the grid." },
+      { area: "Training", text: "Supersets, one-tap warm-up sets, and kilometre splits from imported runs and rides." },
+      { area: "Training", text: "Share a plan as a file, and import one." },
+      { area: "Social", text: "Challenges where everyone follows the same plan." },
+      { area: "Social", text: "Coaches can suggest a plan; group owners can post announcements." },
+      { area: "Social", text: "A nudge when your buddy is one session short near the end of their week." },
+    ],
+  },
+  {
+    date: "2026-09-25",
     title: "Passkeys, training plans and buddy streaks",
     items: [
       { area: "Security", text: "Sign in with a passkey: fingerprint, face or device PIN, from a button or the email field's autofill. It counts as two-factor on its own." },

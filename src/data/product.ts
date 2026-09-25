@@ -70,7 +70,7 @@ export const featureGroups: FeatureGroup[] = [
       },
       {
         title: "Training plans",
-        body: `A schedule of suggested sessions over several weeks. Start from one of ${4} conservative templates (from two gentle sessions a week to 5 km to 10 km) or build your own, week by week. Today shows the day's session, and what you log completes it, even if you moved it to another day.`,
+        body: `A schedule of suggested sessions over several weeks. Start from one of ${4} conservative templates (from two gentle sessions a week to 5 km to 10 km) or build your own, week by week, and share it as a file. Today shows the day's session, and what you log completes it, even if you moved it to another day.`,
       },
       {
         title: "Timers and calculators",
@@ -79,6 +79,14 @@ export const featureGroups: FeatureGroup[] = [
       {
         title: "Progression hints",
         body: "Last time's numbers next to every exercise, with a suggestion for this time: a little more weight when every set hit the top of the range, one more rep, or a few more seconds on a hold.",
+      },
+      {
+        title: "Supersets and warm-ups",
+        body: "Link exercises into a superset and the rest timer waits until the last one. One tap adds warm-up sets that ramp from the empty bar to your working weight in steps your plates can make.",
+      },
+      {
+        title: "Splits from your watch",
+        body: "Import a GPX or FIT file and see every kilometre's time, with the fastest one marked. Private, like the rest of your session.",
       },
       {
         title: "Tags, search and gear",
@@ -121,6 +129,14 @@ export const featureGroups: FeatureGroup[] = [
         body: "One streak across everything, or a chain per discipline. A chain can also ask for a balanced week, such as at least two runs and one strength day, and old weeks are never judged by a rule added later.",
       },
       {
+        title: "Reminders at your time",
+        body: "Nudges can learn when you usually train and arrive an hour before, never during quiet hours. Or pick a fixed time.",
+      },
+      {
+        title: "A lighter week, when you need one",
+        body: "After four hard weeks, or sessions that keep feeling rough, the app suggests an easier week. After a real miss ends a long streak, it suggests starting again gently.",
+      },
+      {
         title: "Travel mode",
         body: "When your phone changes timezone, the app offers to follow it, or to pause the streak for the trip. Sessions already logged keep their dates.",
       },
@@ -147,6 +163,10 @@ export const featureGroups: FeatureGroup[] = [
       {
         title: "A weekly recap, and a year in review",
         body: "Monday morning: last week in one screen. At any time: the year so far, in weeks kept, days shown up, the best month and the records that moved. Attendance, never volume.",
+      },
+      {
+        title: "Monthly goals and rest days",
+        body: "Set yourself a number of active days for the month. Log a rest day on purpose (sleep, mobility, just rest) and the grid shows it as a choice, not a gap. Neither touches the streak.",
       },
       {
         title: "Personal records, with their history",
@@ -226,7 +246,11 @@ export const featureGroups: FeatureGroup[] = [
       },
       {
         title: "Challenges",
-        body: "Attendance-based: most active days, or keeping your weekly target, across a date range. Never volume, never weight.",
+        body: "Attendance-based: most active days, keeping your weekly target, or following one plan together, where every planned session done counts. Never volume, never weight.",
+      },
+      {
+        title: "Coaching and announcements",
+        body: "A coach can suggest a plan to a member who shares their training; it only starts if the member starts it. Group owners can post announcements that members read, with nothing between members to moderate.",
       },
       {
         title: `${4} opt-in leaderboards`,
@@ -306,7 +330,7 @@ export const featureGroups: FeatureGroup[] = [
       },
       {
         title: "Two-factor authentication",
-        body: "Authenticator-app codes with single-use recovery codes you can replace at any time. Codes can't be replayed.",
+        body: "Authenticator-app codes with single-use recovery codes you can replace at any time. A recovery code also gets you back in if you lose both your password and your email.",
       },
       {
         title: "Session control",
