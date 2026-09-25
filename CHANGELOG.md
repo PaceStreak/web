@@ -9,6 +9,11 @@ This site is continuously deployed rather than versioned, so entries are dated.
 
 ### Added
 
+- `/changelog`, and copy for passkeys, training plans, the interval timer,
+  tags and gear, balanced weeks, travel mode, year in review, buddy and
+  group streaks and encouragement across the features, security, privacy
+  and terms pages.
+
 - Privacy policy and terms rewritten for accounts and health data, stated
   against what the code does.
 
