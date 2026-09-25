@@ -5,7 +5,7 @@
 (function () {
   "use strict";
 
-  var STREAK_DAYS = 47; // must match the number in the markup
+  var STREAK_WEEKS = 14; // must match the number in the markup
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* Deterministic PRNG (mulberry32) so the grid is identical on every load and
@@ -34,10 +34,11 @@
       var daysAgo = total - 1 - i;
       var level;
 
-      if (daysAgo < STREAK_DAYS) {
-        // Inside the live streak: always trained, intensity varies.
+      if (daysAgo < STREAK_WEEKS * 7) {
+        // Inside the live streak: most days trained, rest days included -
+        // the streak is weekly, so the grid should show rest inside it.
         var r = random();
-        level = r > 0.72 ? 4 : r > 0.4 ? 3 : 2;
+        level = r > 0.78 ? 4 : r > 0.52 ? 3 : r > 0.34 ? 2 : 0;
       } else {
         // Before it: a realistic run of good weeks and lapses.
         var r2 = random();

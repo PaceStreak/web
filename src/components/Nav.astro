@@ -2,8 +2,10 @@
 const { path } = Astro.props as { path: string };
 
 const links = [
+  { href: "/features", label: "Features" },
+  { href: "/streaks", label: "Streaks" },
+  { href: "/social", label: "Social" },
   { href: "/about", label: "About" },
-  { href: "/faq", label: "FAQ" },
   { href: "https://blog.pacestreak.com", label: "Blog", external: true },
 ];
 ---
@@ -31,7 +33,7 @@ const links = [
             rel={link.external ? "noopener" : undefined}
             aria-current={path === link.href ? "page" : undefined}
             class:list={[
-              "hidden rounded-full px-3 py-2 text-[0.92rem] transition-colors sm:inline-block",
+              "hidden rounded-full px-3 py-2 text-[0.92rem] transition-colors md:inline-block",
               path === link.href
                 ? "text-ink"
                 : "text-muted hover:bg-surface-2 hover:text-ink",
@@ -42,6 +44,31 @@ const links = [
         ))
       }
       <a class="btn btn--sm" href="/#waitlist">Get early access</a>
+
+      {
+        /* A <details> menu: opens and closes with no JavaScript, which keeps
+           the nav working under `script-src 'self'` even if app.js never
+           loads. */
+      }
+      <details class="menu md:hidden">
+        <summary class="menu__btn" aria-label="Menu">
+          <span class="menu__bars" aria-hidden="true"></span>
+        </summary>
+        <ul class="menu__panel">
+          {
+            [...links, { href: "/faq", label: "FAQ" }].map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  aria-current={path === link.href ? "page" : undefined}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </details>
     </div>
   </nav>
 </header>

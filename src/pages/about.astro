@@ -16,7 +16,11 @@ const principles = [
   },
   {
     title: "Your data leaves with you",
-    body: "Full JSON and CSV export from the first release. A training history you cannot take with you is not really yours.",
+    body: "Full JSON, CSV and calendar export, import, and a deletion that actually deletes. A training history you cannot take with you is not really yours.",
+  },
+  {
+    title: "Reward showing up, never magnitude",
+    body: "XP, badges, challenges and leaderboards count attendance and adherence to your own plan. Nothing rewards load, volume, body weight or skipping rest.",
   },
   {
     title: "No tracking, no third parties",
@@ -59,10 +63,11 @@ const principles = [
 
         <h2>What it is not</h2>
         <p>
-          It is not a coaching app, a macro tracker, or a social network. There
-          is no feed, no leaderboard, and nothing to compare yourself against
-          except your own history. Those products exist and some of them are
-          good; this one is deliberately smaller.
+          It is not a coaching app, a macro tracker or a body-weight tracker
+          with a social network bolted on. There is a social side (follows,
+          crews, challenges, opt-in leaderboards), but it is built so the only
+          thing anyone can compete on is turning up. Nobody wins anything for
+          being bigger, lifting heavier or training every day.
         </p>
       </div>
 
@@ -85,15 +90,15 @@ const principles = [
         <p>
           PaceStreak is being built in public, including the parts that go
           wrong. The <a href="https://blog.pacestreak.com">blog</a> covers
-          what is being built and what broke while building it — the DNS records
-          that returned errors, the deploys that silently served stale files,
-          the security headers that blocked the site's own scripts.
+          how each part was built and why: the week-based streak engine, the
+          XP rules, offline sync, authentication, the social privacy model, and
+          the failures along the way.
         </p>
         <p>
           Uptime is public too, at <a href="https://status.pacestreak.com"
             >status.pacestreak.com</a
-          >. Every repository is{" "}
-          <a href="https://github.com/PaceStreak">on GitHub</a> under AGPL-3.0.
+          >. Everything is licensed AGPL-3.0, and the organisation lives{" "}
+          <a href="https://github.com/PaceStreak">on GitHub</a>.
         </p>
 
         <h2>Get in touch</h2>

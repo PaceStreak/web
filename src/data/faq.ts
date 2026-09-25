@@ -36,16 +36,28 @@ export const faqs: FaqItem[] = [
     a: "Falling short of the weekly target you set. Not a missed calendar day — a target of four sessions a week means three rest days cost you nothing at all.",
   },
   {
+    q: "What happens if I miss a week?",
+    a: "Every four kept weeks earns a freeze, and you can hold two. A missed week spends one automatically if you have a streak to protect. If none is left, you can repair one missed week per month by hand. A frozen or repaired week keeps the streak but earns no XP.",
+  },
+  {
+    q: "Is there a social side?",
+    a: "Yes, and it's optional. Follows need your approval, groups share only your handle, streak and week's progress, and a coach sees your sessions only if you switch that on. Leaderboards are opt-in and rank consistency, streaks, season XP and personal records. There is no board for weight, distance or anything body-related. Under 16s are private-only.",
+  },
+  {
+    q: "Does XP reward lifting more?",
+    a: "No. Two people of very different strength earn identical XP for the same week. XP comes from training days, kept weeks, streak milestones, logging detail, personal records measured against your own history, and achievements. You can switch the whole game layer off.",
+  },
+  {
     q: "Can I track more than one discipline?",
     a: "Yes. Keep one streak across everything, or separate chains per discipline. Lifting and running on separate chains is a common setup.",
   },
   {
     q: "Will my data be locked in?",
-    a: "No. Full JSON and CSV export from day one. It's your training history and you should be able to walk out with it.",
+    a: "No. Export everything as JSON, as CSVs of workouts, sets and body metrics, or as a calendar file, whenever you like. Deleting your account schedules it 30 days out, so a mistake is recoverable, and then it's gone.",
   },
   {
     q: "Does it work without signal?",
-    a: "That's the intent. Gym basements have terrible reception, and a log you cannot save is a streak you lose to the building. Sessions are logged locally and sync when you're back above ground.",
+    a: "Yes. Every session saves on your phone first, so logging is instant with no signal at all, and it syncs when you're back above ground. The app installs to your home screen like any other.",
   },
   {
     q: "Is any of this open source?",
