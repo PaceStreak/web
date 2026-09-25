@@ -1,15 +1,53 @@
 ---
 import Base from "../layouts/Base.astro";
 
-// Describes what this SITE actually does today, which is very little. When the
-// product launches and there are accounts, this page needs rewriting rather
-// than amending — an inaccurate privacy policy is worse than none.
-const updated = "30 August 2026";
+// Every statement here must match what the code does. When the code changes -
+// a new table, a new processor, a new retention period - this page changes in
+// the same pull request. An inaccurate privacy policy is worse than none.
+const updated = "25 September 2026";
+
+const collected = [
+  {
+    what: "Account",
+    items: "Email address, a password hash (Argon2; we never see or store the password), whether the address is verified, your role, and whether two-factor is on.",
+    why: "To sign you in and keep the account yours.",
+  },
+  {
+    what: "Profile",
+    items: "Handle, display name, bio, avatar colour, timezone, units, week start, planned training days, and your birth year (the year only, not a date of birth).",
+    why: "To run the app for you. The birth year exists only for the age rules below.",
+  },
+  {
+    what: "Training",
+    items: "Sessions (discipline, time, duration, distance, elevation, effort, how it felt, private notes), sets, routines, custom exercises, streak targets, repairs, pauses (with an optional private note), and anything you import from a file.",
+    why: "This is the product. Streaks, records, XP and badges are computed from it.",
+  },
+  {
+    what: "Body metrics",
+    items: "Weight or measurements, only if you choose to record them.",
+    why: "For your own trend. Never shared, never ranked, never in any feed.",
+  },
+  {
+    what: "Social",
+    items: "Who you follow and who follows you, blocks, kudos, comments, groups, challenges, and reports you make.",
+    why: "Only if you use these features. People under 16 cannot.",
+  },
+  {
+    what: "Notifications",
+    items: "Your in-app inbox, your per-category choices, and, if you enable push, the browser's push subscription endpoint and keys.",
+    why: "To tell you what you asked to be told.",
+  },
+  {
+    what: "Security",
+    items: "Active sessions, and a history of sign-ins, password and two-factor changes, exports and calendar-link changes, each with the IP address and browser user agent.",
+    why: "So you can spot activity that wasn't you, and so we can investigate abuse.",
+  },
+];
 ---
 
 <Base
   title="Privacy — PaceStreak"
-  description="What PaceStreak collects on this website: no analytics, no tracking, no third-party scripts. What happens when you email us."
+  description="What PaceStreak collects, why, who can see it, how long it is kept, and how to export or delete all of it. No analytics, no advertising, no selling data."
   path="/privacy"
 >
   <section class="py-16 sm:py-20">
@@ -20,72 +58,164 @@ const updated = "30 August 2026";
 
       <div class="prose-page mt-10">
         <p>
-          This page describes <strong>this website</strong>. PaceStreak the
-          product is not released yet; when it is, and there are accounts and
-          training data, this page will be rewritten rather than quietly
-          extended.
+          The short version: we collect what it takes to run a training log,
+          nothing to profile you, and you can take all of it with you or delete
+          it at any time. There is no analytics, no advertising and no selling
+          of data, and the sites and app load nothing from third parties.
+        </p>
+        <p>
+          PaceStreak is not open to the public yet. The website sections apply
+          now; the account sections apply from the moment accounts open.
+          Questions go to{" "}
+          <a href="mailto:hello@pacestreak.com">hello@pacestreak.com</a>, read
+          by a person.
         </p>
 
-        <h2>What this site collects</h2>
+        <h2>The websites</h2>
         <p>
-          Nothing. There is no analytics, no tracking pixel, no advertising
-          network, no session cookie and no third-party script of any kind.
-        </p>
-        <p>
-          That is not only a policy. The site ships a{" "}
-          <strong>Content Security Policy</strong> of{" "}
-          <code>default-src 'self'</code>, which means the browser blocks any
-          request to another origin outright. If someone added a tracker, it
-          would not work.
-        </p>
-
-        <h2>What happens automatically</h2>
-        <p>
-          The site is served by Cloudflare Pages. Like every web server,
-          Cloudflare's infrastructure processes the information needed to
-          deliver a page — your IP address, the page requested, your browser's
-          user agent — and keeps operational logs. We do not receive analytics,
-          per-visitor reports, or any profile built from that traffic.
-        </p>
-        <p>
-          Uptime monitoring at{" "}
-          <a href="https://status.pacestreak.com">status.pacestreak.com</a>{" "}
-          checks whether the site responds. It records the site's own
-          availability, not visitors.
+          <strong>www.pacestreak.com</strong> and{" "}
+          <strong>blog.pacestreak.com</strong> set no cookies, store nothing in
+          your browser, and run no analytics or tracking. A content security
+          policy of <code>default-src 'self'</code> makes the browser refuse
+          any third-party script, so this is enforced, not just intended.
+          Cloudflare, which serves the sites, processes the IP address and
+          request needed to deliver each page and keeps operational logs; we
+          receive no per-visitor reports.
         </p>
 
-        <h2>If you email us</h2>
+        <h2>What the app collects, and why</h2>
+      </div>
+
+      <dl class="mt-6 divide-y divide-line rounded-[--radius-xl2] border border-line bg-surface">
+        {
+          collected.map((c) => (
+            <div class="px-5 py-4 sm:px-6">
+              <dt class="font-semibold">{c.what}</dt>
+              <dd class="mt-1.5 text-[0.95rem] leading-relaxed text-muted">{c.items}</dd>
+              <dd class="mt-1.5 text-[0.9rem] text-dim">{c.why}</dd>
+            </div>
+          ))
+        }
+      </dl>
+
+      <div class="prose-page mt-10">
+        <h2>What we don't collect</h2>
+        <ul>
+          <li>No location, GPS or map data. Files you import are read for time, distance and elevation; routes are not stored.</li>
+          <li>No contacts, photos, or data from other apps or devices, except files you upload.</li>
+          <li>No advertising identifiers, fingerprinting or analytics of any kind.</li>
+        </ul>
+
+        <h2>Who can see what</h2>
+        <ul>
+          <li>
+            <strong>Nothing is public by default.</strong> Your activity reaches
+            only followers you have approved. You can make your profile private
+            or public, or pause sharing entirely.
+          </li>
+          <li>
+            Visibility is checked every time something is read, so going
+            private, pausing or blocking someone also hides what they could see
+            before.
+          </li>
+          <li>
+            <strong>Groups</strong> see your handle, streak and this week's
+            progress. A coach sees your sessions only if you turn that on for
+            their group, and loses access the moment you turn it off.
+          </li>
+          <li>
+            <strong>Never shown to anyone else:</strong> your email, notes,
+            body metrics, pauses, security history, calendar link and imports.
+          </li>
+          <li>
+            Leaderboards include you only if you opt in, and never rank
+            anything about your body.
+          </li>
+          <li>
+            PaceStreak staff can access account data to operate the service,
+            respond to reports and investigate abuse. Every moderation action
+            is recorded in an audit log that cannot be edited.
+          </li>
+        </ul>
+
+        <h2>Age</h2>
         <p>
-          Mail sent to <a href="mailto:hello@pacestreak.com"
-            >hello@pacestreak.com</a
-          > is received through Zoho Mail and read by a person. If you ask to be
-          on the early access list, we keep your address for that one purpose:
-          to email you once, when it opens.
-        </p>
-        <p>
-          We do not sell it, share it, or add it to a newsletter. Ask us to
-          delete it and we will, in full.
+          You must be <strong>13 or older</strong> to have an account. Under
+          16, an account is <strong>private only</strong>: no feed, no groups,
+          no leaderboards and no public profile, whatever the settings say. We
+          ask for a birth year to apply these rules, and nothing else about
+          your age.
         </p>
 
-        <h2>What is stored in your browser</h2>
+        <h2>Service providers</h2>
         <p>
-          Nothing. No cookies are set by this site, and nothing is written to
-          local storage.
+          We use as few as possible and never share data for anyone else's
+          purposes. Today that is Cloudflare, which hosts the websites and the
+          app, and Zoho, which receives mail sent to hello@pacestreak.com. The
+          provider hosting the API and database, and the provider that sends
+          account email, will be named here before accounts open. Web push
+          messages pass through your browser's own push service (for example
+          Google's or Apple's), encrypted so that service cannot read them.
         </p>
 
-        <h2>Your rights</h2>
+        <h2>How long we keep it</h2>
+        <ul>
+          <li>Your data is kept while your account exists.</li>
+          <li>
+            <strong>Deleting your account</strong> schedules it for 30 days
+            later and signs you out everywhere. Sign in during those 30 days to
+            cancel. After that, the account and everything linked to it is
+            permanently deleted.
+          </li>
+          <li>
+            Database backups, readable only by the server operator, are kept for up to 14 days, so deleted
+            data can survive in a backup for up to 14 days after deletion
+            before it expires.
+          </li>
+          <li>Operational server logs are kept for a short period and then rotated away.</li>
+        </ul>
+
+        <h2>Your controls and rights</h2>
+        <ul>
+          <li>
+            <strong>Export everything</strong> at any time from Settings → Data:
+            a complete JSON archive, CSV files, or a calendar file.
+          </li>
+          <li><strong>Correct</strong> anything from the app, or ask us.</li>
+          <li><strong>Delete</strong> your account from Settings → Data.</li>
+          <li>
+            <strong>Object or restrict:</strong> turn off social features,
+            gamification, reminders, push and email by category, and revoke
+            the calendar link or a coach's access at any time.
+          </li>
+          <li>
+            For anything else, including a question about how your data is
+            handled, write to{" "}
+            <a href="mailto:hello@pacestreak.com">hello@pacestreak.com</a>. We
+            answer within 30 days. You can also complain to your local data
+            protection authority.
+          </li>
+        </ul>
+
+        <h2>Security</h2>
         <p>
-          Because the only personal data held is an email address you sent us
-          voluntarily, exercising your rights is straightforward: write to{" "}
-          <a href="mailto:hello@pacestreak.com">hello@pacestreak.com</a> and ask
-          what we hold, ask for a copy, or ask us to erase it.
+          Passwords must be at least 16 characters and are hashed with Argon2.
+          Sessions use short-lived tokens that are never written to browser
+          storage, with theft detection on refresh. Two-factor authentication
+          is available, and its secrets are encrypted at rest. The calendar
+          link is stored only as a hash. The details are on the{" "}
+          <a href="/security">security page</a>. If we ever discover a breach
+          affecting your data, we will tell you and the relevant authority as
+          the law requires.
         </p>
 
         <h2>Changes</h2>
         <p>
-          This page is versioned publicly in{" "}
-          <a href="https://github.com/PaceStreak">the repository</a>, so any
-          change to it has a commit and a date attached.
+          This page is versioned in{" "}
+          <a href="https://github.com/PaceStreak">our repositories</a>, so
+          every change has a date and a record. If a change affects how your
+          data is used, we will tell account holders in the app before it
+          takes effect.
         </p>
       </div>
     </div>
