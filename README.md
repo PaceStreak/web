@@ -30,9 +30,14 @@ down the page that explains the product. See
 ## Layout
 
 ```text
-src/pages/           index, about, faq, privacy, terms, 404.
+src/pages/           index, features, streaks, social, security, about, faq,
+                     privacy, terms, 404.
+src/data/product.ts  Every product claim. Numbers come from the api/app code;
+                     change them there first, then here.
+src/lib/chain.ts     Port of the streak rules for the /streaks simulator.
 src/layouts/Base     Head, nav, footer. Every page goes through it.
-src/components/      Seo, Nav, Footer, Faq, ActivityGrid.
+src/components/      Seo, Nav (with a no-JS <details> mobile menu), Footer,
+                     Faq, ActivityGrid.
 src/data/faq.ts      One FAQ array. The landing page shows a subset, /faq shows
                      all of them, and the FAQPage structured data is generated
                      from it — so an answer cannot drift between the three.

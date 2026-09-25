@@ -7,6 +7,24 @@ This site is continuously deployed rather than versioned, so entries are dated.
 
 ## [Unreleased]
 
+### Added
+
+- **Product pages.** `/features`, `/streaks` (with a streak simulator running a
+  TypeScript port of the engine, `src/lib/chain.ts`), `/social` and
+  `/security`. Every product claim comes from `src/data/product.ts`, whose
+  numbers are taken from the API and app code.
+- A CSS-only `<details>` mobile menu; nav links for the new pages.
+- Pauses, planned rest, the weekly recap, file import and the calendar feed
+  are described once they shipped in the product.
+
+### Changed
+
+- The hero grid shows a streak in **weeks** (it showed 47 days, but streaks
+  count kept weeks) and includes rest days inside the streak.
+- About no longer says there is no feed or leaderboard. Both exist, opt-in and
+  attendance-only. The FAQ covers missed weeks, injury, watch import, the social
+  side and XP.
+
 ### Fixed
 
 - **The activity grid rendered as an empty card during the Tailwind rewrite,
