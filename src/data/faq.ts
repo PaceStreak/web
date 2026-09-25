@@ -40,6 +40,14 @@ export const faqs: FaqItem[] = [
     a: "Every four kept weeks earns a freeze, and you can hold two. A missed week spends one automatically if you have a streak to protect. If none is left, you can repair one missed week per month by hand. A frozen or repaired week keeps the streak but earns no XP.",
   },
   {
+    q: "What if I'm injured or ill?",
+    a: "Pause the streak. Any week the pause covers for four days or more can't break it, and reminders stop until you tap \"I'm back\". Paused weeks don't add to your streak or earn XP, and a pause can start up to two weeks back, because nobody opens a fitness app on the day they get hurt.",
+  },
+  {
+    q: "Can I bring in history from my watch?",
+    a: "Yes. Export GPX, FIT or CSV files from your watch or another app and upload them. Duplicates are skipped. Imported history counts for your streak and your grid, but not for challenges or records, so backfilling can't top a board.",
+  },
+  {
     q: "Is there a social side?",
     a: "Yes, and it's optional. Follows need your approval, groups share only your handle, streak and week's progress, and a coach sees your sessions only if you switch that on. Leaderboards are opt-in and rank consistency, streaks, season XP and personal records. There is no board for weight, distance or anything body-related. Under 16s are private-only.",
   },

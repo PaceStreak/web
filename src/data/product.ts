@@ -98,6 +98,10 @@ export const featureGroups: FeatureGroup[] = [
         body: "The week in progress is open until it closes. The app tells you how many sessions you still need and how many days are left, and never nags on day two.",
       },
       {
+        title: "Pause for injury or illness",
+        body: "Hurt, ill, or life got in the way? Declare a pause. Any week it covers for four days or more can't break the streak, and reminders stop until you're back. Paused weeks don't add to the streak or earn XP, and pauses are capped so they can't stand in for training.",
+      },
+      {
         title: "Separate chains",
         body: "One streak across everything, or a chain per discipline. Lifting on one, running on another is a common setup.",
       },
@@ -116,6 +120,14 @@ export const featureGroups: FeatureGroup[] = [
       {
         title: "The year grid",
         body: "A heatmap of every training day. Six months of filled squares is a harder thing to abandon than a list.",
+      },
+      {
+        title: "Planned rest on the grid",
+        body: "Tell it which days you plan to train and the others show as planned rest, not as gaps. Paused days are marked too. A three-day plan reads as a plan, not four failures a week.",
+      },
+      {
+        title: "A weekly recap",
+        body: "Monday morning: last week in one screen. Days against your target, the verdict, your streak, new records and badges. Attendance, never volume.",
       },
       {
         title: "Personal records",
@@ -182,6 +194,10 @@ export const featureGroups: FeatureGroup[] = [
         body: "Invite-code groups share your handle, streak and week's progress with members, and nothing else. A coach sees your sessions only if you turn that on.",
       },
       {
+        title: "A verified official account",
+        body: "Only PaceStreak's own account can hold the PaceStreak name, and it carries a verified mark. Nobody else can use the name in a handle or display name, however it's spelled.",
+      },
+      {
         title: "Challenges",
         body: "Attendance-based: most active days, or keeping your weekly target, across a date range. Never volume, never weight.",
       },
@@ -202,7 +218,15 @@ export const featureGroups: FeatureGroup[] = [
         body: "A complete JSON archive, CSVs of workouts, sets and body metrics for a spreadsheet, and an ICS calendar of your training.",
       },
       {
-        title: "Import",
+        title: "Import from your watch",
+        body: "Upload GPX, FIT or CSV files exported from a watch or another app. Duplicates are skipped, so uploading twice is harmless. No account linking, no third-party sync.",
+      },
+      {
+        title: "A calendar that stays in sync",
+        body: "Subscribe to a private calendar link and your sessions, pauses and planned training days appear in the calendar you already use. Revoke it any time.",
+      },
+      {
+        title: "Import a PaceStreak export",
         body: "Bring a PaceStreak export back in, on this account or a new one.",
       },
       {
@@ -231,7 +255,7 @@ export const featureGroups: FeatureGroup[] = [
       },
       {
         title: "Install it",
-        body: "Add it to your home screen and it opens like an app, with an icon badge for unread notifications.",
+        body: "Add it to your home screen and it opens like an app, with an icon badge for unread notifications. Long-press the icon to jump straight to logging a session, a live workout or last week's recap.",
       },
       {
         title: "Notifications you choose",
