@@ -9,6 +9,9 @@ This site is continuously deployed rather than versioned, so entries are dated.
 
 ### Added
 
+- Privacy policy and terms rewritten for accounts and health data, stated
+  against what the code does.
+
 - **Product pages.** `/features`, `/streaks` (with a streak simulator running a
   TypeScript port of the engine, `src/lib/chain.ts`), `/social` and
   `/security`. Every product claim comes from `src/data/product.ts`, whose
