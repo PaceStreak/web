@@ -9,7 +9,7 @@ const updated = "25 September 2026";
 const collected = [
   {
     what: "Account",
-    items: "Email address, a password hash (Argon2; we never see or store the password), whether the address is verified, your role, and whether two-factor is on.",
+    items: "Email address, a password hash (Argon2; we never see or store the password), whether the address is verified, your role, whether two-factor is on, and the public keys of any passkeys you add (with the name you give each one). A passkey's private key never leaves your device or password manager.",
     why: "To sign you in and keep the account yours.",
   },
   {
@@ -19,7 +19,7 @@ const collected = [
   },
   {
     what: "Training",
-    items: "Sessions (discipline, time, duration, distance, elevation, effort, how it felt, private notes), sets, routines, custom exercises, streak targets, repairs, pauses (with an optional private note), and anything you import from a file.",
+    items: "Sessions (discipline, time, duration, distance, elevation, effort, how it felt, private notes and private tags), sets, routines, training plans, custom exercises, gear you track (shoes, bikes) and which sessions used it, streak targets and requirements, repairs, pauses (with an optional private note), and anything you import from a file.",
     why: "This is the product. Streaks, records, XP and badges are computed from it.",
   },
   {
@@ -29,7 +29,7 @@ const collected = [
   },
   {
     what: "Social",
-    items: "Who you follow and who follows you, blocks, kudos, comments, groups, challenges, and reports you make.",
+    items: "Who you follow and who follows you, blocks, kudos, comments, groups, challenges, streak buddies, encouragement you send, and reports you make.",
     why: "Only if you use these features. People under 16 cannot.",
   },
   {
@@ -120,12 +120,20 @@ const collected = [
           </li>
           <li>
             <strong>Groups</strong> see your handle, streak and this week's
-            progress. A coach sees your sessions only if you turn that on for
+            progress, and whether your week counted toward the group's
+            streak. A coach sees your sessions only if you turn that on for
             their group, and loses access the moment you turn it off.
           </li>
           <li>
+            A <strong>streak buddy</strong>, once you both accept, sees your
+            days trained this week against your target and whether you are
+            paused. Never your sessions, notes or the reason for a pause.
+            Either of you can end it at any time, and blocking ends it.
+          </li>
+          <li>
             <strong>Never shown to anyone else:</strong> your email, notes,
-            body metrics, pauses, security history, calendar link and imports.
+            tags, gear, training plans, body metrics, pause reasons, passkeys,
+            security history, calendar link and imports.
           </li>
           <li>
             Leaderboards include you only if you opt in, and never rank
@@ -186,7 +194,9 @@ const collected = [
           <li>
             <strong>Object or restrict:</strong> turn off social features,
             gamification, reminders, push and email by category, and revoke
-            the calendar link or a coach's access at any time.
+            the calendar link, a coach's access or a buddy at any time. The
+            monthly backup reminder is off unless you turn it on, and it
+            links into the app rather than carrying any of your data.
           </li>
           <li>
             For anything else, including a question about how your data is
@@ -201,8 +211,9 @@ const collected = [
         <p>
           Passwords must be at least 16 characters and are hashed with Argon2.
           Sessions use short-lived tokens that are never written to browser
-          storage, with theft detection on refresh. Two-factor authentication
-          is available, and its secrets are encrypted at rest. The calendar
+          storage, with theft detection on refresh. Passkeys and two-factor
+          authentication are available; for a passkey only the public key is
+          stored, and two-factor secrets are encrypted at rest. The calendar
           link is stored only as a hash. The details are on the{" "}
           <a href="/security">security page</a>. If we ever discover a breach
           affecting your data, we will tell you and the relevant authority as

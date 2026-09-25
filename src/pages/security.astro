@@ -20,6 +20,15 @@ const layers = [
     ],
   },
   {
+    title: "Passkeys",
+    points: [
+      "Sign in with your fingerprint, face or device PIN, from a button or straight from the email field's autofill.",
+      "Only the public key is stored. A database copy gives an attacker nothing to sign in with.",
+      "Your browser binds every passkey to app.pacestreak.com, so a look-alike site can't use it. That's why a passkey counts as two-factor on its own.",
+      "Adding or removing one needs your password, so a stolen session can't plant its own way in. Each challenge works once.",
+    ],
+  },
+  {
     title: "Two-factor",
     points: [
       "Time-based codes from any authenticator app, with the secret encrypted at rest.",
@@ -33,7 +42,7 @@ const layers = [
     points: [
       "A list of every signed-in device. End one, or sign out everywhere.",
       "Changing your password keeps this session and ends all the others. Resetting it ends every session.",
-      "A security history of sign-ins, password changes and two-factor changes.",
+      "A security history of sign-ins, password, passkey and two-factor changes, and an alert when a device you've never used signs in.",
       "Rate limits on sign-up, sign-in, two-factor, password reset and verification.",
     ],
   },
@@ -42,7 +51,7 @@ const layers = [
 
 <Base
   title="Security and privacy — PaceStreak"
-  description="How PaceStreak protects accounts and training data: 16-character passwords, rotating refresh tokens with theft detection, two-factor with recovery codes, a strict content security policy and no third parties."
+  description="How PaceStreak protects accounts and training data: 16-character passwords, rotating refresh tokens with theft detection, passkeys, two-factor with recovery codes, a strict content security policy and no third parties."
   path="/security"
 >
   <section class="py-16 sm:py-20">

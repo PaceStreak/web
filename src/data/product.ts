@@ -18,6 +18,9 @@ export const facts = {
   minAge: 13,
   socialMinAge: 16,
   passwordMin: 16,
+  planTemplates: 4,
+  maxBuddies: 5,
+  encouragements: 6,
 };
 
 export const disciplines = [
@@ -66,8 +69,20 @@ export const featureGroups: FeatureGroup[] = [
         body: `Save the sessions you repeat. ${8} starter routines ship with the app; edit them or build your own.`,
       },
       {
-        title: "Plate calculator and rest timer",
-        body: "The two tools you actually reach for between sets, built in rather than a second app away.",
+        title: "Training plans",
+        body: `A schedule of suggested sessions over several weeks. Start from one of ${4} conservative templates (from two gentle sessions a week to 5 km to 10 km) or build your own, week by week. Today shows the day's session, and what you log completes it, even if you moved it to another day.`,
+      },
+      {
+        title: "Timers and calculators",
+        body: "A rest timer between sets, an interval timer for intervals, EMOM and Tabata that keeps time correctly with the screen locked, a plate calculator, 1RM and pace.",
+      },
+      {
+        title: "Progression hints",
+        body: "Last time's numbers next to every exercise, with a suggestion for this time: a little more weight when every set hit the top of the range, one more rep, or a few more seconds on a hold.",
+      },
+      {
+        title: "Tags, search and gear",
+        body: "Tag sessions privately (#hills, #with-sam) and search every note, title, exercise and tag, offline. Track how far your shoes and bikes have gone, with a reminder when they are due for replacing.",
       },
       {
         title: "Units that never corrupt",
@@ -102,8 +117,12 @@ export const featureGroups: FeatureGroup[] = [
         body: "Hurt, ill, or life got in the way? Declare a pause. Any week it covers for four days or more can't break the streak, and reminders stop until you're back. Paused weeks don't add to the streak or earn XP, and pauses are capped so they can't stand in for training.",
       },
       {
-        title: "Separate chains",
-        body: "One streak across everything, or a chain per discipline. Lifting on one, running on another is a common setup.",
+        title: "Separate chains, balanced weeks",
+        body: "One streak across everything, or a chain per discipline. A chain can also ask for a balanced week, such as at least two runs and one strength day, and old weeks are never judged by a rule added later.",
+      },
+      {
+        title: "Travel mode",
+        body: "When your phone changes timezone, the app offers to follow it, or to pause the streak for the trip. Sessions already logged keep their dates.",
       },
       {
         title: "Recomputed from history",
@@ -126,12 +145,12 @@ export const featureGroups: FeatureGroup[] = [
         body: "Tell it which days you plan to train and the others show as planned rest, not as gaps. Paused days are marked too. A three-day plan reads as a plan, not four failures a week.",
       },
       {
-        title: "A weekly recap",
-        body: "Monday morning: last week in one screen. Days against your target, the verdict, your streak, new records and badges. Attendance, never volume.",
+        title: "A weekly recap, and a year in review",
+        body: "Monday morning: last week in one screen. At any time: the year so far, in weeks kept, days shown up, the best month and the records that moved. Attendance, never volume.",
       },
       {
-        title: "Personal records",
-        body: "Estimated one-rep maxes and best efforts, each compared only with your own history. Implausible jumps are recorded but never rewarded or announced.",
+        title: "Personal records, with their history",
+        body: "Estimated one-rep maxes and best efforts, each compared only with your own history, and a timeline of every time each one moved. Implausible jumps are recorded but never rewarded or announced.",
       },
       {
         title: "Exercise history",
@@ -139,7 +158,7 @@ export const featureGroups: FeatureGroup[] = [
       },
       {
         title: "Consistency score",
-        body: "How closely you have kept to your own plan over the last four weeks, capped at 100%. Training beyond the plan can't raise it.",
+        body: "How closely you have kept to your own plan over the last 4, 12 and 52 weeks, capped at 100%. Training beyond the plan can't raise it, and it survives a broken streak.",
       },
       {
         title: "Body metrics, privately",
@@ -190,8 +209,16 @@ export const featureGroups: FeatureGroup[] = [
         body: "Sessions, kept weeks, milestones and records from people you follow. Give kudos and leave plain-text comments.",
       },
       {
+        title: "Buddy streaks",
+        body: `Keep a streak with someone: a week counts when you both keep yours. Pauses and freezes work exactly as they do for you alone. Only with people you follow or who follow you, up to ${5} at a time. A buddy sees your progress for the week, never your sessions or why you paused.`,
+      },
+      {
         title: "Crews and coaching groups",
-        body: "Invite-code groups share your handle, streak and week's progress with members, and nothing else. A coach sees your sessions only if you turn that on.",
+        body: "Invite-code groups share your handle, streak and week's progress with members, and nothing else. Each group keeps a shared streak too: a week counts when enough of the crew keep theirs. A coach sees your sessions only if you turn that on.",
+      },
+      {
+        title: "Encouragement, not comments",
+        body: `A tap sends one of ${6} kind messages to someone who follows you, a buddy or a group member. Never free text, and at most one a day to each person.`,
       },
       {
         title: "A verified official account",
@@ -230,6 +257,10 @@ export const featureGroups: FeatureGroup[] = [
         body: "Bring a PaceStreak export back in, on this account or a new one.",
       },
       {
+        title: "A monthly backup reminder",
+        body: "Opt in and, on the first of each month, you get a nudge to download a copy of everything. The reminder links into the app; it never carries your data.",
+      },
+      {
         title: "Delete with a safety net",
         body: `Deletion is scheduled ${30} days out and signs you out everywhere. Sign back in during that window to cancel it; after it, the account is gone.`,
       },
@@ -255,7 +286,7 @@ export const featureGroups: FeatureGroup[] = [
       },
       {
         title: "Install it",
-        body: "Add it to your home screen and it opens like an app, with an icon badge for unread notifications. Long-press the icon to jump straight to logging a session, a live workout or last week's recap.",
+        body: "Add it to your home screen and it opens like an app. Its icon badge can show unread notifications or the days still to go this week. Long-press the icon to jump straight to logging a session, a live workout or last week's recap.",
       },
       {
         title: "Notifications you choose",
@@ -270,8 +301,12 @@ export const featureGroups: FeatureGroup[] = [
     lede: "The boring, careful version of every security decision.",
     items: [
       {
+        title: "Passkeys",
+        body: "Sign in with your fingerprint, face or device PIN. Nothing to type, nothing to phish, and it counts as two-factor on its own. Only a public key is stored.",
+      },
+      {
         title: "Two-factor authentication",
-        body: "Authenticator-app codes with single-use recovery codes. Codes can't be replayed.",
+        body: "Authenticator-app codes with single-use recovery codes you can replace at any time. Codes can't be replayed.",
       },
       {
         title: "Session control",
@@ -283,7 +318,7 @@ export const featureGroups: FeatureGroup[] = [
       },
       {
         title: "Security history",
-        body: "Sign-ins, password changes and two-factor changes are logged to your account, where you can review them.",
+        body: "Sign-ins, password, passkey and two-factor changes are logged to your account, where you can review them. A sign-in from a device you've never used gets you an alert.",
       },
       {
         title: "No third parties at all",
