@@ -9,6 +9,9 @@ This site is continuously deployed rather than versioned, so entries are dated.
 
 ### Added
 
+- Copy for recovery, smart reminders, supersets, splits and plan
+  challenges; privacy covers crash reports and failed sign-in records.
+
 - `/changelog`, and copy for passkeys, training plans, the interval timer,
   tags and gear, balanced weeks, travel mode, year in review, buddy and
   group streaks and encouragement across the features, security, privacy
