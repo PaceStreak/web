@@ -14,7 +14,7 @@ const jsonLd = {
   logo: "https://www.pacestreak.com/brand/logo.svg",
   email: "hello@pacestreak.com",
   description:
-    "A workout streak tracker. Log the session, keep the streak, watch the grid fill.",
+    "A habit and streak tracker. Build the habits you want - training, learning, health, calm - keep each one weekly, and watch the grid fill.",
   sameAs: [
     "https://github.com/PaceStreak",
     "https://x.com/PaceStreak",
@@ -25,13 +25,13 @@ const jsonLd = {
 const steps = [
   {
     n: "01",
-    title: "Log the session",
-    body: "Lift, run, ride, climb, swim. Pick the discipline, tap done. Detail is optional. The point is that it took ten seconds, so you'll actually do it on the bad days.",
+    title: "Pick what matters",
+    body: "Reading, a language, guitar, water, sleep, meditation, calling home, a workout, or something you're giving up. Start from one of " + facts.habitTemplates + " ready-made habits or make your own.",
   },
   {
     n: "02",
     title: "Keep the week",
-    body: "Set your own target: three days a week, four, six. Hit it and the week is kept. Rest days in between cost nothing, and a bad week can be covered by a freeze you earned.",
+    body: "Each habit gets its own target: three days a week, five, every day. Hit it and the week is kept. Days off cost nothing, and a bad week can be covered by a freeze you earned.",
   },
   {
     n: "03",
@@ -42,10 +42,16 @@ const steps = [
 
 const highlights = [
   {
+    href: "/features#habits",
+    kicker: "Habits",
+    title: "Anything worth doing regularly",
+    body: "Tick it, count it or time it: pages, glasses, minutes of practice. A long goal for a skill, with a date at your current pace. Break a habit with clean days, where a slip is logged, not punished.",
+  },
+  {
     href: "/features#logging",
-    kicker: "Logging",
+    kicker: "Training",
     title: "One tap, or every set",
-    body: "Quick log for any of 11 disciplines. Sets, reps, load and RPE against 78 built-in exercises when you want them. Live workout mode, rest timer, plate calculator.",
+    body: "Quick log for any of 11 disciplines. Sets, reps, load and RPE against 78 built-in exercises, race plans and training blocks when you want them.",
   },
   {
     href: "/streaks",
@@ -63,13 +69,13 @@ const highlights = [
     href: "/features#game",
     kicker: "XP and badges",
     title: "Rewards for turning up",
-    body: `XP, levels and ${facts.achievementRules} achievements that never scale with how much you lift. Two people of different strength earn the same for the same week.`,
+    body: `XP, levels, weekly quests and ${facts.achievementRules} achievements that reward showing up, never doing more. Habits earn too, with caps so nobody can farm them.`,
   },
   {
     href: "/social",
     kicker: "Social",
     title: "Crews, not comparisons",
-    body: "Follows with approval, a feed, kudos, groups with coach consent, attendance challenges and opt-in leaderboards. No board for weight or bodies.",
+    body: "Follows with approval, a feed, kudos, groups, attendance challenges and opt-in leaderboards. Your habits stay private: no board ever shows which habit, or how much.",
   },
   {
     href: "/features#anywhere",
@@ -80,7 +86,8 @@ const highlights = [
 ];
 
 const nots = [
-  "No rewards for lifting heavier, running further or training every day.",
+  "No rewards for doing more: more hours, more weight, every single day.",
+  "Nobody ever sees which habits you keep, or which you're breaking.",
   "No leaderboard for body weight, calories or volume.",
   "No streak lost to a planned rest day.",
   "No analytics, ads, trackers or third-party scripts.",
@@ -90,7 +97,7 @@ const nots = [
 
 <Base
   title="PaceStreak — Don't break the chain"
-  description="PaceStreak is a workout streak tracker. Log the session, keep the streak, watch the grid fill. Consistency is the metric that matters."
+  description="PaceStreak is a habit and streak tracker for training, learning, health and everything else worth doing regularly. Keep each habit weekly, watch the grid fill. Rest days never break it."
   path="/"
   jsonLd={jsonLd}
 >
@@ -113,7 +120,7 @@ const nots = [
       <div>
         <p class="eyebrow">
           <span class="inline-block h-1.5 w-1.5 rounded-full bg-accent"></span>{" "}
-          Workout streak tracker
+          Habits and streaks
         </p>
 
         <h1
@@ -127,8 +134,9 @@ const nots = [
 
         <p class="mt-6 max-w-xl text-lg leading-relaxed text-muted text-pretty">
           Motivation is unreliable. Streaks aren't. PaceStreak makes consistency
-          the number you actually chase: log the session, keep the week, watch
-          a year of work fill in one square at a time. Rest days included.
+          the number you chase, for anything worth doing regularly: training,
+          learning a skill, sleep, reading, calm, or a habit you're breaking.
+          Keep the week, watch a year fill in one square at a time.
         </p>
 
         <div class="mt-9 flex flex-wrap gap-3">
@@ -137,7 +145,7 @@ const nots = [
         </div>
 
         <p class="mt-6 text-[0.92rem] text-dim">
-          Lifting, running, cycling, climbing — anything you can repeat.
+          Workouts, reading, a language, water, meditation — anything you can repeat.
         </p>
       </div>
 
@@ -206,12 +214,12 @@ const nots = [
       <div>
         <p class="eyebrow">The rule</p>
         <h2 class="mt-3 text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
-          Rest is training. The streak knows it.
+          Days off are part of it. The streak knows.
         </h2>
         <p class="mt-5 text-lg leading-relaxed text-muted text-pretty">
-          A daily streak turns a rest day into a failure and pushes people to
-          train sore or injured. PaceStreak counts weeks. With a target of
-          four, three rest days cost you nothing at all.
+          A daily streak turns a day off into a failure: people train sore,
+          or quit the habit the first time life gets in the way. PaceStreak
+          counts weeks. With a target of four, three days off cost nothing.
         </p>
         <a class="btn mt-8" href="/streaks">Try the streak simulator</a>
       </div>

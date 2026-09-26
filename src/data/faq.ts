@@ -12,13 +12,22 @@ export interface FaqItem {
 
 export const faqs: FaqItem[] = [
   {
+    q: "Is it only for fitness?",
+    a: "No. Training is one part; habits are the rest. Reading, a language, an instrument, water, sleep, meditation, calling home, money, or something you're giving up. Each habit keeps its own weekly streak, and an optional whole-life streak counts any of them.",
+    featured: true,
+  },
+  {
+    q: "Can I use it to break a habit? Who can see that?",
+    a: "Yes. Every day is clean unless you log a slip, and you choose how many clean days keep the week, so one slip doesn't cost it. Nobody else can ever see your habits: not followers, not groups, not leaderboards. Badges never name a habit.",
+  },
+  {
     q: "Is a streak just a guilt machine?",
     a: "It is, if it's built badly. That's why the streak counts against a target you set, rest days count as kept, and you can repair a missed day once a month. The goal is showing up over a year, not a perfect record you abandon in week three.",
     featured: true,
   },
   {
     q: "Do I have to log sets, reps and weight?",
-    a: "No. A session counts with one tap. Detail is there when you want it — for PRs and volume trends — but it is never required to keep the chain.",
+    a: "No. A session or a habit counts with one tap. Detail is there when you want it — for PRs and volume trends — but it is never required to keep the chain.",
     featured: true,
   },
   {
@@ -53,7 +62,7 @@ export const faqs: FaqItem[] = [
   },
   {
     q: "Does XP reward lifting more?",
-    a: "No. Two people of very different strength earn identical XP for the same week. XP comes from training days, kept weeks, streak milestones, logging detail, personal records measured against your own history, and achievements. You can switch the whole game layer off.",
+    a: "No. Two people of very different strength earn identical XP for the same week. XP comes from training days, habits (capped per habit and per day), kept weeks, weekly quests, streak milestones, logging detail, personal records measured against your own history, and achievements. You can switch the whole game layer off.",
   },
   {
     q: "Can I track more than one discipline?",
@@ -61,7 +70,7 @@ export const faqs: FaqItem[] = [
   },
   {
     q: "Will my data be locked in?",
-    a: "No. Export everything as JSON, as CSVs of workouts, sets and body metrics, or as a calendar file, whenever you like. Deleting your account schedules it 30 days out, so a mistake is recoverable, and then it's gone.",
+    a: "No. Export everything as JSON, as CSVs of workouts, sets, habits and body metrics, or as a calendar file, whenever you like. Deleting your account schedules it 30 days out, so a mistake is recoverable, and then it's gone.",
   },
   {
     q: "Does it work without signal?",

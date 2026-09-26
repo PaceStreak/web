@@ -18,6 +18,19 @@ export const released = false;
 export const releases: Release[] = [
   {
     date: "2026-09-26",
+    title: "Beyond training: habits",
+    items: [
+      { area: "Habits", text: "Track anything worth doing regularly: 68 ready-made habits across health, learning, mind, people, focus, money, home and creative, or your own." },
+      { area: "Habits", text: "Tick it, count it or time it, each with its own weekly streak and a slow-moving strength score." },
+      { area: "Habits", text: "Break a habit with clean days: a slip is logged, never punished, and it stays private." },
+      { area: "Habits", text: "Skills with a long goal and a date at your current pace; cues, reasons and a reminder at the hour you choose." },
+      { area: "Habits", text: "Fill in or fix any day in the last 60." },
+      { area: "Streaks", text: "An optional whole-life streak across training and every habit, with its own leaderboard." },
+      { area: "XP", text: "Habits earn XP, capped so they can't be farmed; four new badges and a new weekly quest." },
+    ],
+  },
+  {
+    date: "2026-09-26",
     title: "Race plans, training blocks and adjusting a rough day",
     items: [
       { area: "Plans", text: "Train for a race: 5 km to marathon, built to race day with a taper and a recovery week." },

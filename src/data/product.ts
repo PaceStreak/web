@@ -10,8 +10,8 @@ export const facts = {
   disciplines: 11,
   exercises: 78,
   starterRoutines: 8,
-  achievementRules: 25,
-  leaderboards: 4,
+  achievementRules: 29,
+  leaderboards: 5,
   freezeEvery: 4,
   freezeCap: 2,
   deletionGraceDays: 30,
@@ -21,6 +21,7 @@ export const facts = {
   planTemplates: 4,
   maxBuddies: 5,
   encouragements: 6,
+  habitTemplates: 68,
 };
 
 export const disciplines = [
@@ -46,6 +47,46 @@ export interface FeatureGroup {
 }
 
 export const featureGroups: FeatureGroup[] = [
+  {
+    id: "habits",
+    kicker: "Habits",
+    title: "Anything worth doing regularly.",
+    lede: "Training is one part of a life. Build the rest the same way: small, weekly, and forgiving when a day goes wrong.",
+    items: [
+      {
+        title: `${facts.habitTemplates} ready-made habits, or your own`,
+        body: "Health, movement, learning and skills, mind, people, focus, money, home, creative, and habits you're breaking. Pick one and it's added, with a modest target you can raise later.",
+      },
+      {
+        title: "Tick it, count it or time it",
+        body: "Done or not; a number, like pages or glasses of water; or minutes, like language practice. A day counts when it reaches its goal, and adding to it is one tap.",
+      },
+      {
+        title: "Its own weekly streak",
+        body: "Every habit keeps its own week-based streak, with the same freezes, repairs and pauses as training. A strength score beside it moves slowly, so a missed week dents it rather than wiping out months.",
+      },
+      {
+        title: "Skills with a long goal",
+        body: "Set a total, like 100 hours of guitar, and see how far you've come and when you'll get there at your recent pace.",
+      },
+      {
+        title: "Breaking a habit, kindly",
+        body: "Every day is clean unless you log a slip. You choose how many clean days keep the week, so one slip doesn't have to cost it. Nobody else ever sees these, or which habit it is.",
+      },
+      {
+        title: "Built on how habits stick",
+        body: "Tie a habit to something you already do (\"after I pour my coffee\"), write down why it matters, and get a reminder at the hour you choose, only if it isn't done yet.",
+      },
+      {
+        title: "Fix any recent day",
+        body: "Forgot to tick yesterday? Fill in or correct any day in the last 60. It's the thing people most often ask of these apps.",
+      },
+      {
+        title: "A whole-life streak, if you want one",
+        body: "An extra streak across everything: a day counts with any training or any habit. Each habit's own streak stays as it is.",
+      },
+    ],
+  },
   {
     id: "logging",
     kicker: "Logging",
@@ -229,8 +270,8 @@ export const featureGroups: FeatureGroup[] = [
   {
     id: "game",
     kicker: "XP, levels and badges",
-    title: "Rewards for showing up, not for lifting more.",
-    lede: "Two people of very different strength earn identical XP for the same week. That is the whole rule.",
+    title: "Rewards for showing up, not for doing more.",
+    lede: "Two people of very different strength, or schedules, earn the same for keeping the same weeks. That is the whole rule.",
     items: [
       {
         title: "XP for attendance",
@@ -301,8 +342,8 @@ export const featureGroups: FeatureGroup[] = [
         body: "A coach can suggest a plan to a member who shares their training; it only starts if the member starts it. Group owners can post announcements that members read, with nothing between members to moderate.",
       },
       {
-        title: `${4} opt-in leaderboards`,
-        body: "Consistency, streak, season XP and season records, globally, among people you follow, among people who train about as often as you, or inside a group. There is no board for weight, distance or anything body-related.",
+        title: `${facts.leaderboards} opt-in leaderboards`,
+        body: "Consistency, streak, whole-life streak, season XP and season records, globally, among people you follow, among people who train about as often as you, or inside a group. There is no board for weight, distance or anything body-related.",
       },
     ],
   },
