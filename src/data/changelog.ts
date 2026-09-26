@@ -18,6 +18,22 @@ export const released = false;
 export const releases: Release[] = [
   {
     date: "2026-09-26",
+    title: "Race plans, training blocks and adjusting a rough day",
+    items: [
+      { area: "Plans", text: "Train for a race: 5 km to marathon, built to race day with a taper and a recovery week." },
+      { area: "Training", text: "Training blocks with reps in reserve that step down week by week, then a lighter week." },
+      { area: "Training", text: "Optional soreness and pump check-ins that suggest a set more or fewer." },
+      { area: "Today", text: "Not feeling 100%? Adjust today: lighter, hot, unwell, short on time, or rest. It still counts." },
+      { area: "Today", text: "A three-tap morning check-in, and a nudge when yesterday's legs and today's run collide." },
+      { area: "Progress", text: "Training load by week, with a warning when a week jumps well past your usual." },
+      { area: "Sessions", text: "Heart rate and time in zones from imported GPX and FIT files." },
+      { area: "Recap", text: "Two lines to look back on each week, searchable later, and share images made on your phone." },
+      { area: "Getting started", text: "Three days in your first two weeks: short sessions count." },
+      { area: "Languages", text: "Sign-in and navigation in Spanish and German." },
+    ],
+  },
+  {
+    date: "2026-09-26",
     title: "Weigh-ins, quests, gyms and a monthly strength recap",
     items: [
       { area: "Body", text: "Weigh in several times a day, tagged after waking, before or after training, or before bed, with a 7-day trend and the change in kilos and percent." },

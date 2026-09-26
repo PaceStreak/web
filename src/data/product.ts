@@ -69,6 +69,14 @@ export const featureGroups: FeatureGroup[] = [
         body: `Save the sessions you repeat. ${8} starter routines ship with the app; edit them or build your own.`,
       },
       {
+        title: "Train for a race",
+        body: "Pick 5 km, 10 km, a half or a marathon and the date. You get a running plan to race day: mostly easy running, one faster session a week once there's a base, a lighter week every fourth, a taper and a recovery week after. It says no when a race is too soon to train for safely.",
+      },
+      {
+        title: "Training blocks",
+        body: "A few weeks where each asks a little more, from about 3 reps in reserve down to 1, then a lighter week. Every exercise shows the week's target. After a session, two optional taps (soreness and pump) can suggest a set more or fewer next time.",
+      },
+      {
         title: "Training plans",
         body: `A schedule of suggested sessions over several weeks. Start from one of ${4} conservative templates (from two gentle sessions a week to 5 km to 10 km) or build your own, week by week, and share it as a file. Today shows the day's session, and what you log completes it, even if you moved it to another day.`,
       },
@@ -93,8 +101,8 @@ export const featureGroups: FeatureGroup[] = [
         body: "Link exercises into a superset and the rest timer waits until the last one. One tap adds warm-up sets that ramp from the empty bar to your working weight in steps your plates can make.",
       },
       {
-        title: "Splits from your watch",
-        body: "Import a GPX or FIT file and see every kilometre's time, with the fastest one marked. Private, like the rest of your session.",
+        title: "Splits and heart rate from your watch",
+        body: "Import a GPX or FIT file and see every kilometre's time and your time in five heart-rate zones, from your own max heart rate or an estimate. Private, like the rest of your session.",
       },
       {
         title: "Tags, search and gear",
@@ -149,6 +157,14 @@ export const featureGroups: FeatureGroup[] = [
         body: "Promise one more day than your target in a week. Keep it and earn a freeze; miss it and nothing happens. Opt-in, and once a month.",
       },
       {
+        title: "Not feeling 100%?",
+        body: "Adjust today instead of skipping it: a lighter version, a hot-weather one, something very easy when you're under the weather, a short one, or rest. The plan day still counts. A three-tap morning check-in can suggest it for you.",
+      },
+      {
+        title: "Lifting and running in one week",
+        body: "Heavy legs yesterday and a run today? It suggests keeping the run easy, and the other way round. A training-load chart shows when a week jumps well past your usual.",
+      },
+      {
         title: "Travel mode",
         body: "When your phone changes timezone, the app offers to follow it, or to pause the streak for the trip. Sessions already logged keep their dates.",
       },
@@ -175,6 +191,10 @@ export const featureGroups: FeatureGroup[] = [
       {
         title: "A weekly recap, and a year in review",
         body: "Monday morning: last week in one screen. At any time: the year so far, in weeks kept, days shown up, the best month and the records that moved. Attendance, never volume.",
+      },
+      {
+        title: "Look back, and share if you like",
+        body: "Two optional lines on each weekly recap (what went well, what to change) that you can search later. Turn a week or your grid into an image made on your phone. It shows days and weeks, never your name or anything about your body.",
       },
       {
         title: "Monthly goals and rest days",
@@ -235,6 +255,10 @@ export const featureGroups: FeatureGroup[] = [
       {
         title: "Turn it all off",
         body: "Some people want the streak and nothing else. Gamification is a switch in settings.",
+      },
+      {
+        title: "A gentle first fortnight",
+        body: "New here? Getting started asks for three days in your first two weeks. Short sessions count; that's the point.",
       },
     ],
   },
@@ -334,7 +358,7 @@ export const featureGroups: FeatureGroup[] = [
       },
       {
         title: "Install it",
-        body: "Add it to your home screen and it opens like an app. Its icon badge can show unread notifications or the days still to go this week. Long-press the icon to jump straight to logging a session, a live workout or last week's recap.",
+        body: "Sign-in and navigation in English, Spanish and German, with more of the app to follow. Add it to your home screen and it opens like an app. Its icon badge can show unread notifications or the days still to go this week. Long-press the icon to jump straight to logging a session, a live workout or last week's recap.",
       },
       {
         title: "Notifications you choose",
