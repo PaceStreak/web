@@ -17,6 +17,23 @@ export const released = false;
 
 export const releases: Release[] = [
   {
+    date: "2026-09-26",
+    title: "Weigh-ins, quests, gyms and a monthly strength recap",
+    items: [
+      { area: "Body", text: "Weigh in several times a day, tagged after waking, before or after training, or before bed, with a 7-day trend and the change in kilos and percent." },
+      { area: "Body", text: "An optional private weight goal with small milestones and a projected date. No rewards attached, on purpose." },
+      { area: "Body", text: "Progress photos with a side-by-side slider. They stay on your phone and are never uploaded." },
+      { area: "Training", text: "Type sets as 100x5x3. Search forgives typos. Pin a note to an exercise." },
+      { area: "Training", text: "Gyms: the exercise list and plate calculator fit what each place has." },
+      { area: "Training", text: "A 10% step back when a lift stalls, optional auto-fill of suggestions, and a card when one lift stops moving." },
+      { area: "Progress", text: "A recovery map, strength standards if you want them, a monthly strength recap and a PR streak." },
+      { area: "Streaks", text: "An opt-in wager: one extra day earns a freeze, and missing it costs nothing." },
+      { area: "XP", text: "Three weekly quests for habits, never for volume." },
+      { area: "Social", text: "Leaderboards among people who train about as often as you." },
+      { area: "Offline", text: "Weigh-ins and measurements save with no signal and sync later." },
+    ],
+  },
+  {
     date: "2026-09-25",
     title: "Recovery, smarter reminders, supersets and plans together",
     items: [

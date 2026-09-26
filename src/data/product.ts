@@ -10,7 +10,7 @@ export const facts = {
   disciplines: 11,
   exercises: 78,
   starterRoutines: 8,
-  achievementRules: 23,
+  achievementRules: 25,
   leaderboards: 4,
   freezeEvery: 4,
   freezeCap: 2,
@@ -78,7 +78,15 @@ export const featureGroups: FeatureGroup[] = [
       },
       {
         title: "Progression hints",
-        body: "Last time's numbers next to every exercise, with a suggestion for this time: a little more weight when every set hit the top of the range, one more rep, or a few more seconds on a hold.",
+        body: "Last time's numbers next to every exercise, with a suggestion for this time: a little more weight when every set hit the top of the range, one more rep, or a few more seconds on a hold. Stuck at one weight for three sessions? It suggests stepping back 10% and building again. Turn on auto-fill and ticking an empty set logs the suggestion.",
+      },
+      {
+        title: "Type your sets",
+        body: "Type 100x5x3, 3x5@100 or just 12 and the sets are logged, no tapping between numbers.",
+      },
+      {
+        title: "Gyms and pinned notes",
+        body: "Tell it what each place you train has. The exercise list narrows to that equipment and the plate calculator loads the plates actually there. Pin a note to an exercise, such as seat height or a cue, and it shows every time you do it.",
       },
       {
         title: "Supersets and warm-ups",
@@ -90,7 +98,7 @@ export const featureGroups: FeatureGroup[] = [
       },
       {
         title: "Tags, search and gear",
-        body: "Tag sessions privately (#hills, #with-sam) and search every note, title, exercise and tag, offline. Track how far your shoes and bikes have gone, with a reminder when they are due for replacing.",
+        body: "Tag sessions privately (#hills, #with-sam) and search every note, title, exercise and tag, offline. Exercise search forgives a typo and puts what you do most first. Track how far your shoes and bikes have gone, with a reminder when they are due for replacing.",
       },
       {
         title: "Units that never corrupt",
@@ -134,7 +142,11 @@ export const featureGroups: FeatureGroup[] = [
       },
       {
         title: "A lighter week, when you need one",
-        body: "After four hard weeks, or sessions that keep feeling rough, the app suggests an easier week. After a real miss ends a long streak, it suggests starting again gently.",
+        body: "After four hard weeks, or sessions that keep feeling rough, the app suggests an easier week. When one lift stops moving, it suggests a lighter week on that lift alone. After a real miss ends a long streak, it suggests starting again gently.",
+      },
+      {
+        title: "A wager, if you want one",
+        body: "Promise one more day than your target in a week. Keep it and earn a freeze; miss it and nothing happens. Opt-in, and once a month.",
       },
       {
         title: "Travel mode",
@@ -181,8 +193,16 @@ export const featureGroups: FeatureGroup[] = [
         body: "How closely you have kept to your own plan over the last 4, 12 and 52 weeks, capped at 100%. Training beyond the plan can't raise it, and it survives a broken streak.",
       },
       {
-        title: "Body metrics, privately",
-        body: "Track weight or measurements if it helps you. They are private, never shared and never competitive.",
+        title: "A monthly strength recap",
+        body: "Each main lift's best this month against its best before it, and a PR streak: four-week blocks in a row with a record, any lift, any size. No volume totals.",
+      },
+      {
+        title: "Recovery map and strength standards",
+        body: "Each muscle by how long since you trained it, and which you haven't touched in a month. If you want it, where your squat, bench, deadlift and press sit against published standards at your bodyweight. Only you see either.",
+      },
+      {
+        title: "Body, privately",
+        body: "Weigh in as often as you like: after waking, before or after training, before bed. A 7-day trend with the change in kilos and percent, an optional goal with small milestones and a projected date, and measurements. Progress photos stay on your phone and are never uploaded. None of it is shared, ranked or rewarded.",
       },
     ],
   },
@@ -203,6 +223,10 @@ export const featureGroups: FeatureGroup[] = [
       {
         title: `${23} achievements`,
         body: "Badges reward breadth, finishing, honest records, early and late sessions, and coming back after a break. None rewards maximum weight, body weight or training through a rest week.",
+      },
+      {
+        title: "Weekly quests",
+        body: "Three small habits a week: an early start, a balanced week, an honest effort rating, a short session that still counts. Never more volume or weight.",
       },
       {
         title: "Seasons",
@@ -254,7 +278,7 @@ export const featureGroups: FeatureGroup[] = [
       },
       {
         title: `${4} opt-in leaderboards`,
-        body: "Consistency, streak, season XP and season records, globally, among people you follow, or inside a group. There is no board for weight, distance or anything body-related.",
+        body: "Consistency, streak, season XP and season records, globally, among people you follow, among people who train about as often as you, or inside a group. There is no board for weight, distance or anything body-related.",
       },
     ],
   },
@@ -302,7 +326,7 @@ export const featureGroups: FeatureGroup[] = [
     items: [
       {
         title: "Offline-first logging",
-        body: "Every save lands on your device first, so a log is instant and survives a dead connection or a closed tab. It syncs when you are back above ground.",
+        body: "Every save lands on your device first, so a log is instant and survives a dead connection or a closed tab. Weigh-ins and measurements too. It syncs when you are back above ground.",
       },
       {
         title: "Multi-device sync",
