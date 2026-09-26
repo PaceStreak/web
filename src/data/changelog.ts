@@ -29,7 +29,6 @@ export const releases: Release[] = [
       { area: "Sessions", text: "Heart rate and time in zones from imported GPX and FIT files." },
       { area: "Recap", text: "Two lines to look back on each week, searchable later, and share images made on your phone." },
       { area: "Getting started", text: "Three days in your first two weeks: short sessions count." },
-      { area: "Languages", text: "Sign-in and navigation in Spanish and German." },
     ],
   },
   {

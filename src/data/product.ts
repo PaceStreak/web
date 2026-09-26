@@ -358,7 +358,7 @@ export const featureGroups: FeatureGroup[] = [
       },
       {
         title: "Install it",
-        body: "Sign-in and navigation in English, Spanish and German, with more of the app to follow. Add it to your home screen and it opens like an app. Its icon badge can show unread notifications or the days still to go this week. Long-press the icon to jump straight to logging a session, a live workout or last week's recap.",
+        body: "Add it to your home screen and it opens like an app. Its icon badge can show unread notifications or the days still to go this week. Long-press the icon to jump straight to logging a session, a live workout or last week's recap.",
       },
       {
         title: "Notifications you choose",
