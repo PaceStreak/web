@@ -3,6 +3,7 @@ import Base from "../layouts/Base.astro";
 import ActivityGrid from "../components/ActivityGrid.astro";
 import Faq from "../components/Faq.astro";
 import { featuredFaqs } from "../data/faq";
+import { facts } from "../data/product";
 import appUrl from "../scripts/app.js?url";
 
 const jsonLd = {
@@ -62,7 +63,7 @@ const highlights = [
     href: "/features#game",
     kicker: "XP and badges",
     title: "Rewards for turning up",
-    body: "XP, levels and 23 achievements that never scale with how much you lift. Two people of different strength earn the same for the same week.",
+    body: `XP, levels and ${facts.achievementRules} achievements that never scale with how much you lift. Two people of different strength earn the same for the same week.`,
   },
   {
     href: "/social",

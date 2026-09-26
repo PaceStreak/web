@@ -221,7 +221,7 @@ export const featureGroups: FeatureGroup[] = [
         body: "Titles run from Novice to Veteran and describe how long and how steadily you have shown up. A consistent beginner outranks a strong lifter who trains when they feel like it.",
       },
       {
-        title: `${23} achievements`,
+        title: `${facts.achievementRules} achievements`,
         body: "Badges reward breadth, finishing, honest records, early and late sessions, and coming back after a break. None rewards maximum weight, body weight or training through a rest week.",
       },
       {
