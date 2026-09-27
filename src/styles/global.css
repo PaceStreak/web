@@ -6,6 +6,7 @@
    blocked in production while working fine in local preview. */
 
 @import "tailwindcss";
+@import "@fontsource-variable/archivo/wdth.css";
 
 /* Cross-document view transitions, in CSS, with no JavaScript at all.
    ------------------------------------------------------------------
@@ -51,31 +52,31 @@
    `bg-accent`, `text-accent`, `border-accent`, and so on. One definition, no
    config file, no drift between a token and its utility. */
 @theme {
-  --color-bg: #0a0a0b;
-  --color-bg-alt: #0e0e10;
-  --color-surface: #141417;
-  --color-surface-2: #1a1a1e;
-  --color-line: #26262c;
-  --color-line-lit: #34343d;
+  --color-bg: #fbfbf8;
+  --color-bg-alt: #f4f4f2;
+  --color-surface: #fbfbf8;
+  --color-surface-2: #f5f4f0;
+  --color-line: #dddcd6;
+  --color-line-lit: #bebdb6;
 
-  --color-ink: #f4f4f5;
-  --color-muted: #a1a1aa;
+  --color-ink: #141414;
+  --color-muted: #45454a;
   /* 5.87:1 on --color-bg, 5.45:1 on --color-surface. The previous value,
      #71717a, measured 4.09:1 and failed WCAG AA on both. Muted greys that look
      fine routinely fail; measure against the actual background, cards
      included. */
-  --color-dim: #8b8b95;
+  --color-dim: #5c5c62;
 
-  --color-accent: #d3ff3e;
-  --color-accent-ink: #14170a;
-  --color-flame: #ff6b35;
+  --color-accent: #c9241c;
+  --color-accent-ink: #ffffff;
+  --color-flame: #d9661a;
 
-  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+  --font-sans: "Archivo Variable", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
 
-  --radius-card: 14px;
-  --radius-xl2: 20px;
+  --radius-card: 6px;
+  --radius-xl2: 8px;
 
   --container-wrap: 1120px;
 }
@@ -101,6 +102,12 @@
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
     }
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-stretch: 86%;
   }
 
   body {
@@ -171,7 +178,7 @@
     justify-content: center;
     gap: 0.5rem;
     padding: 0.8rem 1.4rem;
-    border-radius: 999px;
+    border-radius: 6px;
     border: 1px solid transparent;
     background: var(--color-accent);
     color: var(--color-accent-ink);
@@ -208,11 +215,10 @@
 
   /* --- surfaces -------------------------------------------------------- */
 
+  /* Not a box: a ruled entry on the page, the way a planner divides a day. */
   .card {
-    background: var(--color-surface);
-    border: 1px solid var(--color-line);
-    border-radius: var(--radius-xl2);
-    padding: 1.6rem;
+    border-top: 2px solid var(--color-ink);
+    padding: 1.1rem 0 0.4rem;
   }
 
   .eyebrow {
@@ -254,16 +260,16 @@
   }
 
   .lvl--0 {
-    background: #1c1c21;
+    background: #ebeae5;
   }
   .lvl--1 {
-    background: rgb(211 255 62 / 0.26);
+    background: rgb(201 36 28 / 0.26);
   }
   .lvl--2 {
-    background: rgb(211 255 62 / 0.48);
+    background: rgb(201 36 28 / 0.48);
   }
   .lvl--3 {
-    background: rgb(211 255 62 / 0.72);
+    background: rgb(201 36 28 / 0.72);
   }
   .lvl--4 {
     background: var(--color-accent);
@@ -341,7 +347,7 @@
   .chip {
     display: inline-block;
     border: 1px solid var(--color-line-lit);
-    border-radius: 999px;
+    border-radius: 4px;
     padding: 0.4rem 0.85rem;
     font-size: 0.88rem;
     color: var(--color-muted);
@@ -368,8 +374,7 @@
   }
 
   .card--link:hover {
-    border-color: var(--color-line-lit);
-    transform: translateY(-2px);
+    border-color: var(--color-accent);
   }
 
   .card--link:active {
@@ -394,14 +399,17 @@
     font-weight: 700;
   }
 
-  .tick::before {
-    content: "✓" / "";
-    color: var(--color-accent);
+  .tick::before,
+  .cross::before {
+    content: "";
+    top: 0.3em;
+    width: 1.05em;
+    height: 1.05em;
+    background: url("/marks/tick.svg") center / contain no-repeat;
   }
 
   .cross::before {
-    content: "×" / "";
-    color: var(--color-flame);
+    background-image: url("/marks/x.svg");
   }
 
   /* --- mobile menu ----------------------------------------------------- */
@@ -415,7 +423,7 @@
     place-items: center;
     width: 2.5rem;
     height: 2.5rem;
-    border-radius: 999px;
+    border-radius: 4px;
     cursor: pointer;
     list-style: none;
   }
@@ -479,7 +487,7 @@
     border: 1px solid var(--color-line);
     border-radius: var(--radius-card);
     background: var(--color-surface);
-    box-shadow: 0 20px 40px rgb(0 0 0 / 0.5);
+    box-shadow: 0 20px 40px rgb(20 20 20 / 0.16);
     transform-origin: top right;
     animation: menuIn 0.18s cubic-bezier(0.23, 1, 0.32, 1);
   }
@@ -557,7 +565,7 @@
     width: clamp(1.55rem, 7vw, 2.25rem);
     aspect-ratio: 1;
     border-radius: 6px;
-    background: #1c1c21;
+    background: #ebeae5;
     border: 1px solid var(--color-line);
     cursor: pointer;
     transition:
@@ -590,7 +598,7 @@
     margin-inline-start: 0.5rem;
     min-width: 4rem;
     padding: 0.2rem 0.5rem;
-    border-radius: 999px;
+    border-radius: 4px;
     font-size: 0.78rem;
     font-weight: 600;
     text-align: center;
@@ -598,17 +606,17 @@
   }
 
   .pill--kept {
-    background: rgb(211 255 62 / 0.14);
+    background: rgb(201 36 28 / 0.14);
     color: var(--color-accent);
   }
 
   .pill--frozen {
-    background: rgb(125 211 252 / 0.14);
-    color: #7dd3fc;
+    background: rgb(31 95 191 / 0.1);
+    color: #1f5fbf;
   }
 
   .pill--missed {
-    background: rgb(255 107 53 / 0.14);
+    background: rgb(217 102 26 / 0.12);
     color: var(--color-flame);
   }
 
@@ -625,5 +633,154 @@
   }
   .sim {
     border-spacing: 3px;
+  }
+}
+
+@layer components {
+  /* --- the hero calendar page -------------------------------------------- */
+  .calpage {
+    position: relative;
+    background: var(--color-surface);
+    border: 1px solid var(--color-line-lit);
+    border-radius: 8px;
+    padding: 1.6rem 1.25rem 1rem;
+    box-shadow: 0 1px 0 rgb(20 20 20 / 0.04), 0 30px 50px -30px rgb(20 20 20 / 0.35);
+    rotate: 1.2deg;
+  }
+  .calpage-rings {
+    position: absolute;
+    top: -0.7rem;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
+    padding: 0 22%;
+  }
+  .calpage-rings span {
+    width: 0.55rem;
+    height: 1.5rem;
+    border-radius: 4px;
+    background: var(--color-ink);
+  }
+  .calpage-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    border-bottom: 3px solid var(--color-accent);
+    padding-bottom: 0.4rem;
+  }
+  .calpage-month {
+    font-size: 2rem;
+    font-weight: 850;
+    font-stretch: 72%;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+  .calpage-chain {
+    font-size: 0.85rem;
+    color: var(--color-muted);
+  }
+  .calpage-chain b {
+    color: var(--color-accent);
+    font-size: 1.35rem;
+    font-stretch: 75%;
+    font-weight: 850;
+  }
+  .calpage-habit {
+    margin-top: 0.6rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+  .calpage-grid {
+    margin-top: 0.7rem;
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    border-top: 1px solid var(--color-line);
+    border-left: 1px solid var(--color-line);
+  }
+  .calpage-wd {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--color-dim);
+    text-align: center;
+    padding: 0.25rem 0;
+    border-right: 1px solid var(--color-line);
+    border-bottom: 1px solid var(--color-line);
+  }
+  .calpage-day {
+    position: relative;
+    aspect-ratio: 1;
+    border-right: 1px solid var(--color-line);
+    border-bottom: 1px solid var(--color-line);
+    font-size: 0.78rem;
+    font-weight: 600;
+    font-stretch: 80%;
+    font-variant-numeric: tabular-nums;
+    padding: 0.2rem 0.3rem;
+    color: var(--color-ink);
+  }
+  .calpage-day.is-sun .calpage-num {
+    color: var(--color-accent);
+  }
+  .calpage-day.is-today {
+    box-shadow: inset 0 0 0 2px var(--color-accent);
+  }
+  .calpage-day.is-blank {
+    background: var(--color-surface-2);
+  }
+  .calpage-day .mark {
+    position: absolute;
+    inset: 12%;
+    width: 76%;
+    height: 76%;
+    fill: none;
+    stroke: var(--color-accent);
+    stroke-width: 4.6;
+    stroke-linecap: round;
+    stroke-dasharray: 1;
+    animation: mark-draw 180ms cubic-bezier(0.3, 0.6, 0.2, 1) both;
+  }
+  .calpage-day .mark path:nth-child(2) {
+    animation: mark-draw 180ms 90ms cubic-bezier(0.3, 0.6, 0.2, 1) both;
+  }
+  .calpage-cap {
+    margin-top: 0.7rem;
+    font-size: 0.78rem;
+    color: var(--color-dim);
+  }
+  @keyframes mark-draw {
+    from {
+      stroke-dashoffset: 1;
+    }
+  }
+}
+
+@layer components {
+  /* The three steps are three calendar boxes, each already crossed off. */
+  .stepbox {
+    position: relative;
+    display: block;
+    width: 4.25rem;
+    height: 4.25rem;
+    border: 1px solid var(--color-ink);
+    background: var(--color-surface);
+  }
+  .stepbox-n {
+    position: absolute;
+    top: 0.2rem;
+    left: 0.35rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    font-stretch: 80%;
+    color: var(--color-muted);
+  }
+  .stepbox img {
+    position: absolute;
+    inset: 14%;
+    width: 72%;
+    height: 72%;
   }
 }
