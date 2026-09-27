@@ -18,6 +18,14 @@ export const released = false;
 export const releases: Release[] = [
   {
     date: "2026-09-27",
+    title: "Verification and password reset by code, not link",
+    items: [
+      { area: "Account", text: "Confirming your email, resetting your password and changing your address now use a 6-digit code you type in, not a link you click." },
+      { area: "Account", text: "Works everywhere a link didn't: read the code on your phone, enter it on your laptop." },
+    ],
+  },
+  {
+    date: "2026-09-27",
     title: "A new look: the wall calendar",
     items: [
       { area: "Design", text: "The whole app, this site and the blog are redesigned as a printed wall calendar: paper, black print, calendar red for today." },
