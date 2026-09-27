@@ -25,13 +25,10 @@ def xmark(d, x, y, s, w, color=RED):
             d.ellipse([px - w / 2, py - w / 2, px + w / 2, py + w / 2], fill=color)
 
 def logo(d, x, y, s):
+    # the bolt, as in public/brand/logo-mark.svg
     k = s / 64
-    lw = max(2, round(3 * k))
-    d.rounded_rectangle([x + 6 * k, y + 9 * k, x + 58 * k, y + 58 * k], radius=5 * k, fill=BOX, outline=INK, width=lw)
-    d.rounded_rectangle([x + 6 * k, y + 9 * k, x + 58 * k, y + 21 * k], radius=5 * k, fill=RED, outline=INK, width=lw, corners=(True, True, False, False))
-    for cx in (21, 43):
-        d.line([(x + cx * k, y + 5 * k), (x + cx * k, y + 14 * k)], fill=INK, width=round(4 * k))
-    xmark(d, x + 12 * k, y + 22 * k, 40 * k, max(3, round(6 * k)))
+    pts = [(39, 5), (8, 39), (27, 39), (25, 59), (56, 25), (37, 25)]
+    d.polygon([(x + px * k, y + py * k) for px, py in pts], fill=RED)
 
 def make(w, h, path):
     im = Image.new("RGB", (w, h), PAPER); d = ImageDraw.Draw(im)
