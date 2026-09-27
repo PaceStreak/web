@@ -93,8 +93,42 @@
     });
   }
 
+  /* Reveal-on-scroll, the site's one motion system (see global.css's
+     `.js [data-reveal]` rules). `.js` only lands once this file has actually
+     run, so a page with JS blocked or slow keeps every section fully
+     visible by default - the hidden state is never the resting state. */
+  function revealOnScroll() {
+    var els = document.querySelectorAll("[data-reveal]");
+    if (!els.length) return;
+
+    document.documentElement.classList.add("js");
+
+    if (reduceMotion || !("IntersectionObserver" in window)) {
+      // The class above would hide these permanently with no observer to
+      // ever remove it, so skip attaching it when there is nothing to
+      // reveal them again.
+      return;
+    }
+
+    var io = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-in");
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2, rootMargin: "0px 0px -8% 0px" }
+    );
+    Array.prototype.forEach.call(els, function (el) {
+      io.observe(el);
+    });
+  }
+
   function start() {
     buildGrid();
+    revealOnScroll();
 
     // Only animate the numbers once the card is actually on screen.
     // A data attribute, not a class: a class is a styling concern and the

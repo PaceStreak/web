@@ -141,19 +141,28 @@ const nots = [
   <!-- How it works -->
   <section id="how" class="scroll-mt-24 py-20 sm:py-24">
     <div class="wrap">
-      <h2 class="max-w-2xl text-3xl font-semibold tracking-tight sm:text-4xl">
+      <h2 class="max-w-2xl text-3xl font-semibold tracking-tight sm:text-4xl" data-reveal>
         Three taps. That's the whole ritual.
       </h2>
 
-      <ol class="mt-12 grid gap-6 md:grid-cols-3">
+      <ol class="ritual mt-14" aria-label="One week, three days in">
         {
-          steps.map((step) => (
-            <li class="card step">
-              <span class="stepbox" aria-hidden="true">
-                <img src="/marks/x.svg" alt="" width="40" height="40" />
+          steps.map((step, i) => (
+            <li class="ritual-item" data-reveal>
+              <span class="ritual-date" aria-hidden="true">
+                <span class="ritual-day">{["Mon", "Wed", "Fri"][i]}</span>
+                <span class="ritual-n">
+                  {i + 12}
+                  {i === steps.length - 1 && " "}
+                  {i === steps.length - 1 && (
+                    <span class="ritual-mark">
+                      <img src="/marks/x.svg" alt="" width="20" height="20" />
+                    </span>
+                  )}
+                </span>
               </span>
-              <h3 class="mt-4 text-lg font-semibold">{step.title}</h3>
-              <p class="mt-2 text-[0.96rem] leading-relaxed text-muted">{step.body}</p>
+              <h3 class="ritual-title">{step.title}</h3>
+              <p class="ritual-body">{step.body}</p>
             </li>
           ))
         }
@@ -164,7 +173,7 @@ const nots = [
   <!-- The board -->
   <section class="py-20 sm:py-24">
     <div class="wrap grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)] lg:gap-16">
-      <div>
+      <div data-reveal>
         <h2 class="max-w-xl text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
           Your whole week, on one page.
         </h2>
@@ -178,7 +187,7 @@ const nots = [
           <li class="tick">A note on any day, private like the habit.</li>
         </ul>
       </div>
-      <WeekBoard />
+      <div data-reveal="scale"><WeekBoard /></div>
     </div>
   </section>
 
@@ -188,7 +197,7 @@ const nots = [
     class="scroll-mt-24 border-y border-line bg-bg-alt py-20 sm:py-24"
   >
     <div class="wrap">
-      <div class="flex flex-wrap items-end justify-between gap-6">
+      <div class="flex flex-wrap items-end justify-between gap-6" data-reveal>
         <div>
           <h2 class="max-w-2xl text-3xl font-semibold tracking-tight sm:text-4xl">
             Built for people who show up.
@@ -201,7 +210,7 @@ const nots = [
         {
           highlights.map((item, i) => (
             <li>
-              <a class="planner-row group" href={item.href}>
+              <a class="planner-row group" href={item.href} data-reveal>
                 <span class="planner-date" aria-hidden="true">
                   <span class="planner-wd">{["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"][i]}</span>
                   <span class="planner-n">{i + 14}</span>
@@ -225,7 +234,7 @@ const nots = [
   <!-- The rule -->
   <section class="py-20 sm:py-24">
     <div class="wrap grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
-      <div>
+      <div data-reveal>
         <h2 class="mt-3 text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
           Days off are part of it. The streak knows.
         </h2>
@@ -237,7 +246,7 @@ const nots = [
         <a class="btn mt-8" href="/streaks">Try the streak simulator</a>
       </div>
 
-      <div class="card">
+      <div class="card" data-reveal>
         <h3 class="text-lg font-semibold">What PaceStreak will never do</h3>
         <ul class="mt-5 space-y-3">
           {nots.map((n) => <li class="cross text-[0.96rem] text-muted">{n}</li>)}

@@ -71,15 +71,13 @@ const principles = [
       </div>
 
       <h2 class="mt-16 text-2xl font-semibold tracking-tight">Principles</h2>
-      <div class="mt-8 grid gap-6 sm:grid-cols-2">
+      <div class="mt-2 grid sm:grid-cols-2 sm:gap-x-10">
         {
           principles.map((principle) => (
-            <article class="card">
-              <h3 class="text-lg font-semibold">{principle.title}</h3>
-              <p class="mt-2 text-[0.96rem] leading-relaxed text-muted">
-                {principle.body}
-              </p>
-            </article>
+            <div class="principle">
+              <h3 class="principle-title">{principle.title}</h3>
+              <p class="principle-body">{principle.body}</p>
+            </div>
           ))
         }
       </div>

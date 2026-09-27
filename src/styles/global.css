@@ -135,6 +135,73 @@
   }
 }
 
+/* --- scroll reveal -------------------------------------------------------
+   One motion system for the whole site, not a library of one-off effects.
+   Default state is fully visible: without JS, or before it has attached,
+   every section already reads correctly. Only once `.js` lands on <html>
+   does a [data-reveal] element hold its hidden state, and only until an
+   IntersectionObserver marks it `.is-in`. Reduced motion cancels the whole
+   system back to the no-JS default. */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.js [data-reveal="scale"] {
+  transform: scale(0.97) translateY(10px);
+}
+
+/* Staggered groups: siblings that reveal together read as one gesture, not
+   a pop, when each is a beat behind the last. */
+.ritual-item:nth-child(1) {
+  --reveal-delay: 0ms;
+}
+.ritual-item:nth-child(2) {
+  --reveal-delay: 90ms;
+}
+.ritual-item:nth-child(3) {
+  --reveal-delay: 180ms;
+}
+
+.planner li:nth-child(1) .planner-row {
+  --reveal-delay: 0ms;
+}
+.planner li:nth-child(2) .planner-row {
+  --reveal-delay: 50ms;
+}
+.planner li:nth-child(3) .planner-row {
+  --reveal-delay: 100ms;
+}
+.planner li:nth-child(4) .planner-row {
+  --reveal-delay: 150ms;
+}
+.planner li:nth-child(5) .planner-row {
+  --reveal-delay: 200ms;
+}
+.planner li:nth-child(6) .planner-row {
+  --reveal-delay: 250ms;
+}
+.planner li:nth-child(7) .planner-row {
+  --reveal-delay: 300ms;
+}
+
+.js [data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
 @layer components {
   /* --- layout ---------------------------------------------------------- */
 
@@ -755,30 +822,121 @@
 }
 
 @layer components {
-  /* The three steps are three calendar boxes, each already crossed off. */
-  .stepbox {
+  /* --- the ritual strip -------------------------------------------------
+     Three consecutive days of one torn week, not three identical cards.
+     A running date rail ties them into a single sequence; the connecting
+     line is what a card grid can never say - this is one habit, three days
+     running, not three unrelated ideas. */
+  .ritual {
     position: relative;
-    display: block;
-    width: 4.25rem;
-    height: 4.25rem;
-    border: 1px solid var(--color-line-lit);
-    border-radius: 8px;
-    background: var(--color-surface);
+    display: grid;
+    gap: 2.5rem;
   }
-  .stepbox-n {
-    position: absolute;
-    top: 0.2rem;
-    left: 0.35rem;
-    font-size: 0.85rem;
+
+  @media (min-width: 768px) {
+    .ritual {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0;
+    }
+
+    .ritual-item {
+      position: relative;
+      padding-inline-end: 2.25rem;
+    }
+
+    .ritual-item + .ritual-item {
+      padding-inline-start: 2.25rem;
+    }
+
+    .ritual-item + .ritual-item::before {
+      content: "";
+      position: absolute;
+      inset-inline-start: 0;
+      top: 0.4rem;
+      bottom: 0.4rem;
+      width: 1px;
+      background: linear-gradient(
+        var(--color-line-lit),
+        var(--color-line-lit) 70%,
+        transparent
+      );
+    }
+  }
+
+  .ritual-date {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+  }
+
+  .ritual-day {
+    font-size: 0.72rem;
     font-weight: 700;
-    font-stretch: 80%;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-dim);
+  }
+
+  .ritual-n {
+    font-size: 1.6rem;
+    font-weight: 850;
+    font-stretch: 72%;
+    letter-spacing: -0.02em;
     color: var(--color-muted);
   }
-  .stepbox img {
+
+  .ritual-item:last-child .ritual-n {
+    color: var(--color-accent);
+  }
+
+  .ritual-mark {
+    position: relative;
+    display: inline-block;
+    width: 1.3rem;
+    height: 1.3rem;
+    vertical-align: -0.28rem;
+  }
+
+  .ritual-mark img {
     position: absolute;
-    inset: 14%;
-    width: 72%;
-    height: 72%;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .ritual-title {
+    margin-top: 1rem;
+    font-size: 1.15rem;
+    font-weight: 700;
+    font-stretch: 90%;
+  }
+
+  .ritual-body {
+    margin-top: 0.5rem;
+    font-size: 0.96rem;
+    line-height: 1.6;
+    color: var(--color-muted);
+  }
+
+  /* --- principle rules ---------------------------------------------------
+     A ruled list, like features.astro's <dl>, not a grid of identical
+     icon-heading-text cards. The rule is the container. */
+  .principle {
+    border-top: 1px solid var(--color-line);
+    padding-block: 1.4rem;
+  }
+
+  .principle-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-stretch: 92%;
+  }
+
+  .principle-body {
+    margin-top: 0.5rem;
+    font-size: 0.96rem;
+    line-height: 1.6;
+    color: var(--color-muted);
   }
 }
 
