@@ -18,6 +18,16 @@ export const released = false;
 export const releases: Release[] = [
   {
     date: "2026-09-27",
+    title: "No more dead ends in sign-up and sign-in",
+    items: [
+      { area: "Account", text: "Verifying your email now takes you straight into the app instead of leaving you on a confirmation screen." },
+      { area: "Account", text: "Signing in with an unverified address now takes you to enter the code, instead of a resend button with nowhere to type it." },
+      { area: "Account", text: "A signup that partially succeeds no longer shows a confusing \"already registered\" error - it sends you on to verify instead." },
+      { area: "Account", text: "Every password field has a show/hide toggle." },
+    ],
+  },
+  {
+    date: "2026-09-27",
     title: "Verification and password reset by code, not link",
     items: [
       { area: "Account", text: "Confirming your email, resetting your password and changing your address now use a 6-digit code you type in, not a link you click." },
@@ -28,7 +38,7 @@ export const releases: Release[] = [
     date: "2026-09-27",
     title: "A new look: the wall calendar",
     items: [
-      { area: "Design", text: "The whole app, this site and the blog are redesigned as a printed wall calendar: paper, black print, calendar red for today." },
+      { area: "Design", text: "The whole app, this site and the blog take the structure of a wall calendar, kept on the near-black and lime look rather than the paper-and-red version tried and set aside the same day." },
       { area: "Today", text: "A tear-off date page beside your whole-life chain, and this week as a calendar board: one row per habit, seven boxes to cross off." },
       { area: "Habits", text: "Ticking a day draws a marker X over it; part-done days get a stroke, slips a ring. Each kind of habit has its own marker colour." },
       { area: "Habits", text: "A month calendar for every habit, notes on any day, and a quick sheet with steppers and presets for amounts." },
