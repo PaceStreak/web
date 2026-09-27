@@ -37,7 +37,7 @@ export const faqs: FaqItem[] = [
   },
   {
     q: "When can I use it?",
-    a: "It's early. This page is the honest state of things: the product is being built in the open, and early access goes out in batches rather than all at once. Mail hello@pacestreak.com and you'll be in the next one.",
+    a: "Now. Create an account at app.pacestreak.com and start your first week today.",
     featured: true,
   },
   {

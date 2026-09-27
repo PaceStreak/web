@@ -41,7 +41,13 @@ const links = [
           </a>
         ))
       }
-      <a class="btn btn--sm whitespace-nowrap" href="/#waitlist"><span class="sm:hidden">Early access</span><span class="hidden sm:inline">Get early access</span></a>
+      <a
+        class="nav-link hidden rounded-md px-3 py-2 text-[0.92rem] text-muted transition-colors hover:bg-surface-2 hover:text-ink md:inline-block"
+        href="https://app.pacestreak.com/login"
+      >
+        Sign in
+      </a>
+      <a class="btn btn--sm whitespace-nowrap" href="https://app.pacestreak.com/signup">Get started</a>
 
       {
         /* A <details> menu: opens and closes with no JavaScript, which keeps
@@ -54,10 +60,15 @@ const links = [
         </summary>
         <ul class="menu__panel">
           {
-            [...links, { href: "/faq", label: "FAQ" }].map((link) => (
+            [
+              ...links,
+              { href: "/faq", label: "FAQ" },
+              { href: "https://app.pacestreak.com/login", label: "Sign in", external: true },
+            ].map((link) => (
               <li>
                 <a
                   href={link.href}
+                  rel={link.external ? "noopener" : undefined}
                   aria-current={path === link.href ? "page" : undefined}
                 >
                   {link.label}

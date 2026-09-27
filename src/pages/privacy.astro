@@ -4,7 +4,7 @@ import Base from "../layouts/Base.astro";
 // Every statement here must match what the code does. When the code changes -
 // a new table, a new processor, a new retention period - this page changes in
 // the same pull request. An inaccurate privacy policy is worse than none.
-const updated = "25 September 2026";
+const updated = "27 September 2026";
 
 const collected = [
   {
@@ -60,11 +60,12 @@ const collected = [
           The short version: we collect what it takes to run a training log,
           nothing to profile you, and you can take all of it with you or delete
           it at any time. There is no analytics, no advertising and no selling
-          of data, and the sites and app load nothing from third parties.
+          of data. The one exception to "no third parties" is Cloudflare
+          Turnstile in the app's sign-up, sign-in and password-reset forms,
+          which exists only to stop automated abuse of those forms - see
+          Service providers below.
         </p>
         <p>
-          PaceStreak is not open to the public yet. The website sections apply
-          now; the account sections apply from the moment accounts open.
           Questions go to{" "}
           <a href="mailto:hello@pacestreak.com">hello@pacestreak.com</a>, read
           by a person.
@@ -170,13 +171,46 @@ const collected = [
         <h2>Service providers</h2>
         <p>
           We use as few as possible and never share data for anyone else's
-          purposes. Today that is Cloudflare, which hosts the websites and the
-          app, and Zoho, which receives mail sent to hello@pacestreak.com. The
-          provider hosting the API and database, and the provider that sends
-          account email, will be named here before accounts open. Web push
-          messages pass through your browser's own push service (for example
-          Google's or Apple's), encrypted so that service cannot read them.
+          purposes:
         </p>
+        <ul>
+          <li>
+            <strong>Cloudflare</strong> hosts the websites and the app, runs
+            the tunnel the API is reached through, stores progress photos
+            (R2) if you turn photo backup on, and runs Turnstile, an
+            invisible challenge on sign-up, sign-in, password-reset and
+            resend-verification that exists only to stop those forms being
+            used to spam email or brute-force passwords. Turnstile sees the
+            request needed to tell a human from a script; it is not
+            analytics and does not track you around the web.
+          </li>
+          <li>
+            <strong>Google Cloud Platform</strong> runs the virtual machine
+            the API and its background worker run on.
+          </li>
+          <li>
+            <strong>Neon</strong> hosts the Postgres database everything in
+            this page is stored in.
+          </li>
+          <li>
+            <strong>Upstash</strong> hosts the Redis cache used for rate
+            limiting and short-lived session data, never your training data.
+          </li>
+          <li>
+            <strong>Brevo</strong> sends account email: sign-up verification,
+            password reset and email-change confirmation. It sees the email
+            address and the message content, nothing else about your account.
+          </li>
+          <li>
+            <strong>Zoho</strong> receives mail sent to
+            hello@pacestreak.com.
+          </li>
+          <li>
+            Web push messages pass through your browser's own push service
+            (for example Google's or Apple's), encrypted so that service
+            cannot read them.
+          </li>
+        </ul>
 
         <h2>How long we keep it</h2>
         <ul>

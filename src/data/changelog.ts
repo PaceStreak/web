@@ -13,7 +13,7 @@ export interface Release {
   items: { area: string; text: string }[];
 }
 
-export const released = false;
+export const released = true;
 
 export const releases: Release[] = [
   {
