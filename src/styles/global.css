@@ -52,31 +52,31 @@
    `bg-accent`, `text-accent`, `border-accent`, and so on. One definition, no
    config file, no drift between a token and its utility. */
 @theme {
-  --color-bg: #fbfbf8;
-  --color-bg-alt: #f4f4f2;
-  --color-surface: #fbfbf8;
-  --color-surface-2: #f5f4f0;
-  --color-line: #dddcd6;
-  --color-line-lit: #bebdb6;
+  --color-bg: #0a0a0b;
+  --color-bg-alt: #0e0e10;
+  --color-surface: #141417;
+  --color-surface-2: #1a1a1e;
+  --color-line: #26262c;
+  --color-line-lit: #34343d;
 
-  --color-ink: #141414;
-  --color-muted: #45454a;
+  --color-ink: #f4f4f5;
+  --color-muted: #a1a1aa;
   /* 5.87:1 on --color-bg, 5.45:1 on --color-surface. The previous value,
      #71717a, measured 4.09:1 and failed WCAG AA on both. Muted greys that look
      fine routinely fail; measure against the actual background, cards
      included. */
-  --color-dim: #5c5c62;
+  --color-dim: #8b8b95;
 
-  --color-accent: #c9241c;
-  --color-accent-ink: #ffffff;
-  --color-flame: #d9661a;
+  --color-accent: #d3ff3e;
+  --color-accent-ink: #14170a;
+  --color-flame: #ff6b35;
 
   --font-sans: "Archivo Variable", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
 
-  --radius-card: 6px;
-  --radius-xl2: 8px;
+  --radius-card: 14px;
+  --radius-xl2: 20px;
 
   --container-wrap: 1120px;
 }
@@ -102,12 +102,6 @@
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
     }
-  }
-
-  h1,
-  h2,
-  h3 {
-    font-stretch: 86%;
   }
 
   body {
@@ -178,7 +172,7 @@
     justify-content: center;
     gap: 0.5rem;
     padding: 0.8rem 1.4rem;
-    border-radius: 6px;
+    border-radius: 999px;
     border: 1px solid transparent;
     background: var(--color-accent);
     color: var(--color-accent-ink);
@@ -215,10 +209,11 @@
 
   /* --- surfaces -------------------------------------------------------- */
 
-  /* Not a box: a ruled entry on the page, the way a planner divides a day. */
   .card {
-    border-top: 2px solid var(--color-ink);
-    padding: 1.1rem 0 0.4rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-xl2);
+    padding: 1.6rem;
   }
 
   .eyebrow {
@@ -260,16 +255,16 @@
   }
 
   .lvl--0 {
-    background: #ebeae5;
+    background: #1c1c21;
   }
   .lvl--1 {
-    background: rgb(201 36 28 / 0.26);
+    background: rgb(211 255 62 / 0.26);
   }
   .lvl--2 {
-    background: rgb(201 36 28 / 0.48);
+    background: rgb(211 255 62 / 0.48);
   }
   .lvl--3 {
-    background: rgb(201 36 28 / 0.72);
+    background: rgb(211 255 62 / 0.72);
   }
   .lvl--4 {
     background: var(--color-accent);
@@ -347,7 +342,7 @@
   .chip {
     display: inline-block;
     border: 1px solid var(--color-line-lit);
-    border-radius: 4px;
+    border-radius: 999px;
     padding: 0.4rem 0.85rem;
     font-size: 0.88rem;
     color: var(--color-muted);
@@ -374,7 +369,8 @@
   }
 
   .card--link:hover {
-    border-color: var(--color-accent);
+    border-color: var(--color-line-lit);
+    transform: translateY(-2px);
   }
 
   .card--link:active {
@@ -409,7 +405,7 @@
   }
 
   .cross::before {
-    background-image: url("/marks/x.svg");
+    background-image: url("/marks/no.svg");
   }
 
   /* --- mobile menu ----------------------------------------------------- */
@@ -423,7 +419,7 @@
     place-items: center;
     width: 2.5rem;
     height: 2.5rem;
-    border-radius: 4px;
+    border-radius: 999px;
     cursor: pointer;
     list-style: none;
   }
@@ -487,7 +483,7 @@
     border: 1px solid var(--color-line);
     border-radius: var(--radius-card);
     background: var(--color-surface);
-    box-shadow: 0 20px 40px rgb(20 20 20 / 0.16);
+    box-shadow: 0 20px 40px rgb(0 0 0 / 0.5);
     transform-origin: top right;
     animation: menuIn 0.18s cubic-bezier(0.23, 1, 0.32, 1);
   }
@@ -565,7 +561,7 @@
     width: clamp(1.55rem, 7vw, 2.25rem);
     aspect-ratio: 1;
     border-radius: 6px;
-    background: #ebeae5;
+    background: #1c1c21;
     border: 1px solid var(--color-line);
     cursor: pointer;
     transition:
@@ -598,7 +594,7 @@
     margin-inline-start: 0.5rem;
     min-width: 4rem;
     padding: 0.2rem 0.5rem;
-    border-radius: 4px;
+    border-radius: 999px;
     font-size: 0.78rem;
     font-weight: 600;
     text-align: center;
@@ -606,17 +602,17 @@
   }
 
   .pill--kept {
-    background: rgb(201 36 28 / 0.14);
+    background: rgb(211 255 62 / 0.14);
     color: var(--color-accent);
   }
 
   .pill--frozen {
-    background: rgb(31 95 191 / 0.1);
-    color: #1f5fbf;
+    background: rgb(125 211 252 / 0.14);
+    color: #7dd3fc;
   }
 
   .pill--missed {
-    background: rgb(217 102 26 / 0.12);
+    background: rgb(255 107 53 / 0.14);
     color: var(--color-flame);
   }
 
@@ -642,10 +638,10 @@
     position: relative;
     background: var(--color-surface);
     border: 1px solid var(--color-line-lit);
-    border-radius: 8px;
+    border-radius: 16px;
     padding: 1.6rem 1.25rem 1rem;
-    box-shadow: 0 1px 0 rgb(20 20 20 / 0.04), 0 30px 50px -30px rgb(20 20 20 / 0.35);
-    rotate: 1.2deg;
+    box-shadow: 0 1px 0 rgb(255 255 255 / 0.04) inset, 0 30px 60px -30px rgb(0 0 0 / 0.7);
+    rotate: 1deg;
   }
   .calpage-rings {
     position: absolute;
@@ -660,14 +656,14 @@
     width: 0.55rem;
     height: 1.5rem;
     border-radius: 4px;
-    background: var(--color-ink);
+    background: var(--color-line-lit);
   }
   .calpage-head {
     display: flex;
     align-items: baseline;
     justify-content: space-between;
     gap: 1rem;
-    border-bottom: 3px solid var(--color-accent);
+    border-bottom: 2px solid var(--color-accent);
     padding-bottom: 0.4rem;
   }
   .calpage-month {
@@ -738,7 +734,7 @@
     height: 76%;
     fill: none;
     stroke: var(--color-accent);
-    stroke-width: 4.6;
+    stroke-width: 4.2;
     stroke-linecap: round;
     stroke-dasharray: 1;
     animation: mark-draw 180ms cubic-bezier(0.3, 0.6, 0.2, 1) both;
@@ -765,7 +761,8 @@
     display: block;
     width: 4.25rem;
     height: 4.25rem;
-    border: 1px solid var(--color-ink);
+    border: 1px solid var(--color-line-lit);
+    border-radius: 8px;
     background: var(--color-surface);
   }
   .stepbox-n {
@@ -789,7 +786,7 @@
   /* Features as one printed planner week: a date column, the entry, and a
      box already crossed off. Sunday is printed red, as on the calendar. */
   .planner {
-    border-top: 2px solid var(--color-ink);
+    border-top: 1px solid var(--color-line-lit);
   }
   .planner-row {
     display: grid;
@@ -854,7 +851,8 @@
     position: relative;
     width: 3.25rem;
     height: 3.25rem;
-    border: 1px solid var(--color-ink);
+    border: 1px solid var(--color-line-lit);
+    border-radius: 8px;
     background: var(--color-surface);
   }
   .planner-box img {
@@ -879,9 +877,9 @@
 @layer components {
   /* --- the Today board replica ------------------------------------------- */
   .wb {
-    border: 1px solid var(--color-ink);
+    border: 1px solid var(--color-line-lit);
     background: var(--color-surface);
-    border-radius: 4px;
+    border-radius: 16px;
     overflow: hidden;
   }
   .wb-head {
@@ -945,7 +943,7 @@
   }
   .wb-day.is-today {
     box-shadow: inset 0 0 0 1.5px var(--color-accent);
-    background: rgb(201 36 28 / 0.06);
+    background: rgb(211 255 62 / 0.08);
     color: var(--color-accent);
   }
   .wb-day.is-marked .wb-n {
@@ -960,10 +958,10 @@
     stroke-width: 4.6;
     stroke-linecap: round;
   }
-  .tone-blue svg { stroke: #1f5fbf; }
-  .tone-green svg { stroke: #1d8048; }
-  .tone-violet svg { stroke: #7440ad; }
-  .tone-red svg { stroke: #c9241c; }
+  .tone-blue svg { stroke: #7cc7ff; }
+  .tone-green svg { stroke: #4fd98a; }
+  .tone-violet svg { stroke: #c29bff; }
+  .tone-red svg { stroke: #d3ff3e; }
   .wb-cap {
     padding: 0.6rem 1rem 0.8rem;
     font-size: 0.78rem;

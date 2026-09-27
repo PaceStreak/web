@@ -7,7 +7,8 @@ from PIL import Image, ImageDraw, ImageFont
 
 SRC = "node_modules/@fontsource-variable/archivo/files/archivo-latin-wdth-normal.woff2"
 f = TTFont(SRC); f.flavor = None; buf = io.BytesIO(); f.save(buf); FONT = buf.getvalue()
-PAPER, INK, RED, LINE, DIM = (251, 251, 248), (20, 20, 20), (201, 36, 28), (221, 220, 214), (92, 92, 98)
+PAPER, INK, RED, LINE, DIM = (10, 10, 11), (244, 244, 245), (211, 255, 62), (52, 52, 61), (139, 139, 149)
+BOX = (20, 20, 23)
 
 def font(size, wght=800, wdth=75):
     ft = ImageFont.truetype(io.BytesIO(FONT), size)
@@ -26,7 +27,7 @@ def xmark(d, x, y, s, w, color=RED):
 def logo(d, x, y, s):
     k = s / 64
     lw = max(2, round(3 * k))
-    d.rounded_rectangle([x + 6 * k, y + 9 * k, x + 58 * k, y + 58 * k], radius=5 * k, fill=(255, 255, 255), outline=INK, width=lw)
+    d.rounded_rectangle([x + 6 * k, y + 9 * k, x + 58 * k, y + 58 * k], radius=5 * k, fill=BOX, outline=INK, width=lw)
     d.rounded_rectangle([x + 6 * k, y + 9 * k, x + 58 * k, y + 21 * k], radius=5 * k, fill=RED, outline=INK, width=lw, corners=(True, True, False, False))
     for cx in (21, 43):
         d.line([(x + cx * k, y + 5 * k), (x + cx * k, y + 14 * k)], fill=INK, width=round(4 * k))
@@ -52,7 +53,7 @@ def make(w, h, path):
         if x0 > pad + s + tw + (500 if w > 900 else 120) * h / 200:
             for i in range(n):
                 bx = x0 + i * (b + gap); by = (h - b) // 2
-                d.rectangle([bx, by, bx + b, by + b], outline=INK, width=2, fill=(255, 255, 255))
+                d.rectangle([bx, by, bx + b, by + b], outline=INK, width=2, fill=BOX)
                 if i < n - 1: xmark(d, bx, by, b, max(3, round(b * 0.1)))
         im.save(path, optimize=True); return
     tall = h > w
@@ -84,7 +85,7 @@ def make(w, h, path):
         wd = font(round(18 * u), 700, 100)
         for i in range(n):
             bx = x0 + i * b
-            d.rectangle([bx, yb, bx + b, yb + b], outline=LINE if i % 7 else INK, width=max(1, round(1.5 * u)), fill=(255, 255, 255))
+            d.rectangle([bx, yb, bx + b, yb + b], outline=LINE if i % 7 else INK, width=max(1, round(1.5 * u)), fill=BOX)
             d.text((bx + round(8 * u), yb + round(6 * u)), str(21 + i), font=font(round(22 * u), 700, 80), fill=RED if i == 6 else DIM)
             if i not in (2, 6): xmark(d, bx + b * 0.05, yb + b * 0.08, b * 0.9, max(3, round(9 * u)))
         d.rectangle([x0 + 6 * b, yb, x0 + 7 * b, yb + b], outline=RED, width=max(2, round(4 * u)))
