@@ -17,6 +17,17 @@ export const released = false;
 
 export const releases: Release[] = [
   {
+    date: "2026-09-27",
+    title: "A new look: the wall calendar",
+    items: [
+      { area: "Design", text: "The whole app, this site and the blog are redesigned as a printed wall calendar: paper, black print, calendar red for today." },
+      { area: "Today", text: "A tear-off date page beside your whole-life chain, and this week as a calendar board: one row per habit, seven boxes to cross off." },
+      { area: "Habits", text: "Ticking a day draws a marker X over it; part-done days get a stroke, slips a ring. Each kind of habit has its own marker colour." },
+      { area: "Habits", text: "A month calendar for every habit, notes on any day, and a quick sheet with steppers and presets for amounts." },
+      { area: "Body", text: "Tape measurements from neck to calf, and optional backup of progress photos to your account." },
+    ],
+  },
+  {
     date: "2026-09-26",
     title: "Beyond training: habits",
     items: [

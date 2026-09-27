@@ -1,0 +1,46 @@
+---
+/* A replica of the app's Today board, for the site: one row per habit,
+   seven boxes, today's column ringed. Synthetic example data, labelled. */
+const days = [
+  ["Mon", 21], ["Tue", 22], ["Wed", 23], ["Thu", 24], ["Fri", 25], ["Sat", 26], ["Sun", 27],
+] as const;
+const today = 6;
+type Mark = "x" | "slash" | "";
+const rows: { name: string; meta: string; tone: string; marks: Mark[] }[] = [
+  { name: "Read 20 pages", meta: "5/5 · 14 wk", tone: "blue", marks: ["x", "x", "", "x", "x", "", "x"] },
+  { name: "Drink water", meta: "4/7", tone: "green", marks: ["x", "slash", "x", "x", "x", "slash", ""] },
+  { name: "Practise Spanish", meta: "3/4 · 6 wk", tone: "violet", marks: ["x", "", "x", "", "x", "", ""] },
+  { name: "Run", meta: "2/3 · 21 wk", tone: "red", marks: ["", "x", "", "", "x", "", ""] },
+];
+---
+
+<figure class="wb" aria-label="Example: the Today board in the app">
+  <div class="wb-head">
+    <span class="wb-title">This week</span>
+    <span class="wb-count">2 of 4 today</span>
+  </div>
+  <div class="wb-grid" role="presentation">
+    {days.map(([d, n], i) => (
+      <span class:list={["wb-day wb-dh", { "is-today": i === today, "is-sun": i === 6 }]}>
+        <b>{d[0]}</b>{n}
+      </span>
+    ))}
+    {rows.map((r) => (
+      <>
+        <span class="wb-name"><b>{r.name}</b><small>{r.meta}</small></span>
+        {r.marks.map((m, i) => (
+          <span class:list={["wb-day", `tone-${r.tone}`, { "is-today": i === today, "is-marked": m }]}>
+            <span class="wb-n">{days[i][1]}</span>
+            {m === "x" && (
+              <svg viewBox="0 0 40 40" aria-hidden="true"><path pathLength="1" d="M8.5 9.5c6.5 5.4 15 13.2 23 21.8" /><path pathLength="1" d="M31.5 8.8C24 15 16.4 22.3 8.8 31" /></svg>
+            )}
+            {m === "slash" && (
+              <svg viewBox="0 0 40 40" aria-hidden="true"><path pathLength="1" d="M30.5 9.5C23.5 16 16.5 23 9.5 30.5" /></svg>
+            )}
+          </span>
+        ))}
+      </>
+    ))}
+  </div>
+  <figcaption class="wb-cap">Example data. The real board is in the app, one row per habit you keep.</figcaption>
+</figure>

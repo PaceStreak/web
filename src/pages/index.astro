@@ -1,5 +1,6 @@
 ---
 import CalendarPage from "../components/CalendarPage.astro";
+import WeekBoard from "../components/WeekBoard.astro";
 import Base from "../layouts/Base.astro";
 import ActivityGrid from "../components/ActivityGrid.astro";
 import Faq from "../components/Faq.astro";
@@ -160,6 +161,27 @@ const nots = [
     </div>
   </section>
 
+  <!-- The board -->
+  <section class="py-20 sm:py-24">
+    <div class="wrap grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)] lg:gap-16">
+      <div>
+        <h2 class="max-w-xl text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
+          Your whole week, on one page.
+        </h2>
+        <p class="mt-5 max-w-xl text-lg leading-relaxed text-muted">
+          The app opens on this week as a calendar: one row per habit, seven boxes, today ringed in red.
+          Tap a box and a marker X draws across it. Forgot yesterday? Tap yesterday.
+        </p>
+        <ul class="mt-6 space-y-2.5 text-[0.98rem]">
+          <li class="tick">Each kind of habit gets its own marker colour.</li>
+          <li class="tick">A stroke for part-done, a ring for a slip.</li>
+          <li class="tick">A note on any day, private like the habit.</li>
+        </ul>
+      </div>
+      <WeekBoard />
+    </div>
+  </section>
+
   <!-- Features -->
   <section
     id="features"
@@ -175,19 +197,28 @@ const nots = [
         <a class="btn btn--ghost" href="/features">Every feature</a>
       </div>
 
-      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <ol class="planner mt-12" aria-label="A week of PaceStreak, one feature a day">
         {
-          highlights.map((item) => (
-            <a class="card card--link group" href={item.href}>
-              <h3 class="mt-3 text-lg font-semibold">{item.title}</h3>
-              <p class="mt-2 text-[0.96rem] leading-relaxed text-muted">{item.body}</p>
-              <span class="mt-4 inline-block text-[0.9rem] text-accent">
-                Read more
-              </span>
-            </a>
+          highlights.map((item, i) => (
+            <li>
+              <a class="planner-row group" href={item.href}>
+                <span class="planner-date" aria-hidden="true">
+                  <span class="planner-wd">{["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"][i]}</span>
+                  <span class="planner-n">{i + 14}</span>
+                </span>
+                <span class="planner-body">
+                  <span class="planner-kicker">{item.kicker}</span>
+                  <span class="planner-title">{item.title}</span>
+                  <span class="planner-text">{item.body}</span>
+                </span>
+                <span class="planner-box" aria-hidden="true">
+                  <img src="/marks/x.svg" alt="" width="40" height="40" />
+                </span>
+              </a>
+            </li>
           ))
         }
-      </div>
+      </ol>
     </div>
   </section>
 
