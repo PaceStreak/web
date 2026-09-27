@@ -104,20 +104,25 @@ const nots = [
   jsonLd={jsonLd}
 >
   <!-- Hero -->
-  <section class="hero relative isolate">
+  <section class="hero relative isolate overflow-hidden">
+    <span class="hero-numeral" aria-hidden="true">52</span>
 
     <div
-      class="wrap grid items-center gap-14 py-14 sm:py-18 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:gap-16 lg:py-24"
+      class="wrap grid items-center gap-14 py-20 sm:py-28 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,24rem)] lg:gap-12 lg:py-32"
     >
       <div>
+        <p class="hero-dateline">
+          <span aria-hidden="true">MON</span>
+          <b>Week one</b> starts whenever you do
+        </p>
 
         <h1
-          class="text-[clamp(2.8rem,8vw,5.2rem)] leading-[0.98] font-extrabold tracking-[-0.03em] text-balance hero-title"
+          class="mt-5 text-[clamp(3.2rem,9vw,6rem)] leading-[0.92] font-extrabold tracking-[-0.04em] hero-title"
         >
-          Don't break<br />the <span class="text-accent">chain.</span>
+          Don't break<br />the <span class="text-accent">chain</span><em>.</em>
         </h1>
 
-        <p class="mt-6 max-w-xl text-lg leading-relaxed text-muted text-pretty">
+        <p class="mt-7 max-w-xl text-lg leading-relaxed text-muted text-pretty">
           Motivation is unreliable. Streaks aren't. PaceStreak makes consistency
           the number you chase, for anything worth doing regularly: training,
           learning a skill, sleep, reading, calm, or a habit you're breaking.
@@ -134,12 +139,14 @@ const nots = [
         </p>
       </div>
 
-      <CalendarPage />
+      <div class="hero-figure">
+        <CalendarPage />
+      </div>
     </div>
   </section>
 
   <!-- How it works -->
-  <section id="how" class="scroll-mt-24 py-20 sm:py-24">
+  <section id="how" class="scroll-mt-24 py-16 sm:py-20">
     <div class="wrap">
       <h2 class="max-w-2xl text-3xl font-semibold tracking-tight sm:text-4xl" data-reveal>
         Three taps. That's the whole ritual.
@@ -148,7 +155,7 @@ const nots = [
       <ol class="ritual mt-14" aria-label="One week, three days in">
         {
           steps.map((step, i) => (
-            <li class="ritual-item" data-reveal>
+            <li class="ritual-item" data-reveal="tear">
               <span class="ritual-date" aria-hidden="true">
                 <span class="ritual-day">{["Mon", "Wed", "Fri"][i]}</span>
                 <span class="ritual-n">
@@ -171,7 +178,7 @@ const nots = [
   </section>
 
   <!-- The board -->
-  <section class="py-20 sm:py-24">
+  <section class="py-28 sm:py-32">
     <div class="wrap grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)] lg:gap-16">
       <div data-reveal>
         <h2 class="max-w-xl text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
@@ -187,14 +194,14 @@ const nots = [
           <li class="tick">A note on any day, private like the habit.</li>
         </ul>
       </div>
-      <div data-reveal="scale"><WeekBoard /></div>
+      <div data-reveal="unfold"><WeekBoard /></div>
     </div>
   </section>
 
   <!-- Features -->
   <section
     id="features"
-    class="scroll-mt-24 border-y border-line bg-bg-alt py-20 sm:py-24"
+    class="scroll-mt-24 border-y border-line bg-bg-alt py-20 sm:py-28"
   >
     <div class="wrap">
       <div class="flex flex-wrap items-end justify-between gap-6" data-reveal>

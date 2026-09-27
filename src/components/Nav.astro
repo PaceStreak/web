@@ -31,7 +31,7 @@ const links = [
             rel={link.external ? "noopener" : undefined}
             aria-current={path === link.href ? "page" : undefined}
             class:list={[
-              "hidden rounded-md px-3 py-2 text-[0.92rem] transition-colors md:inline-block",
+              "nav-link hidden rounded-md px-3 py-2 text-[0.92rem] transition-colors md:inline-block",
               path === link.href
                 ? "text-ink"
                 : "text-muted hover:bg-surface-2 hover:text-ink",

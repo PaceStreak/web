@@ -133,6 +133,31 @@
     background: var(--color-accent);
     color: var(--color-accent-ink);
   }
+
+  /* Themed scrollbar: the parts a page did not draw still carry the design.
+     Firefox via the two properties, Chromium/Safari via the pseudo-elements. */
+  html {
+    scrollbar-color: var(--color-line-lit) var(--color-bg);
+  }
+
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-bg);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-line-lit);
+    border-radius: 999px;
+    border: 3px solid var(--color-bg);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-dim);
+  }
 }
 
 /* --- scroll reveal -------------------------------------------------------
@@ -153,6 +178,39 @@
 
 .js [data-reveal="scale"] {
   transform: scale(0.97) translateY(10px);
+}
+
+/* Tear-off: the ritual strip is three days of one torn calendar, so each item
+   arrives the way a page comes off a pad - a slight twist that untwists,
+   not a plain rise. Distinct from the generic reveal on purpose. */
+.js [data-reveal="tear"] {
+  opacity: 0;
+  transform: rotate(-3deg) translateY(20px);
+  transition:
+    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.js [data-reveal="tear"].is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Unfold: the week board arrives the way its own header claims - hinged open
+   from the top edge, not translated in from below. */
+.js [data-reveal="unfold"] {
+  opacity: 0;
+  transform: scaleY(0.92) translateY(14px);
+  transform-origin: top center;
+  transition:
+    opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.js [data-reveal="unfold"].is-in {
+  opacity: 1;
+  transform: none;
 }
 
 /* Staggered groups: siblings that reveal together read as one gesture, not
@@ -475,6 +533,33 @@
     background-image: url("/marks/no.svg");
   }
 
+  /* --- nav links --------------------------------------------------------
+     An underline that draws in from the left on hover/focus, rather than a
+     background swap alone - the kind of detail a hover state earns for
+     free when it is treated as worth a craft pass. */
+  .nav-link {
+    position: relative;
+  }
+
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0.75rem;
+    right: 0.75rem;
+    bottom: 0.3rem;
+    height: 1.5px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .nav-link:hover::after,
+  .nav-link:focus-visible::after,
+  .nav-link[aria-current="page"]::after {
+    transform: scaleX(1);
+  }
+
   /* --- mobile menu ----------------------------------------------------- */
 
   .menu {
@@ -700,6 +785,84 @@
 }
 
 @layer components {
+  /* --- hero ---------------------------------------------------------------
+     The stranger's first read. A faint ledger of graph-paper rules behind the
+     type (the wall-calendar motif, at a whisper) and one oversized ghost
+     numeral - the week count the product exists to grow - bleeding off the
+     edge behind the demo card. Both are structural echoes of real content
+     (the grid, the streak count), never decoration bolted on. */
+  .hero {
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent 0 43px,
+      rgb(255 255 255 / 0.035) 43px 44px
+    );
+    background-position: top;
+  }
+
+  .hero-numeral {
+    position: absolute;
+    top: 50%;
+    right: -0.5rem;
+    translate: 0 -50%;
+    font-size: clamp(14rem, 30vw, 26rem);
+    font-weight: 850;
+    font-stretch: 62%;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: rgb(255 255 255 / 0.035);
+    z-index: -1;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .hero-title {
+    text-wrap: balance;
+  }
+
+  .hero-title em {
+    font-style: normal;
+    color: var(--color-flame);
+  }
+
+  /* A dateline, not an eyebrow: it names the day this reads like a torn-off
+     tab, tied to the calendar motif rather than a generic label above the
+     headline. */
+  .hero-dateline {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--color-dim);
+  }
+
+  .hero-dateline b {
+    color: var(--color-accent);
+    font-stretch: 80%;
+  }
+
+  /* The demo card drops and settles into the page rather than fading up like
+     everything below the fold - it is already on screen at load, so it gets
+     its own, load-triggered choreography instead of the scroll system. */
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-figure {
+      animation: hero-drop 0.8s 0.15s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+  }
+
+  @keyframes hero-drop {
+    from {
+      opacity: 0;
+      transform: rotate(-7deg) translateY(-26px) scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: rotate(1deg) translateY(0) scale(1);
+    }
+  }
+
   /* --- the hero calendar page -------------------------------------------- */
   .calpage {
     position: relative;
@@ -1012,12 +1175,22 @@
     border: 1px solid var(--color-line-lit);
     border-radius: 8px;
     background: var(--color-surface);
+    transition:
+      border-color 0.16s ease,
+      transform 0.16s ease;
   }
   .planner-box img {
     position: absolute;
     inset: 12%;
     width: 76%;
     height: 76%;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .planner-row:hover .planner-box {
+    border-color: var(--color-accent);
+  }
+  .planner-row:hover .planner-box img {
+    transform: rotate(-6deg) scale(1.08);
   }
   @media (max-width: 560px) {
     .planner-row {
