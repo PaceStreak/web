@@ -17,6 +17,19 @@ export const released = true;
 
 export const releases: Release[] = [
   {
+    date: "2026-10-01",
+    title: "Food, insights, a journal and habit routines",
+    items: [
+      { area: "Food", text: "Log meals with calories and macros against optional daily targets; save foods and recipes; copy yesterday's meal in one tap." },
+      { area: "Food", text: "Scan a barcode from a photo and fill in the numbers from Open Food Facts. Only the barcode is sent, never who scanned it." },
+      { area: "Food", text: "An energy-burn estimate from your own food log and weigh-in trend, with a gentle suggested target toward your weight goal." },
+      { area: "Insights", text: "Patterns in your own data, like how sleep relates to the habits you keep, shown only when they pass a statistical test." },
+      { area: "Today", text: "A daily coach note about yesterday's food, and a one-tap mood check." },
+      { area: "Journal", text: "Daily mood and a note, a year-in-pixels grid, and search." },
+      { area: "Habits", text: "Routines you step through in order, a focus timer for minutes habits, and import from Loop Habit Tracker or a CSV." },
+    ],
+  },
+  {
     date: "2026-09-27",
     title: "No more dead ends in sign-up and sign-in",
     items: [

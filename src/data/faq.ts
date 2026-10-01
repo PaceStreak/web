@@ -12,6 +12,19 @@ export interface FaqItem {
 
 export const faqs: FaqItem[] = [
   {
+    q: "Are the insights and the coach AI?",
+    a: "No. Both are worked out on our server with fixed rules and plain statistics from what you logged. Nothing is sent to an AI company, nothing is invented, and a pattern only shows when there are enough days on both sides for it not to be chance.",
+    featured: true,
+  },
+  {
+    q: "Can I track food? Who sees it?",
+    a: "Yes: meals, calories and macros against optional targets, saved foods, recipes and barcode lookup. It's private like your weight: never in a feed, a leaderboard, XP or a badge. Scanning sends the barcode number to Open Food Facts and nothing about you.",
+  },
+  {
+    q: "Can I bring my history from another habit app?",
+    a: "Yes. Import Loop Habit Tracker's export, or any CSV with a date column and habit names. You see a preview first, habits with the same name merge, and days you've already logged here are never overwritten.",
+  },
+  {
     q: "Is it only for fitness?",
     a: "No. Training is one part; habits are the rest. Reading, a language, an instrument, water, sleep, meditation, calling home, money, or something you're giving up. Each habit keeps its own weekly streak, and an optional whole-life streak counts any of them.",
     featured: true,

@@ -1409,3 +1409,149 @@
     }
   }
 }
+
+@layer components {
+  /* --- numbers strip under the hero ---------------------------------------- */
+  .statband {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-xl2);
+    background: var(--color-surface);
+    overflow: hidden;
+  }
+  .statband li {
+    padding-block: 1.4rem;
+    padding-inline: 1.25rem;
+    border-color: var(--color-line);
+  }
+  .statband li:nth-child(odd) {
+    border-right-width: 1px;
+  }
+  .statband li:nth-child(-n + 2) {
+    border-bottom-width: 1px;
+  }
+  .statband b {
+    display: block;
+    font-size: clamp(1.9rem, 4vw, 2.6rem);
+    font-weight: 800;
+    font-stretch: 80%;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: var(--color-accent);
+  }
+  .statband span {
+    display: block;
+    margin-top: 0.45rem;
+    font-size: 0.92rem;
+    color: var(--color-muted);
+  }
+  @media (min-width: 760px) {
+    .statband {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+    .statband li {
+      border-bottom-width: 0;
+      border-right-width: 1px;
+    }
+    .statband li:nth-child(-n + 2) {
+      border-bottom-width: 0;
+    }
+    .statband li:last-child {
+      border-right-width: 0;
+    }
+  }
+
+  /* --- insight mock in the showcase window --------------------------------- */
+  .insight-mock {
+    margin: 0;
+    padding: 1rem 1.1rem;
+    border: 1px solid var(--color-line);
+    border-radius: 14px;
+    background: var(--color-surface);
+  }
+  .insight-mock figcaption {
+    font-size: 1.02rem;
+    line-height: 1.45;
+  }
+  .insight-mock figcaption b {
+    color: var(--color-accent);
+  }
+  .insight-mock small {
+    display: block;
+    margin-top: 0.75rem;
+    font-size: 0.78rem;
+    color: var(--color-dim);
+  }
+  .insight-bars {
+    display: grid;
+    gap: 0.45rem;
+    margin-top: 0.9rem;
+  }
+  .insight-bar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 3rem;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.78rem;
+    color: var(--color-dim);
+  }
+  .insight-bar i {
+    height: 0.6rem;
+    border-radius: 999px;
+    background: var(--color-surface-2);
+    position: relative;
+    overflow: hidden;
+  }
+  .insight-bar i::after {
+    content: "";
+    position: absolute;
+    inset-block: 0;
+    left: 0;
+    border-radius: 999px;
+  }
+  .insight-bar--hi i::after {
+    width: 92%;
+    background: var(--color-accent);
+  }
+  .insight-bar--lo i::after {
+    width: 42%;
+    background: var(--color-flame);
+  }
+
+  /* --- one app instead of five -------------------------------------------- */
+  .oneapp {
+    display: grid;
+    gap: 0.75rem;
+  }
+  .oneapp-row {
+    display: grid;
+    gap: 0.4rem;
+    padding: 1.15rem 1.25rem;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-card);
+    background: var(--color-surface);
+  }
+  .oneapp-row dt {
+    font-weight: 650;
+    font-size: 1.05rem;
+  }
+  .oneapp-was {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--color-dim);
+  }
+  .oneapp-row dd {
+    color: var(--color-muted);
+    font-size: 0.96rem;
+    line-height: 1.55;
+  }
+  @media (min-width: 760px) {
+    .oneapp-row {
+      grid-template-columns: minmax(0, 14rem) minmax(0, 1fr);
+      align-items: center;
+      gap: 2rem;
+    }
+  }
+}

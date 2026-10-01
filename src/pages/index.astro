@@ -44,6 +44,21 @@ const steps = [
   },
 ];
 
+const stats = [
+  { n: String(facts.habitTemplates), label: "ready-made habits" },
+  { n: String(facts.exercises), label: "built-in exercises" },
+  { n: String(facts.achievementRules), label: "achievements" },
+  { n: "0", label: "ads, trackers or AI vendors" },
+];
+
+const oneApp = [
+  { usually: "A habit tracker", here: "Weekly streaks per habit, routines, quit habits, a focus timer, import from Loop." },
+  { usually: "A workout log", here: `${facts.exercises} exercises, sets and RPE, race plans, blocks, records.` },
+  { usually: "A calorie counter", here: "Meals, macros, recipes, barcode lookup and your real energy burn." },
+  { usually: "A mood journal", here: "A daily mood, a line about the day, a year in pixels." },
+  { usually: "An AI coach", here: "Insights and a daily coach from your own numbers, checked by statistics, not invented." },
+];
+
 const habitChips = ["Read 20 pages", "Drink water", "Spanish", "Meditate", "Run", "No smoking"];
 
 const nots = [
@@ -52,6 +67,7 @@ const nots = [
   "No leaderboard for body weight, calories or volume.",
   "No streak lost to a planned rest day.",
   "No analytics, ads, trackers or third-party scripts.",
+  "No AI company ever reads what you log.",
   "No lock-in. Export everything, any time.",
 ];
 ---
@@ -112,6 +128,22 @@ const nots = [
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- Numbers -->
+  <section class="section--tight statband-wrap" aria-label="PaceStreak in numbers">
+    <div class="wrap">
+      <ul class="statband">
+        {
+          stats.map((s) => (
+            <li>
+              <b>{s.n}</b>
+              <span>{s.label}</span>
+            </li>
+          ))
+        }
+      </ul>
     </div>
   </section>
 
@@ -227,6 +259,87 @@ const nots = [
       <p class="mt-10 text-center">
         <a class="btn btn--ghost" href="/features">Every feature</a>
       </p>
+    </div>
+  </section>
+
+  <!-- Insights showcase -->
+  <section id="insights" class="section scroll-mt-24">
+    <div class="wrap split">
+      <div class="split-copy" data-reveal>
+        <span class="tile-kicker">New</span>
+        <h2 class="h2">Feedback from your own numbers. No AI required.</h2>
+        <p class="lede">
+          PaceStreak compares your days, sleep against habits kept, training
+          against mood, food against both, and tells you what actually
+          moves. A pattern only shows when a statistical test says it isn't
+          chance, and nothing you log is ever sent to an AI company.
+        </p>
+        <ul class="mt-6 space-y-2.5 text-[0.98rem]">
+          <li class="tick">Insights across habits, sleep, mood, training and food.</li>
+          <li class="tick">Your real energy burn, from your food log and the scale.</li>
+          <li class="tick">A daily coach note, built by rules you can read.</li>
+        </ul>
+        <a class="btn btn--ghost mt-8" href="/features#insights">How insights work</a>
+      </div>
+      <div class="split-visual" data-reveal>
+        <div class="appwin">
+          <div class="appwin-bar" aria-hidden="true">
+            <span></span><span></span><span></span>
+            <b>app.pacestreak.com/insights</b>
+          </div>
+          <div class="appwin-body">
+            <figure class="insight-mock">
+              <figcaption>You kept <b>92%</b> of your habits after 7 h+ of sleep, against <b>42%</b> on shorter nights.</figcaption>
+              <div class="insight-bars" aria-hidden="true">
+                <span class="insight-bar insight-bar--hi"><i></i>7 h+</span>
+                <span class="insight-bar insight-bar--lo"><i></i>Less</span>
+              </div>
+              <small>Compared 20 days with 20. Example figures.</small>
+            </figure>
+            <div class="appwin-stats">
+              <p>
+                <small>Energy burn</small>
+                <b>2,550 <span>kcal/day</span></b>
+              </p>
+              <p>
+                <small>Trend</small>
+                <b>-0.5 <span>kg/week</span></b>
+              </p>
+              <p class="appwin-stat--lg">
+                <small>Mood this week</small>
+                <b>4.2 <span>/ 5</span></b>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- One app -->
+  <section class="section section--alt">
+    <div class="wrap">
+      <header class="sec-head" data-reveal>
+        <h2 class="h2">One app instead of five.</h2>
+        <p class="lede">
+          Most people keep consistent with a stack of apps that don't talk to
+          each other. PaceStreak puts them on one grid, so the patterns
+          between them finally show.
+        </p>
+      </header>
+      <dl class="oneapp" data-reveal>
+        {
+          oneApp.map((row) => (
+            <div class="oneapp-row">
+              <dt>
+                <span class="oneapp-was">Instead of</span>
+                <span>{row.usually}</span>
+              </dt>
+              <dd>{row.here}</dd>
+            </div>
+          ))
+        }
+      </dl>
     </div>
   </section>
 

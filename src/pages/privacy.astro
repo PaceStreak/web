@@ -4,7 +4,7 @@ import Base from "../layouts/Base.astro";
 // Every statement here must match what the code does. When the code changes -
 // a new table, a new processor, a new retention period - this page changes in
 // the same pull request. An inaccurate privacy policy is worse than none.
-const updated = "27 September 2026";
+const updated = "1 October 2026";
 
 const collected = [
   {
@@ -26,6 +26,11 @@ const collected = [
     what: "Body metrics",
     items: "Weigh-ins (weight, time and when in your day), measurements, a weight goal, a max heart rate for zones, and morning check-ins (sleep, energy and soreness, 1 to 5), only if you choose to record them. Progress photos stay on your own device unless you turn on photo backup, which stores them in your account, visible only to you; turning it off deletes our copies.",
     why: "For your own trend. Never shared, never ranked, never in any feed, never rewarded.",
+  },
+  {
+    what: "Food and journal",
+    items: "Meals you log (name, servings, calories and macros, which meal and day), foods and recipes you save (including a product barcode if you scanned one), daily nutrition targets, and a daily journal: a mood from 1 to 5 and a note, only if you write one. Insights and the energy-burn estimate are calculated from these and your other data when you open them, and not stored.",
+    why: "For your own log and patterns. Private like body metrics: never shared, ranked, rewarded or in any feed.",
   },
   {
     what: "Social",
@@ -60,10 +65,13 @@ const collected = [
           The short version: we collect what it takes to run a training log,
           nothing to profile you, and you can take all of it with you or delete
           it at any time. There is no analytics, no advertising and no selling
-          of data. The one exception to "no third parties" is Cloudflare
-          Turnstile in the app's sign-up, sign-in and password-reset forms,
-          which exists only to stop automated abuse of those forms - see
-          Service providers below.
+          of data. The only third-party code that runs in your browser is
+          Cloudflare Turnstile in the app's sign-up, sign-in and
+          password-reset forms, which exists only to stop automated abuse of
+          those forms. The only outside service that learns anything from
+          what you log is Open Food Facts, which is sent a product barcode
+          when you look one up, and nothing about you. See Service providers
+          below.
         </p>
         <p>
           Questions go to{" "}
@@ -200,6 +208,13 @@ const collected = [
             <strong>Brevo</strong> sends account email: sign-up verification,
             password reset and email-change confirmation. It sees the email
             address and the message content, nothing else about your account.
+          </li>
+          <li>
+            <strong>Open Food Facts</strong>, an open food database, answers
+            barcode lookups. When you look up a barcode that isn't among your
+            saved foods, our server sends Open Food Facts that barcode number
+            and nothing else: no account, no IP address of yours, no cookie.
+            Answers are cached so a popular product is asked about once.
           </li>
           <li>
             <strong>Zoho</strong> receives mail sent to

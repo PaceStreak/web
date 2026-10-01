@@ -85,6 +85,66 @@ export const featureGroups: FeatureGroup[] = [
         title: "A whole-life streak, if you want one",
         body: "An extra streak across everything: a day counts with any training or any habit. Each habit's own streak stays as it is.",
       },
+      {
+        title: "Routines, step by step",
+        body: "String habits into a run you do in order, like water, stretch, journal. Start it and the app walks you through one step at a time; each tick counts on its own habit.",
+      },
+      {
+        title: "A focus timer for practice",
+        body: "Minutes habits get a timer. It keeps time from when you started, so a locked phone loses nothing, and stopping adds the minutes to today.",
+      },
+      {
+        title: "Bring your history with you",
+        body: "Import from Loop Habit Tracker, or any spreadsheet export with dates and habits. You see a preview first, matching habits merge, and nothing you've already logged is overwritten.",
+      },
+    ],
+  },
+  {
+    id: "food",
+    kicker: "Food",
+    title: "Calories and macros, without the diet app.",
+    lede: "Log what you eat when it helps your training. No streak for eating less, no calorie leaderboard, and nobody else ever sees it.",
+    items: [
+      {
+        title: "Meals in a few taps",
+        body: "Breakfast, lunch, dinner and snacks, against optional daily targets for calories, protein, carbs and fat. Set only the ones you care about.",
+      },
+      {
+        title: "Scan a barcode",
+        body: "Photograph a barcode and the product's numbers fill in from Open Food Facts, an open database. Only the barcode leaves our server, never who scanned it. Save a food once and your copy wins from then on.",
+      },
+      {
+        title: "Recipes and repeats",
+        body: "Build a recipe from saved foods and log a serving in one tap. Recent foods sit at the top, and yesterday's breakfast copies over in one tap.",
+      },
+      {
+        title: "What you really burn",
+        body: "After a couple of weeks of food and weigh-ins, PaceStreak works out your daily energy burn from your own numbers, not a formula, and can suggest a gentle target toward your weight goal.",
+      },
+    ],
+  },
+  {
+    id: "insights",
+    kicker: "Insights",
+    title: "Patterns in your own data, without the AI.",
+    lede: "Feedback built from what you actually logged, worked out with plain arithmetic on our server. Nothing goes to an AI company.",
+    items: [
+      {
+        title: "Insights you can check",
+        body: "\"You kept 92% of your habits after 7 hours of sleep, against 42% on shorter nights.\" A pattern shows only when there are enough days on both sides and a statistical test says it isn't chance.",
+      },
+      {
+        title: "A daily coach",
+        body: "A few lines on Today from fixed rules: the streak that needs you, a go-easy day after bad sleep, protein that ran short yesterday. Nothing invented.",
+      },
+      {
+        title: "A journal and a year in pixels",
+        body: "One tap for the day's mood and a line about it. The year fills in as a grid of colours, notes are searchable, and mood feeds your insights.",
+      },
+      {
+        title: "Honest about what it is",
+        body: "Insights are patterns, not causes, and the app says so. It also tells you what to log to see more, rather than guessing.",
+      },
     ],
   },
   {
