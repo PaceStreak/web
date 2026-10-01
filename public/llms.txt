@@ -1,0 +1,27 @@
+# PaceStreak
+
+> PaceStreak is a habit and streak tracker for training and everything else worth doing regularly: learning, health, calm, and habits being broken. Each habit keeps a weekly streak, so rest days never break it. It also logs workouts and food, keeps a private mood journal, and finds patterns in your own data without AI. No ads, no analytics, no third-party scripts.
+
+The product is a web app at https://app.pacestreak.com (sign-up required). This site describes it; it has no forms and no API for agents.
+
+## Product
+
+- [Features](https://www.pacestreak.com/features): every feature, including habits, routines, training, food, insights, streaks, social and data export
+- [How streaks work](https://www.pacestreak.com/streaks): week-based streaks, freezes, repairs and pauses, with a simulator
+- [Social and privacy rules](https://www.pacestreak.com/social): what others can and cannot see; habits are never shown to anyone
+- [Security](https://www.pacestreak.com/security): passkeys, two-factor sign-in and how data is protected
+- [FAQ](https://www.pacestreak.com/faq): common questions
+- [Changelog](https://www.pacestreak.com/changelog): what changed, newest first
+
+## Company
+
+- [About](https://www.pacestreak.com/about): why it exists and the principles it is built on
+- [Privacy](https://www.pacestreak.com/privacy): what is collected, why, who processes it, and how to export or delete it
+- [Terms](https://www.pacestreak.com/terms): terms of use
+- [Blog](https://blog.pacestreak.com): how each part was built, mistakes included
+- [Status](https://status.pacestreak.com): public uptime
+
+## Optional
+
+- [Source on GitHub](https://github.com/PaceStreak): the organisation's public repositories
+- Contact: hello@pacestreak.com

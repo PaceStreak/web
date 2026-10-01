@@ -1398,16 +1398,9 @@
     line-height: 1.6;
     color: var(--color-muted);
   }
-  @media (min-width: 900px) {
-    .principle {
-      display: grid;
-      grid-template-columns: 16rem minmax(0, 1fr);
-      gap: 2rem;
-    }
-    .principle-body {
-      margin-top: 0;
-    }
-  }
+  /* Title above body at every width. A side-by-side 16rem title column used
+     to apply here too, but each principle already sits in one of two grid
+     columns inside a narrow page, which left the body a few words wide. */
 }
 
 @layer components {

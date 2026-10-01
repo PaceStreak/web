@@ -1,0 +1,17 @@
+{
+  "specVersion": "1.0",
+  "entries": [
+    {
+      "identifier": "urn:air:pacestreak:web:site-guide",
+      "displayName": "PaceStreak site guide",
+      "description": "What PaceStreak is and where each part of the site is: features, streak rules, privacy, security, FAQ, changelog and blog. Read-only; PaceStreak offers no agent API.",
+      "type": "text/markdown; profile=\"urn:air:agent-skills\"",
+      "url": "https://www.pacestreak.com/llms.txt",
+      "representativeQueries": [
+        "What is PaceStreak?",
+        "How do PaceStreak's weekly streaks work?",
+        "What data does PaceStreak collect?"
+      ]
+    }
+  ]
+}
