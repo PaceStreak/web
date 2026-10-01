@@ -5,6 +5,9 @@ import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import CtaBand from "../components/CtaBand.astro";
 import agentUrl from "../scripts/agent.js?url";
+// Preloaded so the first paint already uses Archivo: text drawn in the
+// fallback and then re-wrapped when the font arrived was a layout shift.
+import archivoUrl from "@fontsource-variable/archivo/files/archivo-latin-wdth-normal.woff2?url";
 
 interface Props {
   title: string;
@@ -23,6 +26,7 @@ const showCta = !["/", "/404", "/privacy", "/terms", "/changelog"].includes(path
 <!doctype html>
 <html lang="en" class="scheme-dark">
   <head>
+    <link rel="preload" href={archivoUrl} as="font" type="font/woff2" crossorigin />
     <Seo title={title} description={description} path={path} noindex={noindex} />
     {
       /* JSON-LD is an `application/ld+json` DATA block, not executable script.

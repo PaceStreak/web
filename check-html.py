@@ -18,6 +18,9 @@ file — so it gets a check rather than another manual fix.
 
 from __future__ import annotations
 
+import base64
+import hashlib
+
 import pathlib
 import re
 import sys
@@ -54,9 +57,8 @@ DATA_URI = re.compile(r"(?:src|href)=\"data:(?!image/)")
 # element renders unstyled. Adding a `view-transition-name` this way is how
 # that nearly shipped. Put the rule in the stylesheet instead.
 #
-# Note this deliberately does not fire on `<style>` elements: Astro hoists all
-# component CSS into an external file, so a literal <style> block in dist/ is
-# itself worth investigating, but the attribute is the common mistake.
+# `<style>` elements are checked separately below: the stylesheet is inlined on
+# purpose and allowed by hash, so each block's hash must be in dist/_headers.
 INLINE_STYLE_ATTR = re.compile(r"<[a-zA-Z][^>]*\sstyle=\"[^\"]")
 
 # Highlighted code is the one legitimate source of inline styles: Shiki colours
@@ -65,10 +67,24 @@ INLINE_STYLE_ATTR = re.compile(r"<[a-zA-Z][^>]*\sstyle=\"[^\"]")
 # <pre> would report hundreds of findings that are all working as intended.
 PRE_BLOCK = re.compile(r"<pre\b.*?</pre>", re.S)
 
+STYLE_BLOCK = re.compile(r"<style[^>]*>(.*?)</style>", re.S)
 
-def check(path: pathlib.Path) -> list[str]:
+
+def style_hashes(root: pathlib.Path) -> str:
+    headers = root / "_headers"
+    return headers.read_text() if headers.exists() else ""
+
+
+def check(path: pathlib.Path, headers: str = "") -> list[str]:
     html = path.read_text()
     problems = []
+    for css in STYLE_BLOCK.findall(html):
+        digest = base64.b64encode(hashlib.sha256(css.encode()).digest()).decode()
+        if f"'sha256-{digest}'" not in headers:
+            problems.append(
+                f"{path.name}: inline <style> whose hash isn't in _headers — "
+                f"the CSP blocks it and the page renders unstyled"
+            )
     for m in INLINE_BEFORE.finditer(html):
         frag = m.group(0)
         if re.sub(r"\s+[^>]*>", ">", frag) in ALLOWED or frag in ALLOWED:
@@ -111,7 +127,8 @@ def main() -> int:
         print(f"no HTML found in {root}", file=sys.stderr)
         return 1
 
-    problems = [p for page in pages for p in check(page)]
+    headers = style_hashes(root)
+    problems = [p for page in pages for p in check(page, headers)]
     for p in problems:
         print(f"  {p}", file=sys.stderr)
 

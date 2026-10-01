@@ -7,7 +7,10 @@ export default defineConfig({
   site: "https://www.pacestreak.com",
   integrations: [sitemap()],
   trailingSlash: "never",
-  build: { format: "file" },
+  // inlineStylesheets: the CSS goes into each page, so the first paint doesn't
+  // wait on a render-blocking request. scripts/csp-style-hashes.mjs then allows
+  // exactly those blocks by hash in dist/_headers - the CSP stays strict.
+  build: { format: "file", inlineStylesheets: "always" },
 
   // Warms pages on hover/viewport using <link rel="prefetch">, which is a
   // browser hint rather than a script — so it costs nothing under our CSP.
