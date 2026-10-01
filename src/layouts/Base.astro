@@ -3,6 +3,7 @@ import "../styles/global.css";
 import Seo from "../components/Seo.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
+import CtaBand from "../components/CtaBand.astro";
 
 interface Props {
   title: string;
@@ -13,6 +14,9 @@ interface Props {
 }
 
 const { title, description, path, noindex = false, jsonLd } = Astro.props;
+// The home page ends with its own, richer call to action; legal pages and the
+// 404 are not places to sell.
+const showCta = !["/", "/404", "/privacy", "/terms", "/changelog"].includes(path);
 ---
 
 <!doctype html>
@@ -40,6 +44,7 @@ const { title, description, path, noindex = false, jsonLd } = Astro.props;
     <main id="main">
       <slot />
     </main>
+    {showCta && <CtaBand />}
     <Footer />
   </body>
 </html>
