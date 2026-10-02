@@ -31,6 +31,7 @@ export const releases: Release[] = [
       { area: "Data", text: "An opt-in monthly email with your export attached." },
       { area: "App", text: "Fixed: reloading any page, or opening a shared link, took you back to Today." },
       { area: "Data", text: "All of PaceStreak is now open source: the app, the API and the sites are public on GitHub under AGPL-3.0." },
+      { area: "Training", text: "Six new cable exercises: V-handle, neutral-grip and wide neutral-grip pulldowns and seated rows, each with a cue for which part of the back it biases." },
       { area: "Training", text: "Load the bar: pick your bar (remembered per exercise, so the EZ bar stays the EZ bar), tap the plates on one side, and the total goes straight into your next set." },
       { area: "Your data", text: "Clearer privacy policy and terms: who runs PaceStreak, the legal basis for each kind of data, that data is stored in the US, and a correction: backups are a 6-hour restore history. You'll be asked to accept them once." },
     ],

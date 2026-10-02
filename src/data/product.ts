@@ -8,7 +8,7 @@
 
 export const facts = {
   disciplines: 11,
-  exercises: 78,
+  exercises: 84,
   starterRoutines: 8,
   achievementRules: 29,
   leaderboards: 5,
@@ -159,7 +159,7 @@ export const featureGroups: FeatureGroup[] = [
       },
       {
         title: "Set-level strength logging",
-        body: `Sets, reps, load and RPE against a built-in library of ${78} exercises, each with a movement pattern, equipment and a coaching cue. Add your own movements as custom exercises.`,
+        body: `Sets, reps, load and RPE against a built-in library of ${facts.exercises} exercises, each with a movement pattern, equipment and a coaching cue. Add your own movements as custom exercises.`,
       },
       {
         title: "Live workout mode",
