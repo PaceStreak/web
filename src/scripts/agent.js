@@ -8,7 +8,7 @@
   if (!mc || typeof mc.registerTool !== "function") return;
 
   var PAGES = [
-    { url: "/features", title: "Features", topics: "features habits routines focus timer import training workouts exercises food nutrition calories macros barcode recipes insights journal mood coach progress xp badges social export offline" },
+    { url: "/features", title: "Features", topics: "features habits routines focus timer import training workouts exercises food nutrition calories macros barcode recipes insights journal mood coach progress xp badges social export offline trash undo restore search shortcuts keyboard palette swipe snooze summary share" },
     { url: "/streaks", title: "How streaks work", topics: "streak streaks weekly target rest days freezes repair pause simulator" },
     { url: "/social", title: "Social and privacy rules", topics: "social follow friends groups challenges leaderboards feed kudos privacy visibility" },
     { url: "/security", title: "Security", topics: "security passkeys two-factor 2fa password encryption sessions" },

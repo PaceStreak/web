@@ -17,6 +17,22 @@ export const released = true;
 
 export const releases: Release[] = [
   {
+    date: "2026-10-02",
+    title: "Faster everywhere, and an undo for everything",
+    items: [
+      { area: "App", text: "A command palette: Ctrl or ⌘ K to jump anywhere, tick a habit or search. G-then-a-letter shortcuts, and ? lists them." },
+      { area: "App", text: "Search everything you've logged, and a one-day view of training, habits, food and mood on any date." },
+      { area: "Data", text: "Undo after every delete, and a 30-day trash that restores habits, sessions, meals, recipes and journal entries with their history." },
+      { area: "Habits", text: "Swipe to complete, long-press for the amount, and select several days on the calendar to fill them in at once." },
+      { area: "Habits", text: "Reminders with Done and Snooze buttons, snooze from the habit page, or one evening summary instead of a reminder each." },
+      { area: "App", text: "Log the last session again, or copy yesterday's food, in one tap." },
+      { area: "App", text: "Share a photo into the app to scan a barcode or save a progress photo; new home-screen shortcuts; pull to refresh; a habits-left icon badge." },
+      { area: "App", text: "Larger text, compact layout and high contrast, and screens that remember their last tab." },
+      { area: "Data", text: "An opt-in monthly email with your export attached." },
+      { area: "App", text: "Fixed: reloading any page, or opening a shared link, took you back to Today." },
+    ],
+  },
+  {
     date: "2026-10-01",
     title: "Food, insights, a journal and habit routines",
     items: [

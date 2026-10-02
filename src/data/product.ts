@@ -430,8 +430,12 @@ export const featureGroups: FeatureGroup[] = [
         body: "Bring a PaceStreak export back in, on this account or a new one.",
       },
       {
-        title: "A monthly backup reminder",
-        body: "Opt in and, on the first of each month, you get a nudge to download a copy of everything. The reminder links into the app; it never carries your data.",
+        title: "A monthly backup",
+        body: "Opt in and, on the first of each month, you get a nudge to download a copy of everything. Or, with a second opt-in you confirm, the email carries the export itself as a zip that imports straight back.",
+      },
+      {
+        title: "A 30-day trash",
+        body: "Delete a habit, a session, a meal, a recipe or a journal entry and Undo is right there. Missed it? Everything waits in the trash for 30 days and comes back with its full history.",
       },
       {
         title: "Delete with a safety net",
@@ -463,7 +467,19 @@ export const featureGroups: FeatureGroup[] = [
       },
       {
         title: "Notifications you choose",
-        body: "An in-app inbox for everything, plus web push and email per category. One-click unsubscribe from any email, no login needed.",
+        body: "An in-app inbox for everything, plus web push and email per category. Habit reminders carry Done and Snooze buttons, or come as one evening summary that never names a habit. One-click unsubscribe from any email.",
+      },
+      {
+        title: "Fast with a keyboard",
+        body: "A command palette (Ctrl or ⌘ K) to jump anywhere, tick a habit or search everything you've logged, plus G-then-a-letter shortcuts. Press ? for the list.",
+      },
+      {
+        title: "Fast with a thumb",
+        body: "Swipe a habit to complete it, long-press for the exact amount, pull down to refresh, log yesterday's session or food again in one tap, and share a photo into the app to scan a barcode.",
+      },
+      {
+        title: "Comfortable to read",
+        body: "Larger text, a compact layout and a high-contrast mode, set per device. Every screen remembers its last tab.",
       },
     ],
   },

@@ -12,6 +12,10 @@ export interface FaqItem {
 
 export const faqs: FaqItem[] = [
   {
+    q: "I deleted something by mistake. Can I get it back?",
+    a: "Yes. Every delete offers Undo straight away, and everything you delete waits in the trash (Settings, then Data) for 30 days. Restoring brings it back exactly as it was, history included.",
+  },
+  {
     q: "Are the insights and the coach AI?",
     a: "No. Both are worked out on our server with fixed rules and plain statistics from what you logged. Nothing is sent to an AI company, nothing is invented, and a pattern only shows when there are enough days on both sides for it not to be chance.",
     featured: true,

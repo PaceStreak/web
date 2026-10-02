@@ -4,7 +4,7 @@ import Base from "../layouts/Base.astro";
 // Every statement here must match what the code does. When the code changes -
 // a new table, a new processor, a new retention period - this page changes in
 // the same pull request. An inaccurate privacy policy is worse than none.
-const updated = "1 October 2026";
+const updated = "2 October 2026";
 
 const collected = [
   {
@@ -206,8 +206,13 @@ const collected = [
           </li>
           <li>
             <strong>Brevo</strong> sends account email: sign-up verification,
-            password reset and email-change confirmation. It sees the email
-            address and the message content, nothing else about your account.
+            password reset and email-change confirmation, plus any summaries
+            you switch on. It sees the email address and the message content,
+            nothing else about your account. If you turn on the monthly
+            backup email (off by default, and the app asks you to confirm),
+            that message carries a zip of your whole export, so Brevo
+            handles it in transit and it then sits in your inbox like any
+            other email.
           </li>
           <li>
             <strong>Open Food Facts</strong>, an open food database, answers
@@ -230,6 +235,18 @@ const collected = [
         <h2>How long we keep it</h2>
         <ul>
           <li>Your data is kept while your account exists.</li>
+          <li>
+            <strong>Things you delete</strong> (a habit and its history, a
+            meal, a session, a recipe, a journal entry) wait in your trash
+            for 30 days so you can restore them, then are deleted for good.
+            You can empty the trash sooner.
+          </li>
+          <li>
+            <strong>Photos or text you share into the app</strong> from your
+            phone's share sheet stay on that device until you choose what
+            they are; nothing is uploaded unless you save a progress photo
+            with backup on.
+          </li>
           <li>
             <strong>Deleting your account</strong> schedules it for 30 days
             later and signs you out everywhere. Sign in during those 30 days to
