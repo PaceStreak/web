@@ -30,6 +30,7 @@ export const releases: Release[] = [
       { area: "App", text: "Larger text, compact layout and high contrast, and screens that remember their last tab." },
       { area: "Data", text: "An opt-in monthly email with your export attached." },
       { area: "App", text: "Fixed: reloading any page, or opening a shared link, took you back to Today." },
+      { area: "Data", text: "All of PaceStreak is now open source: the app, the API and the sites are public on GitHub under AGPL-3.0." },
     ],
   },
   {

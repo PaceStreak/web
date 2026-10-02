@@ -95,7 +95,7 @@ export const faqs: FaqItem[] = [
   },
   {
     q: "Is any of this open source?",
-    a: "The infrastructure and this site are being built in the open, and the whole organisation is AGPL-3.0. The blog at blog.pacestreak.com covers what is being built and what broke while building it.",
+    a: "Yes, all of it. The app, the API, this site, the blog and the infrastructure notes are public at github.com/PaceStreak under AGPL-3.0, so you can read exactly what happens to your data. The blog at blog.pacestreak.com covers how each part was built and what broke along the way.",
   },
 ];
 
