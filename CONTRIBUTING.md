@@ -6,7 +6,7 @@ for anything general. This file covers what is specific to the public site.
 ## Getting set up
 
 ```bash
-npm install
+npm ci
 npm run dev      # http://localhost:4321
 ```
 

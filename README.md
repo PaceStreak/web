@@ -1,8 +1,10 @@
 # PaceStreak Web
 
 The public site for **[www.pacestreak.com](https://www.pacestreak.com)** — the
-first thing a stranger sees. PaceStreak is a workout streak tracker: log the
-session, keep the streak, watch the grid fill.
+first thing a stranger sees. PaceStreak is a habit and streak tracker:
+training, and anything else worth doing regularly. Keep each one weekly, watch
+the grid fill. The product itself is live at
+[app.pacestreak.com](https://app.pacestreak.com).
 
 Astro and Tailwind CSS v4. Static output, no client framework, deployed on
 Cloudflare Pages.
@@ -31,7 +33,8 @@ down the page that explains the product. See
 
 ```text
 src/pages/           index, features, streaks, social, security, about, faq,
-                     privacy, terms, 404.
+                     changelog, privacy, terms, 404.
+src/data/changelog.ts The /changelog entries.
 src/data/product.ts  Every product claim. Numbers come from the api/app code;
                      change them there first, then here.
 src/lib/chain.ts     Port of the streak rules for the /streaks simulator.
@@ -70,7 +73,7 @@ could be three utility classes in the markup, it should be.
 ## Local development
 
 ```bash
-npm install
+npm ci
 npm run dev      # http://localhost:4321
 npm run build    # → dist/
 python3 check-html.py dist
@@ -120,10 +123,17 @@ Setting the limit to 0 forces real, hashed files.
 
 ## Notes for anyone editing this
 
-**No external requests.** No font CDN, no analytics, no third-party scripts.
+**No external requests, and no API calls.** No font CDN, no analytics, no
+third-party scripts, and never a login, session check or call to
+`api.pacestreak.com`: a product outage must not take this site down.
 The Content-Security-Policy in `_headers` is `default-src 'self'` and will
 block anything you add from elsewhere — that is deliberate, not an obstacle to
 route around. If you add a dependency, vendor it.
+
+**`Cache-Control: no-transform` in `_headers` is load-bearing.** Cloudflare
+Web Analytics is switched on for the Pages project and would otherwise inject
+a beacon script that the CSP then blocks, costing a console error and
+Lighthouse points.
 
 **`check-html.py` runs in CI and has earned its place.** It catches collapsed
 whitespace around inline links (shipped three times: "or write tohello@"),

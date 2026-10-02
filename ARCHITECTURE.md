@@ -63,9 +63,9 @@ behaviours that would otherwise have shipped broken:
 Both are fixed by `assetsInlineLimit: 0`, not by loosening the policy. Any
 change to the CSP is a security change and is reviewed as one.
 
-`connect-src` is `'self'`. If this site ever legitimately calls the API — a
-waitlist submission, say — that value must be widened **in the same commit**,
-or the browser blocks the request with nothing visible on the page.
+`connect-src` is `'self'`, and stays that way: this site never calls the API
+(the waitlist that would have been its first request was skipped). Anything
+that needs the API belongs in [`app`](https://github.com/PaceStreak/app).
 
 ## Hostnames and certificates
 

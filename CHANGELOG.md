@@ -9,6 +9,8 @@ This site is continuously deployed rather than versioned, so entries are dated.
 
 ### Added
 
+- `AGENTS.md` with this repository's commands and rules for coding agents; the
+  README and architecture notes now describe the live deployment, not a plan.
 - Copy for recovery, smart reminders, supersets, splits and plan
   challenges; privacy covers crash reports and failed sign-in records.
 
