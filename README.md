@@ -131,9 +131,8 @@ block anything you add from elsewhere — that is deliberate, not an obstacle to
 route around. If you add a dependency, vendor it.
 
 **`Cache-Control: no-transform` in `_headers` is load-bearing.** Cloudflare
-Web Analytics is switched on for the Pages project and would otherwise inject
-a beacon script that the CSP then blocks, costing a console error and
-Lighthouse points.
+Web Analytics (now off) used to inject a beacon script that the CSP blocked;
+the header keeps any future edge rewrite off the pages.
 
 **`check-html.py` runs in CI and has earned its place.** It catches collapsed
 whitespace around inline links (shipped three times: "or write tohello@"),

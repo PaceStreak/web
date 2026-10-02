@@ -62,7 +62,8 @@ const collected = [
 
       <div class="prose-page mt-10">
         <p>
-          The short version: we collect what it takes to run a training log,
+          The short version: we collect what it takes to run a habit and
+          training log,
           nothing to profile you, and you can take all of it with you or delete
           it at any time. There is no analytics, no advertising and no selling
           of data. The only third-party code that runs in your browser is
@@ -77,6 +78,18 @@ const collected = [
           Questions go to{" "}
           <a href="mailto:hello@pacestreak.com">hello@pacestreak.com</a>, read
           by a person.
+        </p>
+
+        <h2>Who runs PaceStreak</h2>
+        <p>
+          PaceStreak is a free, open-source project run by its maintainer, not
+          a company with investors or an advertising business. The maintainer
+          decides how your data is used and is responsible for it (the "data
+          controller", in GDPR terms), and can be reached at{" "}
+          <a href="mailto:hello@pacestreak.com">hello@pacestreak.com</a>. All
+          of the code that handles your data is{" "}
+          <a href="https://github.com/PaceStreak">public</a>, so anything on
+          this page can be checked against it.
         </p>
 
         <h2>The websites</h2>
@@ -167,6 +180,34 @@ const collected = [
           </li>
         </ul>
 
+        <h2>Why we're allowed to use it</h2>
+        <ul>
+          <li>
+            <strong>To provide the service you signed up for</strong>: your
+            account, profile, logs, streaks, social features you use, and the
+            email that keeps your account working.
+          </li>
+          <li>
+            <strong>Your explicit consent</strong> for health information:
+            body metrics, heart rate, check-ins, food, journal mood, and habits
+            that reveal something about your health (such as one you're
+            breaking). You choose to record each of these, you agreed to it
+            when you signed up or accepted these terms, and you can withdraw
+            by deleting the entries, or your account, at any time.
+          </li>
+          <li>
+            <strong>Your consent</strong> for optional extras you switch on:
+            push notifications, summary emails, the monthly backup email and
+            photo backup. Switching one off withdraws it.
+          </li>
+          <li>
+            <strong>Legitimate interest in keeping the service safe</strong>:
+            the security history, failed sign-in records, crash reports,
+            rate limiting, Turnstile and moderation. These are kept short and
+            used for nothing else.
+          </li>
+        </ul>
+
         <h2>Age</h2>
         <p>
           You must be <strong>13 or older</strong> to have an account. Under
@@ -232,6 +273,19 @@ const collected = [
           </li>
         </ul>
 
+        <h2>Where it's stored</h2>
+        <p>
+          The database (Neon, AWS us-east-2 in Ohio), the cache (Upstash,
+          us-central1) and the server (Google Cloud, us-central1 in Iowa) are
+          all in the <strong>United States</strong>. Cloudflare serves pages
+          from its global network, and Brevo is based in the EU. If you live
+          in the EU, the UK or another country with transfer rules, your data
+          is transferred to the US under each provider's data processing
+          terms, which include the European Commission's standard contractual
+          clauses. Everything is encrypted in transit, and the providers
+          encrypt it at rest.
+        </p>
+
         <h2>How long we keep it</h2>
         <ul>
           <li>Your data is kept while your account exists.</li>
@@ -254,9 +308,11 @@ const collected = [
             permanently deleted.
           </li>
           <li>
-            Database backups, readable only by the server operator, are kept for up to 14 days, so deleted
-            data can survive in a backup for up to 14 days after deletion
-            before it expires.
+            <strong>Backups.</strong> The database provider keeps a rolling
+            6-hour restore history, used only to recover from a failure, so
+            deleted data can survive there for up to 6 hours. If we add
+            longer-lived backups, this page will say so, and how long they
+            last, before it happens.
           </li>
           <li>Failed sign-in records and crash reports are kept for 30 days.</li>
           <li>Operational server logs are kept for a short period and then rotated away.</li>
@@ -269,6 +325,10 @@ const collected = [
             a complete JSON archive, CSV files, or a calendar file.
           </li>
           <li><strong>Correct</strong> anything from the app, or ask us.</li>
+          <li>
+            <strong>Withdraw consent</strong> for health information by
+            deleting it; nothing else about your account changes.
+          </li>
           <li><strong>Delete</strong> your account from Settings → Data.</li>
           <li>
             <strong>Object or restrict:</strong> turn off social features,

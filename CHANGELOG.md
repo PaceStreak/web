@@ -9,6 +9,10 @@ This site is continuously deployed rather than versioned, so entries are dated.
 
 ### Added
 
+- `/privacy`: who runs the service, legal bases, US storage and transfers, a
+  consent-withdrawal right, and the real 6-hour backup window (it said 14 days).
+  `/terms`: nutrition, eating-disorder and addiction disclaimers, Open Food
+  Facts attribution, shutdown notice; dropped "once accounts open".
 - `AGENTS.md` with this repository's commands and rules for coding agents; the
   README and architecture notes now describe the live deployment, not a plan.
 - Copy for recovery, smart reminders, supersets, splits and plan
