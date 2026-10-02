@@ -9,6 +9,9 @@ This site is continuously deployed rather than versioned, so entries are dated.
 
 ### Added
 
+- `/changelog`, `/features` and `/social` cover preset reactions, the
+  Coaching overview, the two-way plate calculator, the install offer, and
+  the fixes for lost unsynced sessions, reload sign-outs and the habit badge.
 - `/privacy`: who runs the service, legal bases, US storage and transfers, a
   consent-withdrawal right, and the real 6-hour backup window (it said 14 days).
   `/terms`: nutrition, eating-disorder and addiction disclaimers, Open Food
