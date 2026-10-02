@@ -8,8 +8,8 @@
 
 export const facts = {
   disciplines: 11,
-  exercises: 84,
-  starterRoutines: 8,
+  exercises: 283,
+  starterRoutines: 24,
   achievementRules: 29,
   leaderboards: 5,
   freezeEvery: 4,
@@ -18,7 +18,7 @@ export const facts = {
   minAge: 13,
   socialMinAge: 16,
   passwordMin: 16,
-  planTemplates: 4,
+  planTemplates: 22,
   maxBuddies: 5,
   encouragements: 6,
   habitTemplates: 68,
@@ -167,7 +167,7 @@ export const featureGroups: FeatureGroup[] = [
       },
       {
         title: "Routines",
-        body: `Save the sessions you repeat. ${8} starter routines ship with the app; edit them or build your own.`,
+        body: `Save the sessions you repeat. ${facts.starterRoutines} starter routines ship with the app, from five-by-five and push/pull/legs to dumbbells-only, kettlebell and bodyweight; edit them or build your own.`,
       },
       {
         title: "Train for a race",
@@ -179,7 +179,7 @@ export const featureGroups: FeatureGroup[] = [
       },
       {
         title: "Training plans",
-        body: `A schedule of suggested sessions over several weeks. Start from one of ${4} conservative templates (from two gentle sessions a week to 5 km to 10 km) or build your own, week by week, and share it as a file. Today shows the day's session, and what you log completes it, even if you moved it to another day.`,
+        body: `A schedule of suggested sessions over several weeks. Start from one of ${facts.planTemplates} built-in plans (five-by-five, upper/lower, push/pull/legs, dumbbells at home, bodyweight strength, lift-and-run, cycling, swimming, rowing, walking, mobility, coming back from a break and more) or build your own, week by week, and share it as a file. Today shows the day's session, and what you log completes it, even if you moved it to another day.`,
       },
       {
         title: "Timers and calculators",
