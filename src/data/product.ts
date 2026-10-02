@@ -430,8 +430,8 @@ export const featureGroups: FeatureGroup[] = [
         body: "Bring a PaceStreak export back in, on this account or a new one.",
       },
       {
-        title: "A monthly backup",
-        body: "Opt in and, on the first of each month, you get a nudge to download a copy of everything. Or, with a second opt-in you confirm, the email carries the export itself as a zip that imports straight back.",
+        title: "A monthly or weekly backup",
+        body: "Opt in and, on the 1st of each month or the first day of each week, you get a nudge to download a copy of everything. Or, with a second opt-in you confirm, the email carries the export itself as a zip that imports straight back.",
       },
       {
         title: "A 30-day trash",
