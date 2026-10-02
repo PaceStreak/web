@@ -183,7 +183,7 @@ export const featureGroups: FeatureGroup[] = [
       },
       {
         title: "Timers and calculators",
-        body: "A rest timer between sets, an interval timer for intervals, EMOM and Tabata that keeps time correctly with the screen locked, a plate calculator, 1RM and pace.",
+        body: "A rest timer between sets, an interval timer for intervals, EMOM and Tabata that keeps time correctly with the screen locked, a plate calculator that works both ways (tap plates on and read the total, or type a total and see each side, with the bar remembered per exercise), 1RM and pace.",
       },
       {
         title: "Progression hints",
@@ -375,7 +375,7 @@ export const featureGroups: FeatureGroup[] = [
       },
       {
         title: "A feed of what happened",
-        body: "Sessions, kept weeks, milestones and records from people you follow. Give kudos and leave plain-text comments.",
+        body: "Sessions, kept weeks, milestones and records from people you follow. Give kudos as one of five preset reactions and leave plain-text comments.",
       },
       {
         title: "Buddy streaks",
@@ -399,7 +399,7 @@ export const featureGroups: FeatureGroup[] = [
       },
       {
         title: "Coaching and announcements",
-        body: "A coach can suggest a plan to a member who shares their training; it only starts if the member starts it. Group owners can post announcements that members read, with nothing between members to moderate.",
+        body: "One Coaching screen lists everyone who shares their training with you, across all your groups, with anyone who needs a nudge first. A coach can suggest a plan to a member who shares their training; it only starts if the member starts it. Group owners can post announcements that members read, with nothing between members to moderate.",
       },
       {
         title: `${facts.leaderboards} opt-in leaderboards`,
@@ -463,7 +463,7 @@ export const featureGroups: FeatureGroup[] = [
       },
       {
         title: "Install it",
-        body: "Add it to your home screen and it opens like an app. Its icon badge can show unread notifications or the days still to go this week. Long-press the icon to jump straight to logging a session, a live workout or last week's recap.",
+        body: "Add it to your home screen and it opens like an app; the app offers this at a few good moments and Settings installs it any time. Its icon badge can show unread notifications or the days still to go this week. Long-press the icon to jump straight to logging a session, a live workout or last week's recap.",
       },
       {
         title: "Notifications you choose",
