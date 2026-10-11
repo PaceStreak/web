@@ -224,8 +224,8 @@ const collected = [
         </p>
         <ul>
           <li>
-            <strong>Cloudflare</strong> hosts the websites and the app, runs
-            the tunnel the API is reached through, stores progress photos
+            <strong>Cloudflare</strong> hosts the websites and the app, stores
+            progress photos
             (R2) if you turn photo backup on, and runs Turnstile, an
             invisible challenge on sign-up, sign-in, password-reset and
             resend-verification that exists only to stop those forms being
@@ -234,8 +234,12 @@ const collected = [
             analytics and does not track you around the web.
           </li>
           <li>
-            <strong>Google Cloud Platform</strong> runs the virtual machine
-            the API and its background worker run on.
+            <strong>FastAPI Cloud</strong> runs the API.
+          </li>
+          <li>
+            <strong>GitHub</strong> runs the scheduled background job
+            (streak reminders, digests and account deletions) on its hosted
+            runners, which connect to the database to do it.
           </li>
           <li>
             <strong>Neon</strong> hosts the Postgres database everything in
@@ -276,8 +280,10 @@ const collected = [
         <h2>Where it's stored</h2>
         <p>
           The database (Neon, AWS us-east-2 in Ohio), the cache (Upstash,
-          us-central1) and the server (Google Cloud, us-central1 in Iowa) are
-          all in the <strong>United States</strong>. Cloudflare serves pages
+          us-central1) and the API server (FastAPI Cloud, us-east-1) are all
+          in the <strong>United States</strong>. The scheduled background job
+          runs on GitHub-hosted runners, whose location GitHub chooses.
+          Cloudflare serves pages
           from its global network, and Brevo is based in the EU. If you live
           in the EU, the UK or another country with transfer rules, your data
           is transferred to the US under each provider's data processing
