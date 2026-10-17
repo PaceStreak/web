@@ -95,7 +95,7 @@ export const faqs: FaqItem[] = [
   },
   {
     q: "Is any of this open source?",
-    a: "Yes, all of it. The app, the API, this site, the blog and the infrastructure notes are public at github.com/PaceStreak under AGPL-3.0, so you can read exactly what happens to your data. The blog at blog.pacestreak.com covers how each part was built and what broke along the way.",
+    a: "The part that matters for your data is. The API, which stores and protects everything you log, is public at github.com/PaceStreak/api under AGPL-3.0, so you can read exactly what happens to it. The app and the websites are not public. The blog at blog.pacestreak.com covers how each part was built and what broke along the way.",
   },
 ];
 
