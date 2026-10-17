@@ -30,7 +30,6 @@ export const releases: Release[] = [
       { area: "App", text: "Larger text, compact layout and high contrast, and screens that remember their last tab." },
       { area: "Data", text: "An opt-in monthly email with your export attached." },
       { area: "App", text: "Fixed: reloading any page, or opening a shared link, took you back to Today." },
-      { area: "Data", text: "The API is public on GitHub under AGPL-3.0, so you can read how your data is handled." },
       { area: "Habits", text: "Plan a habit for chosen weekdays, and pause one habit on its own." },
       { area: "Training", text: "Import your history from Strong, Hevy or FitNotes; filter plans by goal and gym; a whole-plan calendar; rest remembered per exercise." },
       { area: "App", text: "Select sessions to tag, move or delete together, with Undo; quiet days with no reminders; the backup email can come weekly." },
