@@ -39,7 +39,7 @@ export const faqs: FaqItem[] = [
   },
   {
     q: "Is a streak just a guilt machine?",
-    a: "It is, if it's built badly. That's why the streak counts against a target you set, rest days count as kept, and you can repair a missed day once a month. The goal is showing up over a year, not a perfect record you abandon in week three.",
+    a: "It is, if it's built badly. That's why the streak counts against a target you set, rest days count as kept, and you can repair a missed week once a month. The goal is showing up over a year, not a perfect record you abandon in week three.",
     featured: true,
   },
   {

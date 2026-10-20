@@ -467,7 +467,7 @@ export const featureGroups: FeatureGroup[] = [
       },
       {
         title: "Notifications you choose",
-        body: "An in-app inbox for everything, plus web push and email per category. Habit reminders carry Done and Snooze buttons, or come as one evening summary that never names a habit. One-click unsubscribe from any email.",
+        body: "An in-app inbox for everything, plus web push and email per category. Habit reminders carry Done and Snooze buttons, or come as one evening summary. A habit is never named in an email subject or a push title. Milestone emails for long streaks and records can be turned off, and there are no newsletters or marketing email. One-click unsubscribe from any email.",
       },
       {
         title: "Fast with a keyboard",
@@ -494,8 +494,12 @@ export const featureGroups: FeatureGroup[] = [
         body: "Sign in with your fingerprint, face or device PIN. Nothing to type, nothing to phish, and it counts as two-factor on its own. Only a public key is stored.",
       },
       {
-        title: "Two-factor authentication",
-        body: "Authenticator-app codes with single-use recovery codes you can replace at any time. A recovery code also gets you back in if you lose both your password and your email.",
+        title: "A code at sign-in",
+        body: "Signing in with a password asks for a 6-digit code from your email, unless you trusted that device in the last 30 days. Prefer an app? Authenticator codes or a passkey replace it.",
+      },
+      {
+        title: "Recovery codes",
+        body: "Make ten single-use codes that work in place of any sign-in code, and get you back in if you lose both your password and your email. Replace them any time.",
       },
       {
         title: "Session control",
@@ -508,6 +512,10 @@ export const featureGroups: FeatureGroup[] = [
       {
         title: "Security history",
         body: "Sign-ins, password, passkey and two-factor changes are logged to your account, where you can review them. A sign-in from a device you've never used gets you an alert.",
+      },
+      {
+        title: "Backed up every night",
+        body: "Restore to any minute of the last week, plus a full copy taken off-site every night.",
       },
       {
         title: "No third parties at all",

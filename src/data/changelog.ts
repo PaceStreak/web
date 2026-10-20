@@ -17,6 +17,17 @@ export const released = true;
 
 export const releases: Release[] = [
   {
+    date: "2026-10-19",
+    title: "Sign-in codes, quieter email and a faster API",
+    items: [
+      { area: "Security", text: "Signing in with a password now asks for a 6-digit code from your email. Tick \"Trust this device for 30 days\" to skip it on your own devices; an authenticator app or a passkey replaces it." },
+      { area: "Security", text: "Any account can make recovery codes now, with or without an authenticator app. Each works once, in place of any sign-in code. Settings, then Security." },
+      { area: "Email", text: "Milestone emails for long streaks, records and every fifth level, which you can turn off. A habit's name never appears in an email subject or a push title. Still no newsletters and no marketing email." },
+      { area: "App", text: "The API moved to Cloudflare's network, so most screens load noticeably faster." },
+      { area: "Your data", text: "A full copy of the database is now taken off-site every night, on top of the restore history." },
+    ],
+  },
+  {
     date: "2026-10-02",
     title: "Faster everywhere, and an undo for everything",
     items: [

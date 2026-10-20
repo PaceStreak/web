@@ -20,6 +20,14 @@ const layers = [
     ],
   },
   {
+    title: "Email codes",
+    points: [
+      "On by default: signing in with a password also asks for a 6-digit code sent to your email. It works once and expires after 10 minutes.",
+      "Tick \"Trust this device for 30 days\" and that browser skips the code until then. Signing out everywhere or changing your password forgets every trusted device.",
+      "An authenticator app or a passkey replaces the email code, if you'd rather not wait for mail.",
+    ],
+  },
+  {
     title: "Passkeys",
     points: [
       "Sign in with your fingerprint, face or device PIN, from a button or straight from the email field's autofill.",
@@ -29,11 +37,11 @@ const layers = [
     ],
   },
   {
-    title: "Two-factor",
+    title: "Authenticator app",
     points: [
-      "Time-based codes from any authenticator app, with the secret encrypted at rest.",
+      "Optional: time-based codes from any authenticator app, with the secret encrypted at rest.",
       "A code can't be replayed, even within its own 30-second window.",
-      "Ten single-use recovery codes, replaceable at any time.",
+      "Ten single-use recovery codes, replaceable at any time. Each works in place of any code.",
       "Turning two-factor on or off needs your password and a current code.",
     ],
   },
@@ -42,9 +50,9 @@ const layers = [
     points: [
       "A list of every signed-in device. End one, or sign out everywhere.",
       "Changing your password keeps this session and ends all the others. Resetting it ends every session.",
-      "Lost your password and your email? A two-factor recovery code sets a new password, once, and ends every session.",
-      "Changing your email needs your password and only takes effect when you open the link sent to the new address. The old address is told.",
-      "A security history of sign-ins, password, passkey and two-factor changes, and an alert when a device you've never used signs in.",
+      "Lost your password and your email? A recovery code sets a new password, once, and ends every session.",
+      "Changing your email needs your password and only takes effect when you enter the code sent to the new address. The old address is told.",
+      "A security history of sign-ins, password, passkey and two-factor changes, and an email alert when a device you've never used signs in.",
       "Rate limits on sign-up, sign-in, two-factor, recovery, password reset and verification, and failed attempts watched by IP and by account.",
     ],
   },
@@ -53,7 +61,7 @@ const layers = [
 
 <Base
   title="Security and privacy — PaceStreak"
-  description="How PaceStreak protects accounts and training data: 16-character passwords, rotating refresh tokens with theft detection, passkeys, two-factor with recovery codes, a strict content security policy and no third parties."
+  description="How PaceStreak protects accounts and training data: 16-character passwords, email codes at sign-in, optional authenticator apps and passkeys, recovery codes, rotating refresh tokens, nightly backups and no third parties."
   path="/security"
 >
   <section class="py-16 sm:py-20">
@@ -94,6 +102,22 @@ const layers = [
         ships a content security policy of <code>default-src 'self'</code>, so
         the browser refuses to load anything from anywhere else. If someone
         added a tracker by mistake, it wouldn't run.
+      </p>
+
+      <h2>Email that stays quiet</h2>
+      <p>
+        No newsletters, no marketing email. PaceStreak only writes about your
+        account and your own activity, and every kind of email except
+        sign-in codes and security notices can be turned off in the app. A habit's name, note or
+        amount never appears in an email subject or a push notification's
+        title, because those show on a lock screen; details stay inside.
+      </p>
+
+      <h2>Backups</h2>
+      <p>
+        The database can be restored to any minute of the last seven days, and
+        a full copy is taken off-site every night, so one provider's bad day
+        can't take your history with it.
       </p>
 
       <h2>One domain, one trust boundary</h2>
