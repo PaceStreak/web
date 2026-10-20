@@ -95,7 +95,7 @@ export const faqs: FaqItem[] = [
   },
   {
     q: "Is any of this open source?",
-    a: "No. The code is private; only the status page and the organization's shared files are public. The blog at blog.pacestreak.com covers how each part was built and what broke along the way.",
+    a: "Yes, all of it: the app, the API, this site, the blog and the infrastructure notes are public under AGPL-3.0 at github.com/PaceStreak. The blog at blog.pacestreak.com covers how each part was built and what broke along the way.",
   },
 ];
 

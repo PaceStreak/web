@@ -6,7 +6,7 @@ const layers = [
     title: "Passwords",
     points: [
       "At least 16 characters. Length beats complexity rules, and a password manager makes it free.",
-      "Hashed with Argon2, a slow, salted algorithm built for passwords. Sign-in takes the same time whether or not the account exists, so response timing can't be used to discover who has one.",
+      "Hashed with PBKDF2-SHA256 at 100,000 iterations, salted and mixed with a secret key kept apart from the database. Sign-in takes the same time whether or not the account exists, so response timing can't be used to discover who has one.",
       "Error messages never say which half was wrong.",
     ],
   },
@@ -114,8 +114,10 @@ const layers = [
 
       <h2>Source code</h2>
       <p>
-        The PaceStreak code is private. Its security rests on the measures on
-        this page, not on the code being hidden, and the status page is public
+        Every line of PaceStreak is open source under AGPL-3.0 at{" "}
+        <a href="https://github.com/PaceStreak">github.com/PaceStreak</a>, so
+        you can check each measure on this page against the code. Its security
+        rests on those measures, not on anything being hidden. Uptime is public
         at <a href="https://status.pacestreak.com">status.pacestreak.com</a>.
       </p>
 
