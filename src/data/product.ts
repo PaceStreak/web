@@ -518,6 +518,10 @@ export const featureGroups: FeatureGroup[] = [
         body: "Restore to any minute of the last week, plus a full copy taken off-site every night.",
       },
       {
+        title: "Open source",
+        body: "The API, the app and the websites are public on GitHub under AGPL-3.0, so every claim on this page can be checked against the code.",
+      },
+      {
         title: "No third parties at all",
         body: "No analytics, no trackers, no font CDNs, no embedded widgets. A content security policy makes the browser refuse them.",
       },

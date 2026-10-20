@@ -24,6 +24,7 @@ export const releases: Release[] = [
       { area: "Security", text: "Any account can make recovery codes now, with or without an authenticator app. Each works once, in place of any sign-in code. Settings, then Security." },
       { area: "Email", text: "Milestone emails for long streaks, records and every fifth level, which you can turn off. A habit's name never appears in an email subject or a push title. Still no newsletters and no marketing email." },
       { area: "App", text: "The API moved to Cloudflare's network, so most screens load noticeably faster." },
+      { area: "Your data", text: "PaceStreak is open source again: the API, the app and the websites are public on GitHub under AGPL-3.0." },
       { area: "Your data", text: "A full copy of the database is now taken off-site every night, on top of the restore history." },
     ],
   },
