@@ -4,12 +4,12 @@ import Base from "../layouts/Base.astro";
 // Every statement here must match what the code does. When the code changes -
 // a new table, a new processor, a new retention period - this page changes in
 // the same pull request. An inaccurate privacy policy is worse than none.
-const updated = "2 October 2026";
+const updated = "20 October 2026";
 
 const collected = [
   {
     what: "Account",
-    items: "Email address, a password hash (Argon2; we never see or store the password), whether the address is verified, your role, whether two-factor is on, and the public keys of any passkeys you add (with the name you give each one). A passkey's private key never leaves your device or password manager.",
+    items: "Email address, a password hash (PBKDF2-SHA256 with a secret key held apart from the database; we never see or store the password), whether the address is verified, your role, whether sign-in codes by email and an authenticator app are on, hashed recovery codes, and the public keys of any passkeys you add (with the name you give each one). A passkey's private key never leaves your device or password manager.",
     why: "To sign you in and keep the account yours.",
   },
   {
@@ -44,7 +44,7 @@ const collected = [
   },
   {
     what: "Security",
-    items: "Active sessions, and a history of sign-ins, password, email, passkey and two-factor changes, exports, calendar-link changes and which version of the terms you accepted, each with the IP address and browser user agent. Failed sign-in attempts are recorded with the IP address and a keyed hash of the address tried (never the address itself), and linked to your account only if the address is yours.",
+    items: "Active sessions, and a history of sign-ins, password, email, passkey and two-factor changes, exports, calendar-link changes and which version of the terms you accepted, each with the IP address and browser user agent. Failed sign-in attempts are recorded with the IP address and a keyed hash of the address tried (never the address itself), and linked to your account only if the address is yours. Sign-in codes sent by email are stored only as a keyed hash and deleted a day after they expire. If you tick \"Trust this device for 30 days\", we keep a record of that device: the browser's user agent, the IP address, when it was trusted, when it was last used and when it expires, plus a keyed hash of the cookie that identifies it. It appears in your list of trusted devices and is deleted when it expires, when you remove it, or when you sign out everywhere or change your password.",
     why: "So you can spot activity that wasn't you, and so we can investigate abuse.",
   },
 ];
@@ -99,6 +99,39 @@ const collected = [
           Cloudflare, which serves the sites, processes the IP address and
           request needed to deliver each page and keeps operational logs; we
           receive no per-visitor reports.
+        </p>
+
+        <h2>Cookies in the app</h2>
+        <p>
+          The app at <strong>app.pacestreak.com</strong> sets no cookies of
+          its own. The API sets the three below, all strictly necessary for
+          signing in, none used for tracking. They are scoped to
+          pacestreak.com and the API's sign-in path, sent only over HTTPS,
+          and marked SameSite=Lax.
+        </p>
+        <ul>
+          <li>
+            <strong><code>__Secure-refresh_token</code></strong>: keeps you
+            signed in. HttpOnly, so scripts cannot read it. Lasts 7 days
+            and is replaced each time it is used; signing out deletes it.
+          </li>
+          <li>
+            <strong><code>__Secure-csrf_token</code></strong>: a random value
+            the app sends back with sign-in requests, so another site cannot
+            make them for you. Lasts 7 days; signing out deletes it.
+          </li>
+          <li>
+            <strong><code>__Secure-trusted_device</code></strong>: set only if
+            you tick "Trust this device for 30 days", so this browser can
+            skip the emailed sign-in code. HttpOnly, lasts 30 days, and stops
+            working as soon as you remove the device, sign out everywhere or
+            change your password.
+          </li>
+        </ul>
+        <p>
+          Cloudflare Turnstile, on the sign-up, sign-in and password-reset
+          forms, runs in a frame from Cloudflare's own domain; see Service
+          providers below.
         </p>
 
         <h2>What the app collects, and why</h2>
@@ -182,7 +215,8 @@ const collected = [
           <li>
             <strong>To provide the service you signed up for</strong>: your
             account, profile, logs, streaks, social features you use, and the
-            email that keeps your account working.
+            email that keeps your account working: sign-in and verification
+            codes and security notices.
           </li>
           <li>
             <strong>Your explicit consent</strong> for health information:
@@ -194,8 +228,10 @@ const collected = [
           </li>
           <li>
             <strong>Your consent</strong> for optional extras you switch on:
-            push notifications, summary emails, the backup email and
-            photo backup. Switching one off withdraws it.
+            push notifications, reminder and summary emails, the backup email
+            and photo backup. The weekly summary and milestone emails are on
+            when you sign up; every one of these can be switched off by
+            category in Settings, and switching one off withdraws it.
           </li>
           <li>
             <strong>Legitimate interest in keeping the service safe</strong>:
@@ -221,40 +257,42 @@ const collected = [
         </p>
         <ul>
           <li>
-            <strong>Cloudflare</strong> hosts the websites and the app, stores
-            progress photos
-            (R2) if you turn photo backup on, and runs Turnstile, an
-            invisible challenge on sign-up, sign-in, password-reset and
-            resend-verification that exists only to stop those forms being
-            used to spam email or brute-force passwords. Turnstile sees the
-            request needed to tell a human from a script; it is not
-            analytics and does not track you around the web.
+            <strong>Cloudflare</strong> runs everything we operate day to
+            day: it hosts the websites and the app (Pages), runs the API
+            (Workers), stores your account and everything on this page in
+            its database (D1), stores progress photos (R2) if you turn photo
+            backup on, and holds import and export files while they are
+            processed (R2, deleted within a week). It queues and schedules
+            background work such as streak reminders, digests and account
+            deletions (Queues and Cron Triggers). It also runs Turnstile, an
+            invisible challenge on sign-up, sign-in, password-reset,
+            resend-verification and account recovery that exists only to
+            stop those forms being used to spam email or brute-force
+            passwords. Turnstile sees the request needed to tell a human
+            from a script; it is not analytics and does not track you around
+            the web.
           </li>
           <li>
-            <strong>FastAPI Cloud</strong> runs the API.
-          </li>
-          <li>
-            <strong>GitHub</strong> runs the scheduled background job
-            (streak reminders, digests and account deletions) on its hosted
-            runners, which connect to the database to do it.
-          </li>
-          <li>
-            <strong>Neon</strong> hosts the Postgres database everything in
-            this page is stored in.
-          </li>
-          <li>
-            <strong>Upstash</strong> hosts the Redis cache used for rate
-            limiting and short-lived session data, never your training data.
-          </li>
-          <li>
-            <strong>Brevo</strong> sends account email: sign-up verification,
-            password reset and email-change confirmation, plus any summaries
-            you switch on. It sees the email address and the message content,
-            nothing else about your account. If you turn on the monthly or weekly
+            <strong>Brevo</strong> sends our email through its mail relay:
+            sign-in, verification, password-reset and email-change codes,
+            security notices, and the reminders, summaries and milestone
+            emails you keep on. It sees the email address and the message
+            content, nothing else about your account. We send no newsletters
+            and no marketing email. If you turn on the monthly or weekly
             backup email (off by default, and the app asks you to confirm),
             that message carries a zip of your whole export, so Brevo
             handles it in transit and it then sits in your inbox like any
             other email.
+          </li>
+          <li>
+            <strong>Neon</strong> holds one backup: a full copy of the
+            database, made each night and replacing the previous night's
+            copy. It is only for restoring after a failure.
+          </li>
+          <li>
+            <strong>GitHub</strong> runs the nightly job that makes that copy
+            (GitHub Actions), so the data passes through GitHub's hosted
+            runners in transit. Nothing is kept there.
           </li>
           <li>
             <strong>Open Food Facts</strong>, an open food database, answers
@@ -269,24 +307,27 @@ const collected = [
           </li>
           <li>
             Web push messages pass through your browser's own push service
-            (for example Google's or Apple's), encrypted so that service
-            cannot read them.
+            (Google's, Apple's, Mozilla's, Microsoft's or Vivaldi's),
+            encrypted so that service cannot read them. Push titles and email
+            subjects never name a habit: they can show on a lock screen.
           </li>
         </ul>
 
         <h2>Where it's stored</h2>
         <p>
-          The database (Neon, AWS us-east-2 in Ohio), the cache (Upstash,
-          us-central1) and the API server (FastAPI Cloud, us-east-1) are all
-          in the <strong>United States</strong>. The scheduled background job
-          runs on GitHub-hosted runners, whose location GitHub chooses.
-          Cloudflare serves pages
-          from its global network, and Brevo is based in the EU. If you live
-          in the EU, the UK or another country with transfer rules, your data
-          is transferred to the US under each provider's data processing
-          terms, which include the European Commission's standard contractual
-          clauses. Everything is encrypted in transit, and the providers
-          encrypt it at rest.
+          The database (Cloudflare D1) is in Cloudflare's{" "}
+          <strong>Asia-Pacific</strong> region, and photos and import and
+          export files (R2) are stored in the same region. The API runs on
+          Cloudflare's global network, usually in a data centre close to the
+          database or to you, and the websites are served from that same
+          network. The nightly backup copy is in the{" "}
+          <strong>United States</strong> (Neon, AWS us-east-2 in Ohio), made
+          by a job on GitHub-hosted runners, whose location GitHub chooses.
+          Brevo is based in the EU. If you live in the EU, the UK or another
+          country with transfer rules, your data is transferred outside it
+          under each provider's data processing terms, which include the
+          European Commission's standard contractual clauses. Everything is
+          encrypted in transit, and the providers encrypt it at rest.
         </p>
 
         <h2>How long we keep it</h2>
@@ -308,15 +349,20 @@ const collected = [
             <strong>Deleting your account</strong> schedules it for 30 days
             later and signs you out everywhere. Sign in during those 30 days to
             cancel. After that, the account and everything linked to it is
-            permanently deleted.
+            permanently deleted. Copies in the backups below expire on their
+            own.
           </li>
           <li>
-            <strong>Backups.</strong> The database provider keeps a rolling
-            6-hour restore history, used only to recover from a failure, so
-            deleted data can survive there for up to 6 hours. If we add
-            longer-lived backups, this page will say so, and how long they
-            last, before it happens.
+            <strong>Backups.</strong> The database keeps a rolling 7-day
+            restore history (Cloudflare D1 Time Travel), and a full copy is
+            made in Neon each night, replacing the previous night's copy.
+            Both are used only to recover from a failure. So something you
+            delete can survive in a backup for up to 7 days; if a nightly
+            copy ever fails, the previous one stays until the next copy
+            succeeds. If we add longer-lived backups, this page will say so,
+            and how long they last, before it happens.
           </li>
+          <li>Import and export files are deleted within a week of being made.</li>
           <li>Failed sign-in records and crash reports are kept for 30 days.</li>
           <li>Operational server logs are kept for a short period and then rotated away.</li>
         </ul>
@@ -351,11 +397,17 @@ const collected = [
 
         <h2>Security</h2>
         <p>
-          Passwords must be at least 16 characters and are hashed with Argon2.
+          Passwords must be at least 16 characters and are hashed with
+          PBKDF2-SHA256 and a secret key kept apart from the database.
           Sessions use short-lived tokens that are never written to browser
-          storage, with theft detection on refresh. Passkeys and two-factor
-          authentication are available; for a passkey only the public key is
-          stored, and two-factor secrets are encrypted at rest. The calendar
+          storage, with theft detection on refresh. Signing in on a new
+          device asks for a 6-digit code sent by email (on by default; it
+          lasts 10 minutes and works once), unless you trusted that device
+          in the last 30 days. You can use an authenticator app (TOTP)
+          instead of emailed codes, and passkeys and single-use recovery
+          codes are also available; for a passkey only
+          the public key is stored, authenticator secrets are encrypted at
+          rest, and codes are stored only as keyed hashes. The calendar
           link is stored only as a hash. The details are on the{" "}
           <a href="/security">security page</a>. If we ever discover a breach
           affecting your data, we will tell you and the relevant authority as
